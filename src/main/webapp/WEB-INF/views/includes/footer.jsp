@@ -10,7 +10,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="footer_logo"><a href="#">Wish</a></div>
+<!-- 					<div class="footer_logo"><a href="#">Makaron</a></div>
 					<nav class="footer_nav">
 						<ul>
 							<li><a href="categories.html">clothes</a></li>
@@ -18,7 +18,7 @@
 							<li><a href="categories.html">lingerie</a></li>
 							<li><a href="contact.html">contact</a></li>
 						</ul>
-					</nav>
+					</nav> -->
 					<div class="footer_social">
 						<ul>
 							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
