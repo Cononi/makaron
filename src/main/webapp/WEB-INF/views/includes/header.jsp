@@ -26,7 +26,7 @@
 	
 	<!-- Header -->
 
-	<header class="header">
+	<header class="header"> 
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
 			<div class="logo"><a href="#">Makaron</a></div>
 			<nav class="main_nav">
@@ -41,7 +41,7 @@
 				<div class="search header_search">
 					<form action="#">
 						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="resources//magnifying-glass.svg" alt=""></button>
+						<button type="submit" id="search_button" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
 					</form>
 				</div>
 				<div class="shopping">
@@ -74,6 +74,7 @@
 						</div>
 					</a>
 				</div>
+				<button type="button" class="btn btn-danger loginbutton">Danger</button>
 			</div>
 
 			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
@@ -88,7 +89,7 @@
 		<div class="search">
 			<form action="#">
 				<input type="search" class="search_input menu_mm" required="required">
-				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources//magnifying-glass.svg" alt=""></button>
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources/images/magnifying-glass.svg" alt=""></button>
 			</form>
 		</div>
 		<nav class="menu_nav">

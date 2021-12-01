@@ -10,7 +10,8 @@
 4. Init Home Slider
 5. Init Gallery
 6. Init Testimonials Slider
-7. Init Lightbox
+7. Init UserSelect Slider
+8. Init Lightbox
 
 
 ******************************/
@@ -46,6 +47,7 @@ $(document).ready(function()
 	initMenu();
 	initGallery();
 	initTestSlider();
+	initUserSlider();
 	initLightbox();
 
 	/* 
@@ -234,9 +236,32 @@ $(document).ready(function()
 		}
 	}
 
+
+	/* 
+
+	7. Init UserSelect Slider
+
+	*/
+
+	function initUserSlider()
+	{
+		if($('.user_slider').length)
+		{
+			var testSlider = $('.user_slider');
+			testSlider.owlCarousel(
+			{
+				items:3,
+				loop:true,
+				autoplay:true,
+				smartSpeed:1200,
+				nav:false,
+				dots:false
+			});
+		}
+	}
 	/*
 
-	7. Init Lightbox
+	8. Init Lightbox
 
 	*/
 
