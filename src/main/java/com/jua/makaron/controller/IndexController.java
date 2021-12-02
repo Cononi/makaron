@@ -11,4 +11,19 @@ public class IndexController {
 		
 		return "index";
 	}
+	@GetMapping("/product")
+	public String product() {
+		
+		return "/includes/product";
+	}
+	@GetMapping("/cart")
+	public String cart() {
+		
+		return "/includes/cart";
+	}
+	@GetMapping("/checkout")
+	public String checkout() {
+		
+		return "/includes/checkout";
+	}
 }

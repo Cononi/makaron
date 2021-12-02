@@ -158,7 +158,7 @@
 				<div class="col-lg-4 product_col">
 					<div class="product">
 						<div class="product_image">
-							<img src="resources/images/product_1.jpg" alt="">
+							<a href="/makaron/product"><img src="resources/images/cake1.jpg" alt=""></a>
 						</div>
 						<div class="rating rating_4">
 							<i class="fa fa-star"></i>
