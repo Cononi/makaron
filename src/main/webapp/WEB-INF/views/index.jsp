@@ -186,7 +186,7 @@
 				<div class="col-lg-4 product_col">
 					<div class="product">
 						<div class="product_image">
-							<img src="resources/images/product_2.jpg" alt="">
+							<a href="/makaron/product"><img src="resources/images/cake2.jpg" alt=""></a>
 						</div>
 						<div class="rating rating_4">
 							<i class="fa fa-star"></i>
@@ -214,7 +214,7 @@
 				<div class="col-lg-4 product_col">
 					<div class="product">
 						<div class="product_image">
-							<img src="resources/images/product_3.jpg" alt="">
+							<a href="/makaron/product"><img src="resources/images/cake3.jpg" alt=""></a>
 						</div>
 						<div class="rating rating_4">
 							<i class="fa fa-star"></i>
