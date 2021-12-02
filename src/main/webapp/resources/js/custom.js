@@ -237,6 +237,8 @@ $(document).ready(function()
 	}
 
 
+
+
 	/* 
 
 	7. Init UserSelect Slider
@@ -255,7 +257,25 @@ $(document).ready(function()
 				autoplay:true,
 				smartSpeed:1200,
 				nav:false,
-				dots:false
+				dots:false,
+				responsive:
+				{
+					0:
+					{
+						margin:7,
+						items:1
+					},
+					575:
+					{
+						margin:7,
+						items:2
+					},
+					991:
+					{
+						margin:22,
+						items:3
+					}
+				}
 			});
 		}
 	}

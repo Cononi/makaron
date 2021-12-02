@@ -81,6 +81,9 @@
 	{
 		display: none;
 	}
+	.product {
+		width: 300px;
+	}
 }
 
 /************
@@ -116,7 +119,7 @@
 
 @media only screen and (max-width: 1024px)
 {
-	
+
 }
 
 /************
@@ -150,6 +153,9 @@
 	.product_col:not(:last-child)
 	{
 		margin-bottom: 50px;
+	}
+	.product {
+		width: 280px;
 	}
 	.extra_promo
 	{
@@ -358,6 +364,9 @@
 	.footer_social ul li a i
 	{
 		font-size: 20px;
+	}
+	.product {
+		width: 280px;
 	}
 }
 

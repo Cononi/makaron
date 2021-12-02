@@ -944,8 +944,11 @@ section
 }
 .product
 {
-	width: 330px;
+	width: 290px;
+	float:none;
+	margin:0 auto;
 }
+
 .product_image
 {
 	width: 100%;
@@ -1437,8 +1440,8 @@ section
 }
 .user_image
 {
-	width: 86px;
-	height: 86px;
+	width: 186px;
+	height: 186px;
 	border-radius: 50%;
 	overflow: hidden;
 	margin: 0 auto;
