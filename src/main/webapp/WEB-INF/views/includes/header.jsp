@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Wish</title>
+<title>Makaron</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
@@ -19,6 +19,16 @@
 <link href="resources/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="resources/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/responsive.css">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -26,9 +36,9 @@
 	
 	<!-- Header -->
 
-	<header class="header">
+	<header class="header"> 
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
-			<div class="logo"><a href="#">Wish</a></div>
+			<div class="logo"><a href="#">Makaron</a></div>
 			<nav class="main_nav">
 				<ul>
 					<li><a href="categories.html">clothes</a></li>
@@ -41,7 +51,7 @@
 				<div class="search header_search">
 					<form action="#">
 						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="resources//magnifying-glass.svg" alt=""></button>
+						<button type="submit" id="search_button" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
 					</form>
 				</div>
 				<div class="shopping">
@@ -74,6 +84,7 @@
 						</div>
 					</a>
 				</div>
+				<button type="button" class="btn btn-danger loginbutton">Danger</button>
 			</div>
 
 			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
@@ -84,11 +95,11 @@
 
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="logo menu_mm"><a href="index.html">Wish</a></div>
+		<div class="logo menu_mm"><a href="index.html">Makaron</a></div>
 		<div class="search">
 			<form action="#">
 				<input type="search" class="search_input menu_mm" required="required">
-				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources//magnifying-glass.svg" alt=""></button>
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources/images/magnifying-glass.svg" alt=""></button>
 			</form>
 		</div>
 		<nav class="menu_nav">

@@ -10,7 +10,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="footer_logo"><a href="#">Wish</a></div>
+<!-- 					<div class="footer_logo"><a href="#">Makaron</a></div>
 					<nav class="footer_nav">
 						<ul>
 							<li><a href="categories.html">clothes</a></li>
@@ -18,7 +18,7 @@
 							<li><a href="categories.html">lingerie</a></li>
 							<li><a href="contact.html">contact</a></li>
 						</ul>
-					</nav>
+					</nav> -->
 					<div class="footer_social">
 						<ul>
 							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
@@ -45,5 +45,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="resources/plugins/parallax-js-master/parallax.min.js"></script>
 <script src="resources/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="resources/js/custom.js"></script>
+
+
+  <!-- Vendor JS Files -->
+ <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
 </body>
 </html>
