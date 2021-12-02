@@ -73,77 +73,18 @@
 		</div>
 	</div>
 
-	<!-- Promo -->
-	<div class="testimonials">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title_container text-center">
-						<div class="section_subtitle">only the best</div>
-						<div class="section_title">testimonials</div>
-					</div>
-				</div>
-			</div>
-			<div class="row test_slider_container">
-				<div class="col">
-
-					<!-- Testimonials Slider -->
-					<div class="owl-carousel owl-theme user_slider text-center">
-
-						<!-- Testimonial Item -->
-						<div class="owl-item">
-							<div class="user_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
-							<div class="user_content">
-								<div class="user_image"><img src="resources/images/testimonials.jpg" alt=""></div>
-								<div class="user_name">Christinne Smith</div>
-								<div class="user_title">client</div>
-							</div>
-						</div>
-
-						<!-- userimonial Item -->
-						<div class="owl-item">
-							<div class="user_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
-							<div class="user_content">
-								<div class="user_image"><img src="resources/images/testimonials.jpg" alt=""></div>
-								<div class="user_name">Christinne Smith</div>
-								<div class="user_title">client</div>
-							</div>
-						</div>
-
-
-						<!-- userimonial Item -->
-						<div class="owl-item">
-							<div class="user_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
-							<div class="user_content">
-								<div class="user_image"><img src="resources/images/testimonials.jpg" alt=""></div>
-								<div class="user_name">Christinne Smith</div>
-								<div class="user_title">client</div>
-							</div>
-						</div>
-
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Gallery -->
 
 	<div class="gallery">
-		<div class="gallery_image" style="background-image:url(resources/images/gallery.jpg)"></div>
+		<div class="gallery_image" style="background-image:url(resources/images/makaronback.jpg)"></div>
 		<div class="container">
-			<div class="row">
+					<div class="row">
 				<div class="col">
-					<div class="gallery_title text-center">
-						<ul>
-							<li><a href="#">#wish</a></li>
-							<li><a href="#">#wishinstagram</a></li>
-							<li><a href="#">#wishgirl</a></li>
-						</ul>
+					<div class="section_title_container text-center align-items-center">
+						<div class="section_subtitle">오늘 이거 어때요?</div>
+						<div class="section_title">아주 달콤한 디저트</div>
 					</div>
-					<div class="gallery_text text-center">*Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra.</div>
-					<div class="button gallery_button"><a href="#">submit</a></div>
 				</div>
 			</div>
 		</div>	
@@ -199,21 +140,19 @@
 	</div>		
 	<!-- New Arrivals -->
 
-
-
 	<div class="arrivals">
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="section_title_container text-center">
+					<div class="section_title_container text-center align-items-center">
 						<div class="section_subtitle">오늘 이거 어때요?</div>
 						<div class="section_title">아주 달콤한 디저트</div>
 					</div>
 				</div>
 			</div>
 			<div class="row products_container">
-
-				<div class="owl-carousel owl-theme user_slider text-center">
+			
+				<div class="owl-carousel user_slider text-center">
 				<!-- Product -->
 				<div class="owl-item">					
 				<div class="col-lg-4 product_col">
