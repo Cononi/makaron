@@ -1,0 +1,54 @@
+@charset "EUC-KR";
+
+
+div.myPage
+{
+	position: relative;
+	margin: 200px 0px; 
+	text-align: center;
+}
+
+.myPageTop
+{
+	background-color: #f2f2f2;
+    padding: 50px 0;
+    margin-bottom: -20px;
+}
+
+.myPageTop .container .item
+{
+	text-align: left;
+	display: inline-flex;
+	background-color: white;
+	width: 356px;
+    padding: 50px;
+    margin: 10px;
+}
+
+.user_infor a:link, .user_infor a:visited { color: black; }
+.user_infor a:hover { color : #828282; }
+
+
+.myPageMain
+{
+	width: 100%;
+	margin-top: 50px;
+	text-align: left;
+}
+
+.order, .address, .review, .question
+{
+	margin-top: 50px;
+}
+
+.order_description
+{
+	color: #aaaaaa;
+}
+
+.add_address
+{
+	
+}
+   
+

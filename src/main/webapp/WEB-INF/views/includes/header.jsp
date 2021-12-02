@@ -19,6 +19,7 @@
 <link href="resources/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="resources/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/myPage.css">
 
 
 </head>
