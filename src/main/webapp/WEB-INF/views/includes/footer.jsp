@@ -46,7 +46,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="resources/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="resources/js/custom.js"></script>
 
->
+
 
 </body>
 </html>

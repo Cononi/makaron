@@ -1,0 +1,123 @@
+/*--------------------------------------------------------------
+# Register-line
+--------------------------------------------------------------*/
+.section_register {
+  padding: 0;
+}
+
+.register-line {
+  margin: 40px;
+  font-weight: 800;
+}
+
+.register-table {
+  width: 30vh; 
+  margin: 30px auto;
+}
+.register-line h2 {
+  padding: 80px 0 40px 0;
+  border-bottom: 2px solid #222;
+  width: 40%;
+  margin: 0 auto;
+}
+.register-table label{
+  display: inline;
+  position: relative;
+  margin: 6px;
+  left: -100px;
+  top: 15px;
+} 
+.register-table input {
+  margin: -15px 0 -15px 0;
+
+}
+
+.table td {
+  	border-top: 0;
+}
+
+/**
+* check_text_box
+*/
+
+div .check_text_box {
+  display: none;
+}
+
+.check_text_box.active {
+  display: block;
+}
+
+
+.check_text_box span:nth-child(n) {
+  display: block;
+  font-size: 12px;
+  margin: 23px 0 0 5px ;
+  font-weight: 600;
+  color: #666;
+}
+
+.check_text_box.active.bad span:nth-child(n) {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #B3130A;
+}
+
+.check_text_box.active.good span:nth-child(n) {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f851a;
+}
+  #postal_code2 {
+    width: 150px;
+  }
+#wrap {
+  border:1px solid;width:500px;height:600px;position:relative;
+}
+
+#btnFoldWrap {
+  cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1
+}
+@media (max-width : 992px) {
+  .register-line {
+  	width: 100%;
+  	padding: 0;
+  	margin: 0;
+  }
+  .register-table {
+    width: 100%; 
+  }
+  
+  .register-line h2 {
+  	padding: 0;
+  }
+  .register-table label{
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 6px;
+    padding: 0 20px 0 0;
+    font-size: 13px;
+  } 
+  .register-table input {
+    margin: 0;
+  }
+
+  .check_text_box.active span:nth-child(n) {
+    display: block;
+    font-size: 12px;
+    margin: 8px 0 0 5px ;
+    font-weight: 600;
+    color: #666;
+  }
+  
+  .table tr td {
+  	padding: 0.4em;
+  }
+  #wrap {
+    border:1px solid;width:auto;height:600px;position:relative
+  }
+
+}

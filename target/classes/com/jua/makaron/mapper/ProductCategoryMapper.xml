@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.ProductCategoryMapper">
+
+
+<!-- Author JH -->
+<!-- 계층 리스트 -->
+	<select id="ctg_all_list" resultType="com.jua.makaron.domain.ProductCategoryVO">
+			SELECT 
+			    sort_order,
+			    state,
+			    id,
+			    categori_id,
+			    name,
+			    SUBSTR(SYS_CONNECT_BY_PATH(name, '>'), 2) as ctg_path,
+			    icon_name
+			FROM product_category
+			WHERE state = 'Y'
+			START WITH categori_id = 'M'
+			CONNECT BY PRIOR id = categori_id
+			ORDER SIBLINGS BY sort_order, categori_id
+	</select>
+
+</mapper>
