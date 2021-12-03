@@ -95,9 +95,9 @@
                     <input type="text" id="address_type" name="address_type" placeholder="주소타입" hidden>
                     <input type="text" id="selected_type"  name="selected_type" placeholder="참고항목" hidden>
                     <input type="text" id="postal_code"  name="postal_code" placeholder="우편번호" hidden>
-                    <label for="address">기본 주소</label>
+                    <label for="address_base">기본 주소</label>
                     <input type="text" class="form-control text-dark" name="address_base" id="address_base" readonly> <br>
-            	    <label for="address">상세 주소</label>
+            	    <label for="address_sub">상세 주소</label>
                     <input type="text" class="form-control text-dark" name="address_sub" id="address_sub" placeholder="상세 주소를 입력"> <br>
                                                          <!-- Button trigger modal -->
                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#address_Modal2" hidden>
@@ -134,7 +134,6 @@
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                
                                 <button type="button" id="address_modal2_btt" class="btn btn-primary" onclick="DaumPostcode()"  data-toggle="modal" data-target="#address_Modal">
                                     우편 번호 재검색
                                 </button>
