@@ -17,11 +17,5 @@ public class RegisterCertServiceImpl implements RegisterCertService{
 		return mapper.idCheck(id)!=null;
 	}
 	
-	@Override
-	public String smsAccess() {
-		
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

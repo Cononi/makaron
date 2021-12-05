@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Random;
 
 import javax.sql.DataSource;
 
@@ -120,8 +121,20 @@ public class DataSourceTests {
 		if(s > 2) {
 			log.info("------------------------------------------------------------------");
 			log.info("금일 인증 횟수 초과입니다!!");
+			Random rand = new Random();
+			// 랜덤 암호 생성
+			int number = rand.nextInt(999999);
+			String numberChange = String.format("%06d", number);
+			// 암호 6자리로 변경
+			
+			log.info("------------------------------------------------------------------");
+			log.info(numberChange);
+			log.info("------------------------------------------------------------------");
 		}
 	}
+	
+	
+	
 	
 }
 

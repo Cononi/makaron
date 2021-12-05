@@ -11,5 +11,5 @@ public interface PhoneCertService {
 	public PhoneCertVO phoneCertHistoryNumber(String phone_no);
 	
 	// 인증 입력
-	public void phoneCertInsert(PhoneCertVO phoneCertVO);
+	public String phoneCertInsert(PhoneCertVO phoneCertVO);
 }

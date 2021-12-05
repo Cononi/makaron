@@ -84,7 +84,7 @@
                         <div class="inline_form">
                             <input type="text" maxlength="11" class="form-control" id="userphone"
                             name="phone" placeholder=" EX) 01077775555" >
-                            <button class="btn btn-outline-info" type="button">인증하기</button>
+                            <button class="btn btn-outline-info phone-access_btn" data-toggle="modal" type="button">인증번호전송</button>
                         </div>
                              <div class="check_text_box">
                                 <span id="check_text_msg"></span>
@@ -119,13 +119,13 @@
                     <div class="user_phone md-3">
                         <label for="userphone">휴대폰 번호</label>
                         <div class="inline_form">
-                            <input type="text" maxlength="11" class="form-control" id="userphone"
+                            <input type="text" maxlength="11" class="form-control" id="userphoness4"
                             name="birth" placeholder=" EX) 01077775555" >
                             <span>/</span>
-                            <input type="text" maxlength="11" class="form-control" id="userphone"
+                            <input type="text" maxlength="11" class="form-control" id="userphoness3"
                             name="birth" placeholder=" EX) 01077775555" >
                             <span>/</span>
-                            <input type="text" maxlength="11" class="form-control" id="userphone"
+                            <input type="text" maxlength="11" class="form-control" id="userphones2"
                             name="birth" placeholder=" EX) 01077775555" >
                         </div>
                              <div class="check_text_box">
@@ -191,6 +191,31 @@
                                 <button type="button" class="btn btn-primary" id="address_modal2_btt_form" data-dismiss="modal">확인</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">취소</button>
                              </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="phone_Modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body align-content-center">
+                                    <label for="userphonecert">인증번호</span>
+                                           <div class="inline_form">
+                                    <input type="text" maxlength="6" class="form-control" id="userphonecert"
+                                    placeholder="6자리 기입" >
+                                    <span id="phone_cert_time"></span>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">인증 확인</button>
+                            </div>
                         </div>
                         </div>
                     </div>

@@ -26,19 +26,22 @@ public class PhoneCertServiceImpl implements PhoneCertService {
 	}
 	
 	@Override
-	public void phoneCertInsert(PhoneCertVO phoneCertVO) {
+	public String phoneCertInsert(PhoneCertVO phoneCertVO) {
+		// salt키 생성
 		String salt = SHA256Util.generateSalt();
-		
+		// salt키 저장
 		phoneCertVO.setSalt(salt);
-		
+		// token 키값 저장
 		String token = phoneCertVO.getToken();
-		
+		// token 키값 변환
 		token = SHA256Util.getEncrypt(token, salt);
 		
 		// 다시 DTO에 저장
 		phoneCertVO.setToken(token);
-		
+		// DB에 저장
 		phoneCertMapper.phoneCertInsert(phoneCertVO);
+		// 암호화 토큰 전송
+		return token;
 	}
 
 }

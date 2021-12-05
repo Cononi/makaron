@@ -200,7 +200,6 @@ var GetAjaxID = function (val) {
 				}
 			}
 		})
-  // ajax func....
   return msg
 }
 // ID CHECK END
@@ -343,13 +342,44 @@ on('focusout', '#userphone', function(e) {
   phone_check.textContent = msg;
 })
 
-var GetAjaxPhone = function (val) {
-  $('#userphone').blur(function () {
-    console.log("인증해윤")
-  });
-  // ajax func....
-  return val + ' 사용가능'
+on('click', '.phone-access_btn', function(e){
+  e.preventDefault();
+  var val = select('#userphone').value
+  if(val.length >= 10){
+  $.ajax({
+    url : '/phone/check/' + val,
+    type : 'get',
+    dataType : 'application/json; charset=utf-8',
+    success : function(result){
+    }, error : function(result){
+      $('#phone_Modal').modal('show')
+      console.log(result)
+      phoneCertTime()
+      select('.user_phone span').textContent = result.responseText;
+      select('.user_phone .check_text_box').classList.add('bad')
+      select('.user_phone .check_text_box').classList.remove('good')
+    }
+  })
 }
+})
+
+function phoneCertTime(e) {
+  var time = 180;
+  var min = "";
+  var sec = "";
+  var x = setInterval(() => {
+    min = parseInt(time/60);
+    sec = time%60;
+  
+    document.getElementById("phone_cert_time").innerHTML =  min + " : " + sec;
+    time--;
+    if(time < 0){
+      clearInterval(x);
+      document.getElementById("phone_cert_time").innerHTML = "인증 시간 만료"
+    }
+  }, 1000); 
+}
+
 /*
  * 6. ADDRESS CHECK
 */
