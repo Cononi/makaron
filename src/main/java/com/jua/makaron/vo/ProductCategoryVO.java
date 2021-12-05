@@ -1,4 +1,4 @@
-package com.jua.makaron.domain;
+package com.jua.makaron.vo;
 
 import lombok.Getter;
 import lombok.Setter;

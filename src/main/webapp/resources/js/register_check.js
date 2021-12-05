@@ -89,11 +89,17 @@
  * 성별
  * 10. 생년월일
  * 폰인증 완료
+ * 선호도 카테고리
  */
-const reg = [/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/
+
+/*
+    유효성 배열 1.아이디 2.비밀번호 3.이름 4.이메일 5.전화번호
+*/
+const reg = [/^[a-z0-9]{5,16}$/
+            ,/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/
             , /[가-힣]{3,}$/
-            ,/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
-            ,/[0-9]$/];
+            ,/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+            ,/^01(?:0|1|[6-9])(?:\d{3}|\d{3,4})\d{4}$/];
 /**
  * Easy selector helper function
  */
@@ -156,33 +162,46 @@ const scrollto = (el) => {
 /** 
 * 1. ID Check
 */
-on('input', '#userid', function (e) {
+on('focusout', '#userid', function (e) {
   var id_check = select('.user_id span')
   var msg = '',
-    val = this.value
+  val = this.value
   nextEl(this).add('active')
-  if (val.length >= 5) {
+  if (reg[0].test(val) && val.length > 4) {
     nextEl(this).add('good')
     nextEl(this).remove('bad')
     msg = GetAjaxID(val);
-  } else if (val.length > 0) {
+  } else if (!reg[0].test(val) && val.length > 0) {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
-    msg = '5자 이상의 영문과 숫자만 가능, 최대 16자'
+    msg = '영문으로 시작 그리고 5자 이상의 영문(소문자)과 숫자만 가능, 최대 16자만 사용 가능합니다.'
   } else {
-    nextEl(this).remove('bad')
-    nextEl(this).remove('active')
+    nextEl(this).add('bad')
+    nextEl(this).remove('good')
+    msg = '필수 입력입니다.'
   }
   id_check.textContent = msg;
 })
 
 
 var GetAjaxID = function (val) {
-  $('#userid').blur(function () {
-    console.log("포커스노")
-  });
+  var msg = ''
+   $.ajax({
+			url : '/idCheck/' + val,
+			type : 'get',
+			dataType : 'text',
+      async: false,
+			success : function(result){
+				if(result.trim() == 'false'){
+          console.log(result)
+          msg = val + '는 사용할 수 있는 아이디 입니다.'				
+				} else {
+					msg = val + '는 사용할 수 없는 아이디 입니다.'				
+				}
+			}
+		})
   // ajax func....
-  return val + ' 사용가능'
+  return msg
 }
 // ID CHECK END
 
@@ -190,7 +209,7 @@ var GetAjaxID = function (val) {
 /** 
 // 2. PASS CHECK
 */
-on('input', '#userpassword', function (e) {
+on('focusout', '#userpassword', function (e) {
   var pass_check = select('.user_password span')
   var pass_check_c = select('.user_password_check span')
   var msg = ''
@@ -199,24 +218,25 @@ on('input', '#userpassword', function (e) {
     pass = this.value
 
   nextEl(this).add('active')
-  if (reg[0].test(pass) && pass.length > 7) {
+  if (reg[1].test(pass) && pass.length > 7) {
     nextEl(this).add('good')
     nextEl(this).remove('bad')
     msg = '사용가능한 패스워드 입니다.'
-  } else if (!reg[0].test(pass) && pass.length > 0) {
+  } else if (!reg[1].test(pass) && pass.length > 0) {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
     msg = '최소 8 자 ~ 최대 16 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자를 입력해주세요.'
   } else {
-    nextEl(this).remove('bad')
-    nextEl(this).remove('active')
+    nextEl(this).add('bad')
+    nextEl(this).remove('good')
+    msg = '필수 입력입니다.'
   }
-  if (pass_c.value != pass) {
+  if (pass_c.value != pass && pass.length > 0) {
     msg_c = '비밀번호가 일치하지 않습니다!'
     nextEl(pass_c).remove('good')
     nextEl(pass_c).add('bad')
   }
-  if (pass_c.value == pass) {
+  if (pass_c.value == pass && pass.length > 0) {
     msg_c = '비밀번호가 일치합니다!'
     nextEl(pass_c).remove('bad')
     nextEl(pass_c).add('good')
@@ -225,13 +245,13 @@ on('input', '#userpassword', function (e) {
   pass_check_c.textContent = msg_c;
 }, true)
 
-on('input', '#userpassword_check', function (e) {
+on('focusout', '#userpassword_check', function (e) {
   var pass_check = select('.user_password_check span')
   var msg = '',
     pass = this.value,
     pass_c = select('#userpassword')
   nextEl(this).add('active')
-  if (pass == pass_c.value && pass.length > 7) {
+  if (pass == pass_c.value && pass.length > 0) {
     nextEl(this).add('good')
     nextEl(this).remove('bad')
     msg = '비밀번호가 일치합니다!'
@@ -240,8 +260,9 @@ on('input', '#userpassword_check', function (e) {
     nextEl(this).remove('good')
     msg = '비밀번호가 일치하지 않습니다!'
   } else {
-    nextEl(this).remove('bad')
-    nextEl(this).remove('active')
+    nextEl(this).add('bad')
+    nextEl(this).remove('good')
+    msg = '필수 입력입니다.'
   }
   pass_check.textContent = msg;
 })
@@ -250,22 +271,23 @@ on('input', '#userpassword_check', function (e) {
 /* 
 * 3. NAME CHECK
 */
-on('input', '#username', function (e) {
+on('focusout', '#username', function (e) {
   var name_check = select('.user_name_c span')
   var msg = '',
     name = this.value
   nextEl(this).add('active')
-  if (reg[1].test(name)) {
+  if (reg[2].test(name)) {
     nextEl(this).add('good')
     nextEl(this).remove('bad')
     msg = '이름 체크 완료'
-  } else if (!reg[1].test(name)) {
+  } else if (!reg[2].test(name) && name.length > 0) {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
     msg = '최소 3 자, 최대 15 자 그리고 완성된 한글만 입력이 가능합니다.'
   } else {
-    nextEl(this).remove('bad')
-    nextEl(this).remove('active')
+    nextEl(this).add('bad')
+    nextEl(this).remove('good')
+    msg = '필수 입력입니다.'
   }
   name_check.textContent = msg;
 })
@@ -274,24 +296,25 @@ on('input', '#username', function (e) {
 /*
 * 4. EMAIL CHECK
 */
-on('input', '#useremail', function(e) {
-  var name_check = select('.user_email span')
+on('focusout', '#useremail', function(e) {
+  var email_check = select('.user_email span')
   var msg = '',
-  name = this.value
+  email = this.value
   nextEl(this).add('active')
-  if (reg[2].test(name)) {
+  if (reg[3].test(email)) {
     nextEl(this).add('good')
     nextEl(this).remove('bad')
     msg = '사용가능한 이메일 입니다.'
-  } else if (!reg[2].test(name)) {
+  } else if (!reg[3].test(email)  && email.length > 0) {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
     msg = '이메일 형식에 맞게 정확하게 입력해주시기 바랍니다.'
   } else {
-    nextEl(this).remove('bad')
-    nextEl(this).remove('active')
+    nextEl(this).add('bad')
+    nextEl(this).remove('good')
+    msg = '필수 입력입니다.'
   }
-  name_check.textContent = msg;
+  email_check.textContent = msg;
 })
 // EMAIL CHECK END
 
@@ -299,22 +322,23 @@ on('input', '#useremail', function(e) {
 /*
  * 5. PHONE CHECK
 */
-on('input', '#userphone', function(e) {
+on('focusout', '#userphone', function(e) {
   var phone_check = select('.user_phone span')
   var msg = '',
   phone = this.value
-  nextEl(this).add('active')
-  if (reg[3].test(phone)) {
-    nextEl(this).add('good')
-    nextEl(this).remove('bad')
+  select('.user_phone .check_text_box').classList.add('active')
+  if (reg[4].test(phone)) {
+    select('.user_phone .check_text_box').classList.add('good')
+    select('.user_phone .check_text_box').classList.remove('bad')
     msg = '전화번호가 정확히 입력되었습니다.'
-  } else if (!reg[3].test(name)) {
-    nextEl(this).add('bad')
-    nextEl(this).remove('good')
-    msg = '숫자만 사용가능 합니다.'
+  } else if (!reg[4].test(phone) && phone.length > 0) {
+    select('.user_phone .check_text_box').classList.add('bad')
+    select('.user_phone .check_text_box').classList.remove('good')
+    msg = '10자리 또는 11자리 숫자만 사용가능 합니다.'
   } else {
-    nextEl(this).remove('bad')
-    nextEl(this).remove('active')
+    select('.user_phone .check_text_box').classList.add('bad')
+    select('.user_phone .check_text_box').classList.remove('good')
+    msg = '필수 입력입니다.'
   }
   phone_check.textContent = msg;
 })
@@ -335,6 +359,8 @@ on('click', '#address_modal2_btt_form', function(e){
   for (var i = 0; i < address.length; i++) {
     address_copy[i].value = address[i].value
   }
+  select('.address_body').classList.remove('active')
+  select('.address_body').classList.add('active')
  })
 
 /*
@@ -354,8 +380,9 @@ on('input', '#userbirthday', function(e) {
     nextEl(this).remove('good')
     msg = '숫자 또는 -만 사용가능 합니다.'
   } else {
-    nextEl(this).remove('bad')
-    nextEl(this).remove('active')
+    nextEl(this).add('bad')
+    nextEl(this).remove('good')
+    msg = '필수 입력입니다.'
   }
   phone_check.textContent = msg;
 })

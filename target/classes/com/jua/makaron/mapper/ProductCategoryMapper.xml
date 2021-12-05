@@ -5,7 +5,7 @@
 
 <!-- Author JH -->
 <!-- 계층 리스트 -->
-	<select id="ctg_all_list" resultType="com.jua.makaron.domain.ProductCategoryVO">
+	<select id="ctg_all_list" resultType="com.jua.makaron.vo.ProductCategoryVO">
 			SELECT 
 			    sort_order,
 			    state,

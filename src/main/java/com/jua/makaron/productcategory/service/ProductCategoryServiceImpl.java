@@ -1,11 +1,11 @@
-package com.jua.makaron.service;
+package com.jua.makaron.productcategory.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.jua.makaron.domain.ProductCategoryVO;
 import com.jua.makaron.mapper.ProductCategoryMapper;
+import com.jua.makaron.vo.ProductCategoryVO;
 
 import lombok.AllArgsConstructor;
 

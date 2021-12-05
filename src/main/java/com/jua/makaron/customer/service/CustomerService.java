@@ -1,4 +1,4 @@
-package com.jua.makaron.service;
+package com.jua.makaron.customer.service;
 
 import com.jua.makaron.domain.CustomerDTO;
 

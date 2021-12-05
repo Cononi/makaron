@@ -16,7 +16,7 @@
                     <td>
                         <div class="user_id md-3">
                             <label for="userid">아이디</label>
-                              <input type="text" maxlength="16" class="form-control text-dark" id="userid"
+                              <input type="text" maxlength="16" class="form-control" id="userid"
                                 name="id" placeholder="아이디" >
                             <div class="check_text_box">
                                 <span id="check_text_msg"></span>
@@ -29,7 +29,7 @@
                     <td>
                         <div class="user_password md-3">
                             <label for="userpassword">비밀번호</label>
-                              <input type="password" maxlength="16" class="form-control text-dark" id="userpassword"
+                              <input type="password" maxlength="16" class="form-control" id="userpassword"
                                  name="password" placeholder="비밀번호" >
                                  <div class="check_text_box">
                                     <span id="check_text_msg"></span>
@@ -42,7 +42,7 @@
                     <td>
                         <div class="user_password_check md-3">
                             <label for="userpassword_check">비밀번호 확인</label>
-                              <input type="password" maxlength="16" class="form-control text-dark" id="userpassword_check"
+                              <input type="password" maxlength="16" class="form-control" id="userpassword_check"
                                   placeholder="비밀번호 확인" >
                                  <div class="check_text_box">
                                     <span id="check_text_msg"></span>
@@ -55,7 +55,7 @@
                 <td>
                     <div class="user_name_c md-3">
                         <label for="username">이름</label>
-                          <input type="text" maxlength="15" class="form-control text-dark" id="username"
+                          <input type="text" maxlength="15" class="form-control" id="username"
                              name="name" placeholder="이름" >
                              <div class="check_text_box">
                                 <span id="check_text_msg"></span>
@@ -68,8 +68,8 @@
                 <td>
                     <div class="user_email md-3">
                         <label for="useremail">이메일</label>
-                          <input type="text" maxlength="15" class="form-control text-dark" id="useremail"
-                             name="email"  placeholder=" EX) makaron@makaron.kr" >
+                          <input type="text" class="form-control" id="useremail"
+                              name="email" placeholder=" EX) makaron@makaron.kr" >
                              <div class="check_text_box">
                                 <span id="check_text_msg"></span>
                             </div>
@@ -78,16 +78,19 @@
             </tr>
             <!-- 핸드폰 체크 -->
             <tr>
-                <td>
+            	<td>
                     <div class="user_phone md-3">
                         <label for="userphone">휴대폰 번호</label>
-                          <input type="text" maxlength="11" class="form-control text-dark" id="userphone"
-                              name="phone" placeholder=" EX) 01077775555" >
+                        <div class="inline_form">
+                            <input type="text" maxlength="11" class="form-control" id="userphone"
+                            name="phone" placeholder=" EX) 01077775555" >
+                            <button class="btn btn-outline-info" type="button">인증하기</button>
+                        </div>
                              <div class="check_text_box">
                                 <span id="check_text_msg"></span>
                             </div>
                     </div>
-                </td>
+           		 </td>
             </tr>
             <!-- 주소 체크 -->
             <tr>
@@ -95,21 +98,60 @@
                     <input type="text" id="address_type" name="address_type" placeholder="주소타입" hidden>
                     <input type="text" id="selected_type"  name="selected_type" placeholder="참고항목" hidden>
                     <input type="text" id="postal_code"  name="postal_code" placeholder="우편번호" hidden>
-                    <label for="address_base">기본 주소</label>
+                    <div class="address_body">
+                     <label for="address_base">기본 주소</label>
                     <input type="text" class="form-control text-dark" name="address_base" id="address_base" readonly> <br>
             	    <label for="address_sub">상세 주소</label>
-                    <input type="text" class="form-control text-dark" name="address_sub" id="address_sub" placeholder="상세 주소를 입력"> <br>
+                    <input type="text" class="form-control text-dark" name="address_sub" id="address_sub" placeholder="상세 주소를 입력하세요"> <br>
+                    </div>
+                  
                                                          <!-- Button trigger modal -->
                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#address_Modal2" hidden>
                 </button>
-                <button type="button" class="btn btn-primary " onclick="DaumPostcode()" data-toggle="modal" data-target="#address_Modal">
-                    우편 주소 검색
+                <button type="button" class="btn btn-block btn-outline-info" onclick="DaumPostcode()" data-toggle="modal" data-target="#address_Modal">
+                    우편 주소 입력
                 </button>
             	</td>
             </tr>
+            <!-- 생년월일 체크 -->
             <tr>
-                <tr>
-                </tr>
+            	<td>
+                    <div class="user_phone md-3">
+                        <label for="userphone">휴대폰 번호</label>
+                        <div class="inline_form">
+                            <input type="text" maxlength="11" class="form-control" id="userphone"
+                            name="birth" placeholder=" EX) 01077775555" >
+                            <span>/</span>
+                            <input type="text" maxlength="11" class="form-control" id="userphone"
+                            name="birth" placeholder=" EX) 01077775555" >
+                            <span>/</span>
+                            <input type="text" maxlength="11" class="form-control" id="userphone"
+                            name="birth" placeholder=" EX) 01077775555" >
+                        </div>
+                             <div class="check_text_box">
+                                <span id="check_text_msg"></span>
+                            </div>
+                    </div>
+           		 </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="sex">성별&nbsp;</label>
+                    <select class="custom-select" name="sex">
+                    <option value="" selected>성별 선택</option>
+                    <option value="M">남자</option>
+                    <option value="W">여자</option>
+                    </select>
+                    &nbsp;&nbsp;
+                    <label for="category_id">선호도&nbsp;</label>
+                    <select class="custom-select" name="category_id">
+                        <option value="" selected>선호 선택</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+               </td>
+
             </tr>
             </table>
                     
@@ -152,7 +194,10 @@
                         </div>
                         </div>
                     </div>
-                <!-- end 주소-->
+                <!-- Modal end-->
+
+
+                <!-- 성별 선택 -->
         </div>
         <button>dk</button>
     </form>

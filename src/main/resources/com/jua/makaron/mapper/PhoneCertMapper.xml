@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.PhoneCertMapper">
+
+
+<!-- Author JH -->
+<!-- 인증 횟수 조회 -->
+	<select id="phoneCertHistory" resultType="int">
+	<![CDATA[
+		SELECT COUNT(*)  as cnt
+		FROM customer_phone_history
+		WHERE TO_CHAR(sms_date,'yyyy/mm/dd') < TO_CHAR(SYSDATE + 1 ,'yyyy/mm/dd')
+		AND phone_no = #{phone_no}
+	]]>
+	</select>
+<!-- 인증 번호 조회 -->
+	<select id="phoneCertHistoryNumber" resultType="com.jua.makaron.vo.PhoneCertVO">
+	SELECT * 
+	FROM (SELECT * FROM customer_phone_history
+	    WHERE phone_no='01048121565' AND sms_date + (INTERVAL '3' MINUTE) >  sysdate    
+	    ORDER BY sms_date DESC)
+	WHERE ROWNUM=1
+	</select>
+<!-- 인증 등록 -->
+	<insert id="phoneCertInsert">
+		 INSERT 
+		 INTO customer_phone_history(no, phone_no, token, salt)
+		 VALUES (SEQ_CUSTOMER_PHONE_HISTORY.nextval, #{phone_no}, #{token}, #{salt})
+	</insert>
+
+</mapper>

@@ -2,7 +2,7 @@ package com.jua.makaron.mapper;
 
 import java.util.List;
 
-import com.jua.makaron.domain.ProductCategoryVO;
+import com.jua.makaron.vo.ProductCategoryVO;
 
 public interface ProductCategoryMapper {
 
