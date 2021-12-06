@@ -12,6 +12,7 @@
 <link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="resources/styles/checkout.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/checkout_responsive.css">
+
 </head>
 <body>
 
@@ -21,7 +22,7 @@
 
 	<header class="header">
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
-			<div class="logo"><a href="/makaron">Wish</a></div>
+			<div class="logo"><a href="/makaron">Makaron</a></div>
 			<nav class="main_nav">
 				<ul>
 					<li><a href="index.html">home</a></li>
@@ -149,7 +150,7 @@
 									<input type="text" class="checkout_input checkout_input_50" placeholder="우편번호" required="required">
 									<input type="text" class="checkout_input checkout_input_50" placeholder="핸드폰번호" required="required">
 								</div>
-								<textarea name="checkout_comment" id="checkout_comment" class="checkout_comment" placeholder="Leave a comment about your order"></textarea>
+								<textarea name="checkout_comment" id="checkout_comment" class="checkout_comment" placeholder="상품에 대한 추가 요구사항"></textarea>
 								<div class="billing_options">
 									<div class="billing_account">
 										<input type="checkbox" id="checkbox_account" name="regular_checkbox" class="regular_checkbox checkbox_account">
@@ -174,23 +175,23 @@
 						<div class="cart_total">
 							<ul>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Product</div>
-									<div class="cart_total_price ml-auto">Total</div>
+									<div class="cart_total_title">상품</div>
+									<div class="cart_total_price ml-auto">금액</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">2 Piece Swimsuit x1</div>
+									<div class="cart_total_title">상품명</div>
 									<div class="cart_total_price ml-auto">$35.00</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Subtotal</div>
+									<div class="cart_total_title">모든상품명</div>
 									<div class="cart_total_price ml-auto">$35.00</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Shipping</div>
+									<div class="cart_total_title">배송비</div>
 									<div class="cart_total_price ml-auto">$5.00</div>
 								</li>
 								<li class="d-flex flex-row align-items-start justify-content-start total_row">
-									<div class="cart_total_title">Total</div>
+									<div class="cart_total_title">총금액</div>
 									<div class="cart_total_price ml-auto">$40.00</div>
 								</li>
 							</ul>
@@ -198,15 +199,15 @@
 						<div class="payment_options">
 							<div>
 								<input type="radio" id="radio_payment_1" name="regular_radio" class="regular_radio">
-								<label for="radio_payment_1">cash on delivery</label>
+								<label for="radio_payment_1">무통장입금</label>
 							</div>
 							<div>
 								<input type="radio" id="radio_payment_2" name="regular_radio" class="regular_radio" checked>
-								<label for="radio_payment_2">paypal</label>
+								<label for="radio_payment_2">신용카드</label>
 								<div class="visa payment_option"><a href="#"><img src="resources/images/visa.jpg" alt=""></a></div>
 								<div class="master payment_option"><a href="#"><img src="resources/images/master.jpg" alt=""></a></div>
 							</div>
-							<button class="cart_total_button">place order</button>
+							<button class="cart_total_button">결제하기</button>
 						</div>
 					</div>
 				</div>

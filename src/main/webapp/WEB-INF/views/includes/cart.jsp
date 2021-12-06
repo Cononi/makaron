@@ -21,7 +21,7 @@
 
 	<header class="header">
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
-			<div class="logo"><a href="/makaron">Wish</a></div>
+			<div class="logo"><a href="/makaron">Makaron</a></div>
 			<nav class="main_nav">
 				<ul>
 					<li><a href="index.html">home</a></li>
@@ -99,7 +99,7 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/cart.jpg" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="resources/images/cart.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -137,7 +137,7 @@
 								<div class="cart_bar_title_price">Price</div>
 								<div class="cart_bar_title_quantity">Quantity</div>
 								<div class="cart_bar_title_total">Total</div>
-								<div class="cart_bar_title_button"></div>
+								<div class="cart_bar_title_button">선택</div>
 							</div>
 						</div>
 					</div>
@@ -169,9 +169,7 @@
 										<!-- Products Total Price -->
 										<div class="cart_product_total">$35.00</div>
 										<!-- Product Cart Trash Button -->
-										<div class="cart_product_button">
-											<button class="cart_product_remove"><img src="images/trash.png" alt=""></button>
-										</div>
+										
 									</div>
 								</div>
 							</li>
@@ -228,7 +226,7 @@
 
 	<div class="newsletter">
 		<div class="newsletter_content">
-			<div class="newsletter_image parallax-window" data-parallax="scroll" data-image-src="images/cart_nl.jpg" data-speed="0.8"></div>
+			<div class="newsletter_image parallax-window" data-parallax="scroll" data-image-src="resources/images/cart_nl.jpg" data-speed="0.8"></div>
 			<div class="container">
 				<div class="row options">
 
