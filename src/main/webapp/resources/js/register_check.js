@@ -99,7 +99,10 @@ const reg = [/^[a-z0-9]{5,16}$/
             ,/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/
             , /[가-힣]{3,}$/
             ,/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
-            ,/^01(?:0|1|[6-9])(?:\d{3}|\d{3,4})\d{4}$/];
+            ,/^01(?:0|1|[6-9])(?:\d{3}|\d{3,4})\d{4}$/
+            ,/^(19|20)[\d]{2}$/
+            ,/^(0[1-9]|1[0-2])$/
+            ,/^(0[1-9]|[1-2][0-9]|3[0-1])$/];
 /**
  * Easy selector helper function
  */
@@ -174,11 +177,11 @@ on('focusout', '#userid', function (e) {
   } else if (!reg[0].test(val) && val.length > 0) {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
-    msg = '영문으로 시작 그리고 5자 이상의 영문(소문자)과 숫자만 가능, 최대 16자만 사용 가능합니다.'
+    msg = 'X 영문으로 시작 그리고 5자 이상의 영문(소문자)과 숫자만 가능, 최대 16자만 사용 가능합니다.'
   } else {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
-    msg = '필수 입력입니다.'
+    msg = 'X 필수 입력입니다.'
   }
   id_check.textContent = msg;
 })
@@ -194,9 +197,11 @@ var GetAjaxID = function (val) {
 			success : function(result){
 				if(result.trim() == 'false'){
           console.log(result)
-          msg = val + '는 사용할 수 있는 아이디 입니다.'				
+          msg = "✔ " + val + '는 사용할 수 있는 아이디 입니다.'				
 				} else {
-					msg = val + '는 사용할 수 없는 아이디 입니다.'				
+          nextEl(this).add('bad')
+          nextEl(this).remove('good')
+					msg = "X " + val + '는 사용할 수 없는 아이디 입니다.'				
 				}
 			}
 		})
@@ -278,15 +283,15 @@ on('focusout', '#username', function (e) {
   if (reg[2].test(name)) {
     nextEl(this).add('good')
     nextEl(this).remove('bad')
-    msg = '이름 체크 완료'
+    msg = '✔ 이름 체크 완료'
   } else if (!reg[2].test(name) && name.length > 0) {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
-    msg = '최소 3 자, 최대 15 자 그리고 완성된 한글만 입력이 가능합니다.'
+    msg = 'X 최소 3 자, 최대 15 자 그리고 완성된 한글만 입력이 가능합니다.'
   } else {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
-    msg = '필수 입력입니다.'
+    msg = 'X 필수 입력입니다.'
   }
   name_check.textContent = msg;
 })
@@ -303,15 +308,15 @@ on('focusout', '#useremail', function(e) {
   if (reg[3].test(email)) {
     nextEl(this).add('good')
     nextEl(this).remove('bad')
-    msg = '사용가능한 이메일 입니다.'
+    msg = '✔ 사용가능한 이메일 입니다.'
   } else if (!reg[3].test(email)  && email.length > 0) {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
-    msg = '이메일 형식에 맞게 정확하게 입력해주시기 바랍니다.'
+    msg = 'X 이메일 형식에 맞게 정확하게 입력해주시기 바랍니다.'
   } else {
     nextEl(this).add('bad')
     nextEl(this).remove('good')
-    msg = '필수 입력입니다.'
+    msg = 'X 필수 입력입니다.'
   }
   email_check.textContent = msg;
 })
@@ -322,22 +327,22 @@ on('focusout', '#useremail', function(e) {
  * 5. PHONE CHECK
 */
 on('focusout', '#userphone', function(e) {
-  var phone_check = select('.user_phone span')
+  var phone_check = select('.user_phone .check_text_box span')
   var msg = '',
   phone = this.value
   select('.user_phone .check_text_box').classList.add('active')
   if (reg[4].test(phone)) {
     select('.user_phone .check_text_box').classList.add('good')
     select('.user_phone .check_text_box').classList.remove('bad')
-    msg = '전화번호가 정확히 입력되었습니다.'
+    msg = '✔ 전화번호가 정확히 입력되었습니다.'
   } else if (!reg[4].test(phone) && phone.length > 0) {
     select('.user_phone .check_text_box').classList.add('bad')
     select('.user_phone .check_text_box').classList.remove('good')
-    msg = '10자리 또는 11자리 숫자만 사용가능 합니다.'
+    msg = 'X 10자리 또는 11자리 숫자만 사용가능 합니다.'
   } else {
     select('.user_phone .check_text_box').classList.add('bad')
     select('.user_phone .check_text_box').classList.remove('good')
-    msg = '필수 입력입니다.'
+    msg = 'X 필수 입력입니다.'
   }
   phone_check.textContent = msg;
 })
@@ -345,17 +350,19 @@ on('focusout', '#userphone', function(e) {
 on('click', '.phone-access_btn', function(e){
   e.preventDefault();
   var val = select('#userphone').value
+  var json = {"phone_no" : val}
+  console.log(time_span)
+  var time_span = $('.inline_form.cert').append($("<span>", {'id':'phone_cert_time'}));
   if(val.length >= 10){
   $.ajax({
-    url : '/phone/check/' + val,
-    type : 'get',
+    url : '/phone/check',
+    type : 'post',
     dataType : 'application/json; charset=utf-8',
-    success : function(result){
+    data : json, 
+    success : function(result, data){
     }, error : function(result){
-      $('#phone_Modal').modal('show')
-      console.log(result)
       phoneCertTime()
-      select('.user_phone span').textContent = result.responseText;
+      select('.user_phone .check_text_box span').textContent = result.responseText;
       select('.user_phone .check_text_box').classList.add('bad')
       select('.user_phone .check_text_box').classList.remove('good')
     }
@@ -363,15 +370,15 @@ on('click', '.phone-access_btn', function(e){
 }
 })
 
-function phoneCertTime(e) {
-  var time = 180;
+function phoneCertTime() {
+  document.getElementById("phone_cert_time").classList.toggle("active");
+  var time = document.getElementById("phone_cert_time").classList.contains('active') ? 180 : clearInterval(x);
   var min = "";
   var sec = "";
   var x = setInterval(() => {
     min = parseInt(time/60);
     sec = time%60;
-  
-    document.getElementById("phone_cert_time").innerHTML =  min + " : " + sec;
+    document.getElementById("phone_cert_time").innerHTML =  min + "분&nbsp;" + sec +"초";
     time--;
     if(time < 0){
       clearInterval(x);
@@ -396,26 +403,35 @@ on('click', '#address_modal2_btt_form', function(e){
 /*
 * 7. BIRTHDAY CHECK
 */
-on('input', '#userbirthday', function(e) {
-  var phone_check = select('.user_phone span')
+
+var phomsgtoggle = function(e) {
+  select('.user_birth .check_text_box').classList.add('bad')
+select('.user_birth .check_text_box').classList.remove('good')
+}
+on('focusout', '.birth-form-input', function(e) {
+  var birth_check = select('.user_birth span#check_text_msg')
   var msg = '',
-  phone = this.value
-  nextEl(this).add('active')
-  if (reg[3].test(phone)) {
-    nextEl(this).add('good')
-    nextEl(this).remove('bad')
-    msg = '전화번호가 정확히 입력되었습니다.'
-  } else if (!reg[3].test(name)) {
-    nextEl(this).add('bad')
-    nextEl(this).remove('good')
-    msg = '숫자 또는 -만 사용가능 합니다.'
-  } else {
-    nextEl(this).add('bad')
-    nextEl(this).remove('good')
-    msg = '필수 입력입니다.'
-  }
-  phone_check.textContent = msg;
-})
+  birth = select('.birth-form input', true)
+  select('.user_birth .check_text_box').classList.add('active')
+    if (!reg[5].test(birth[0].value) && birth[0].getAttribute('id') == 'year') {
+      phomsgtoggle()
+      msg = 'X 태어난 해를 2021과 같은 형식으로 입력해 주시기 바랍니다.'
+    }
+    else if (!reg[6].test(birth[1].value) && birth[1].getAttribute('id') == 'month') {
+      phomsgtoggle()
+      msg = 'X 태어난 월을 03과 같은 형식으로 입력해 주시기 바랍니다.'
+    }
+    else if (!reg[7].test(birth[2].value) && birth[2].getAttribute('id') == 'day') {
+      phomsgtoggle()
+      msg = 'X 태어난 월을 28과 같은 형식으로 입력해 주시기 바랍니다.'
+    }
+    else if(reg[5].test(birth[0].value) && reg[6].test(birth[1].value) && reg[7].test(birth[2].value)) {
+      select('.user_birth .check_text_box').classList.remove('bad')
+      select('.user_birth .check_text_box').classList.add('good')
+      msg = '✔ 생년월일 입력이 정확합니다.'
+    }
+  birth_check.textContent = msg;
+}, true)
 
 
 

@@ -85,11 +85,65 @@ div .check_text_box {
 }
 
 .inline_form {
-  display: flex;
+  display: -webkit-box;
   width: auto;
+  padding: 0 0 5px 0;
 }
 
+.birth-form span:after {
+  content: "/";
+    float: left;
+    width: 22px;
+    height: 100%;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 42px;
+    text-align: center;
+}
+
+
+.birth-form input {
+  border: 0;
+  text-align : center;
+}
+.birth-form{
+  display: flex;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1;
+  color: #4c4c4c;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+  text-align: left;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+  font-family: noto sans;
+  font-weight: 400;
+  letter-spacing: 0;
+  overflow: hidden;
+  width: 332px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  
+}
+
+#phone_cert_time {
+  right: 20px;
+  position: absolute;
+  top: 8px;
+}
 @media (max-width : 992px) {
+  .inline_form {
+    display: flex;
+  }
+
+  #phone_cert_time {
+    right: 90px;
+    position: absolute;
+    top: 8px;
+}
   .section_register {
     padding: 10px
   }

@@ -84,11 +84,15 @@
                         <div class="inline_form">
                             <input type="text" maxlength="11" class="form-control" id="userphone"
                             name="phone" placeholder=" EX) 01077775555" >
-                            <button class="btn btn-outline-info phone-access_btn" data-toggle="modal" type="button">인증번호전송</button>
+                            <button class="btn btn-outline-info phone-access_btn" type="button">인증번호전송</button>
+                        </div>
+                        <div class="inline_form cert">
+                        <input type="text" maxlength="6" class="form-control" id="userphonecert"placeholder="6자리 기입" >
+                        <button class="btn btn-outline-info phone-access_cert"type="button">인증확인</button>
                         </div>
                              <div class="check_text_box">
                                 <span id="check_text_msg"></span>
-                            </div>
+                        </div>
                     </div>
            		 </td>
             </tr>
@@ -116,17 +120,17 @@
             <!-- 생년월일 체크 -->
             <tr>
             	<td>
-                    <div class="user_phone md-3">
-                        <label for="userphone">휴대폰 번호</label>
-                        <div class="inline_form">
-                            <input type="text" maxlength="11" class="form-control" id="userphoness4"
-                            name="birth" placeholder=" EX) 01077775555" >
-                            <span>/</span>
-                            <input type="text" maxlength="11" class="form-control" id="userphoness3"
-                            name="birth" placeholder=" EX) 01077775555" >
-                            <span>/</span>
-                            <input type="text" maxlength="11" class="form-control" id="userphones2"
-                            name="birth" placeholder=" EX) 01077775555" >
+                    <div class="user_birth md-3">
+                        <label>생년 월일</label>
+                        <div class="birth-form">
+                            <input type="text" pattern="[0-9]*" size="4" maxlength="4" class="form-control birth-form-input" id="year"
+                            name="birth" placeholder="YYYY" >
+                            <span></span>
+                            <input size="2" pattern="[0-9]*" maxlength="2" class="form-control birth-form-input" id="month"
+                            name="birth" placeholder="MM" >
+                            <span></span>
+                            <input size="2" pattern="[0-9]*" maxlength="2" class="form-control birth-form-input" id="day"
+                            name="birth" placeholder="DD" >
                         </div>
                              <div class="check_text_box">
                                 <span id="check_text_msg"></span>
@@ -152,6 +156,13 @@
                     </select>
                </td>
 
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-block btn-outline-info"  data-toggle="modal" data-target="#address_Modal22">
+                       가입완료
+                    </button>
+                </td>
             </tr>
             </table>
                     
@@ -195,36 +206,7 @@
                         </div>
                     </div>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="phone_Modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body align-content-center">
-                                    <label for="userphonecert">인증번호</span>
-                                           <div class="inline_form">
-                                    <input type="text" maxlength="6" class="form-control" id="userphonecert"
-                                    placeholder="6자리 기입" >
-                                    <span id="phone_cert_time"></span>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">인증 확인</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                <!-- Modal end-->
-
-
-                <!-- 성별 선택 -->
         </div>
-        <button>dk</button>
     </form>
 
 </section><!-- End #regiset  -->
