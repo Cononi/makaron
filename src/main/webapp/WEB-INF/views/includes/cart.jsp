@@ -40,7 +40,7 @@
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
-					<a href="/makaron/cart">
+					<a href="/cart">
 						<div class="cart">
 							<img src="resources/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
@@ -217,7 +217,7 @@
 								<div class="cart_total_price ml-auto">$40.00</div>
 							</li>
 						</ul>
-						<button onclick="location.href='/makaron/checkout'"class="cart_total_button">proceed to checkout</button>
+						<button onclick="location.href='/checkout'"class="cart_total_button">proceed to checkout</button>
 					</div>
 				</div>
 			</div>

@@ -38,7 +38,7 @@
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
-					<a href="/makaron/cart">
+					<a href="/cart">
 						<div class="cart">
 							<img src="resources/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
