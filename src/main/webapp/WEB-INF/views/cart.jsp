@@ -125,19 +125,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="cart_title">your shopping cart</div>
+					<div class="cart_title">장바구니</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
-						<div class="cart_bar_title_name">Product</div>
+						<div class="cart_bar_title_name">상품</div>
 						<div class="cart_bar_title_content ml-auto">
 							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
-								<div class="cart_bar_title_price">Price</div>
-								<div class="cart_bar_title_quantity">Quantity</div>
+								<div class="cart_bar_title_price">가격</div>
+								<div class="cart_bar_title_quantity">수량</div>
 								<div class="cart_bar_title_total">Total</div>
-								<div class="cart_bar_title_button">선택</div>
+								<div class="cart_bar_title_button"></div>
 							</div>
 						</div>
 					</div>
@@ -180,7 +180,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
-						<button class="button_clear cart_button">clear cart</button>
+						<button class="button_clear cart_button">장바구니 비우기</button>
 						<button class="button_update cart_button">update cart</button>
 						<button class="button_update cart_button_2 ml-md-auto">continue shopping</button>
 					</div>
@@ -190,17 +190,17 @@
 				<!-- Cart Coupon -->
 				<div class="col-lg-6">
 					<div class="cart_coupon">
-						<div class="cart_title">coupon code</div>
+						<div class="cart_title">쿠폰 번호</div>
 						<form action="#" class="cart_coupon_form d-flex flex-row align-items-start justify-content-start" id="cart_coupon_form">
-							<input type="text" class="cart_coupon_input" placeholder="Coupon code" required="required">
-							<button class="button_clear cart_button_2">apply coupon</button>
+							<input type="text" class="cart_coupon_input" placeholder="쿠폰번호" required="required">
+							<button class="button_clear cart_button_2">적용하기</button>
 						</form>
 					</div>
 				</div>
 				<!-- Cart Total -->
 				<div class="col-lg-5 offset-lg-1">
 					<div class="cart_total">
-						<div class="cart_title">cart total</div>
+						<div class="cart_title">총 금액</div>
 						<ul>
 							<li class="d-flex flex-row align-items-center justify-content-start">
 								<div class="cart_total_title">Subtotal</div>
@@ -304,7 +304,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="footer_logo"><a href="/makaron">Wish</a></div>
+				<!-- 	<div class="footer_logo"><a href="/makaron">Makaron</a></div>
 					<nav class="footer_nav">
 						<ul>
 							<li><a href="index.html">home</a></li>
@@ -313,7 +313,7 @@
 							<li><a href="categories.html">lingerie</a></li>
 							<li><a href="contact.html">contact</a></li>
 						</ul>
-					</nav>
+					</nav> -->
 					<div class="footer_social">
 						<ul>
 							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>

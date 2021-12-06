@@ -14,16 +14,16 @@ public class IndexController {
 	@GetMapping("/product")
 	public String product() {
 		
-		return "/includes/product";
+		return "/product";
 	}
 	@GetMapping("/cart")
 	public String cart() {
 		
-		return "/includes/cart";
+		return "/cart";
 	}
 	@GetMapping("/checkout")
 	public String checkout() {
 		
-		return "/includes/checkout";
+		return "/checkout";
 	}
 }
