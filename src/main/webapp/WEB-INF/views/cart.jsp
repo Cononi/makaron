@@ -12,6 +12,7 @@
 <link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="resources/styles/cart.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/cart_responsive.css">
+
 </head>
 <body>
 
@@ -131,6 +132,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
+						
 						<div class="cart_bar_title_name">상품</div>
 						<div class="cart_bar_title_content ml-auto">
 							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
@@ -148,6 +150,7 @@
 					<div class="cart_products">
 						<ul>
 							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+								 
 								<!-- Product Image -->
 								<div class="cart_product_image"><img src="resources/images/cart_product_1.jpg" alt=""></div>
 								<!-- Product Name -->
@@ -203,19 +206,19 @@
 						<div class="cart_title">총 금액</div>
 						<ul>
 							<li class="d-flex flex-row align-items-center justify-content-start">
-								<div class="cart_total_title">Subtotal</div>
+								<div class="cart_total_title">상품금액</div>
 								<div class="cart_total_price ml-auto">$35.00</div>
 							</li>
 							<li class="d-flex flex-row align-items-center justify-content-start">
-								<div class="cart_total_title">Shipping</div>
+								<div class="cart_total_title">배송비</div>
 								<div class="cart_total_price ml-auto">$5.00</div>
 							</li>
 							<li class="d-flex flex-row align-items-center justify-content-start">
-								<div class="cart_total_title">Total</div>
+								<div class="cart_total_title">총금액</div>
 								<div class="cart_total_price ml-auto">$40.00</div>
 							</li>
 						</ul>
-						<button onclick="location.href='/checkout'"class="cart_total_button">proceed to checkout</button>
+						<button onclick="location.href='/checkout'"class="cart_total_button">결제창으로 가기</button>
 					</div>
 				</div>
 			</div>
