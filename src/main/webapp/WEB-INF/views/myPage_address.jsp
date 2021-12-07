@@ -68,8 +68,13 @@
 
 				<!-- order -->
 				<div class="address">
-					<h3><b>배송지 관리</b></h3> 
-					<button class="add_address">+ 새 배송지 추가</button>    
+					<span style="float:left">
+						<h3><b>배송지 관리</b></h3>
+					</span> 
+					<span style="float:right">
+						<button class="add_address">+ 새 배송지 추가</button> 
+					</span>
+					<br>
 					<hr style="border: solid 1px black;">
 				</div> 
 				

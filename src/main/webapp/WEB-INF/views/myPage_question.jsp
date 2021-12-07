@@ -68,7 +68,13 @@
 
 				<!-- order -->
 				<div class="question">
-					<h3><b>상품 문의</b></h3>
+					<span style="float:left">
+						<h3><b>상품 문의</b></h3>
+					</span> 
+					<span style="float:right">
+						<button class="add_address">+ 상품 문의 등록</button> 
+					</span>
+					<br>
 					<hr style="border: solid 1px black;">
 				</div> 
 				
