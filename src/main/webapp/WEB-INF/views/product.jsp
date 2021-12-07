@@ -80,7 +80,7 @@
 		<div class="search">
 			<form action="#">
 				<input type="search" class="search_input menu_mm" required="required">
-				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="images/magnifying-glass.svg" alt=""></button>
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources/images/magnifying-glass.svg" alt=""></button>
 			</form>
 		</div>
 		<nav class="menu_nav">
@@ -97,7 +97,7 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/product.jpg" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="resources/images/product.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -221,7 +221,7 @@
 							<ul>
 								<!-- Review -->
 								<li class=" review clearfix">
-									<div class="review_image"><img src="images/review_1.jpg" alt=""></div>
+									<div class="review_image"><img src="resources/images/review_1.jpg" alt=""></div>
 									<div class="review_content">
 										<div class="review_name"><a href="#">Maria Smith</a></div>
 										<div class="review_date">Nov 29, 2017</div>
@@ -239,7 +239,7 @@
 								</li>
 								<!-- Review -->
 								<li class=" review clearfix">
-									<div class="review_image"><img src="images/review_2.jpg" alt=""></div>
+									<div class="review_image"><img src="resources/images/review_2.jpg" alt=""></div>
 									<div class="review_content">
 										<div class="review_name"><a href="#">Maria Smith</a></div>
 										<div class="review_date">Nov 29, 2017</div>
