@@ -107,6 +107,7 @@ public class DataSourceTests {
 		PhoneCertVO vo = serviceP.phoneCertHistoryNumber("01048121565");
 		String s = SHA256Util.getEncrypt("123456", vo.getSalt());
 		
+		
 		if(s.equals(vo.getToken())) {
 			log.info("------------------------------------------------------------------");
 			log.info("아주 기냥 판박이네!");

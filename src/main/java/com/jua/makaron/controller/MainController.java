@@ -1,5 +1,8 @@
 package com.jua.makaron.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,8 @@ import lombok.AllArgsConstructor;
 public class MainController {
 	
 //	private ProductCategoryService pcs_service;
+	@Autowired
+    private HttpSession session;
 	
 	@GetMapping("/")
 	public String home(RedirectAttributes rttr, Model model) {
@@ -22,6 +27,9 @@ public class MainController {
 	
 	@GetMapping("/register")
 	public void register(Model model) {
+		// 세션 제거
+		if(session.getAttribute("phoneCertComplete") != null)
+			session.removeAttribute("phoneCertComplete");
 	}
 
 }

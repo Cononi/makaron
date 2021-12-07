@@ -129,6 +129,21 @@ div .check_text_box {
   
 }
 
+#userphonecert[disabled] {
+  display: none;
+}
+
+#userphonecert {
+  display: block;
+}
+
+.phone-access_cert {
+  display: none;
+}
+
+.phone-access_cert.active {
+  display: block;
+}
 #phone_cert_time {
   right: 20px;
   position: absolute;

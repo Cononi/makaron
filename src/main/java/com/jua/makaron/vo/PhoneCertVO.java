@@ -2,6 +2,11 @@ package com.jua.makaron.vo;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +14,10 @@ import lombok.Setter;
 @Setter
 public class PhoneCertVO {
 
-	public String no;
-	public String phone_no;
-	public String token;
-	public Date sms_date;
-	public String salt;
+	private String no;
+	private String phone_no;
+	private String token;
+	private Date sms_date;
+	private String salt;
 	
 }

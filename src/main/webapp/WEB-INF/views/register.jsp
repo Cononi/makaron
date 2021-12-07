@@ -84,11 +84,12 @@
                         <div class="inline_form">
                             <input type="text" maxlength="11" class="form-control" id="userphone"
                             name="phone" placeholder=" EX) 01077775555" >
-                            <button class="btn btn-outline-info phone-access_btn" type="button">인증번호전송</button>
+                            <button class="btn btn-outline-info" id="phone-access_btn" type="button">인증번호전송</button>
                         </div>
                         <div class="inline_form cert">
-                        <input type="text" maxlength="6" class="form-control" id="userphonecert"placeholder="6자리 기입" >
-                        <button class="btn btn-outline-info phone-access_cert"type="button">인증확인</button>
+                        <input type="text" maxlength="6" disabled class="form-control" id="userphonecert"placeholder="6자리 기입">
+                        <button class="btn btn-outline-info phone-access_cert" id="phone-access_cert_btn" type="button" >인증확인</button>
+                        <span id="phone_cert_time"></span>
                         </div>
                              <div class="check_text_box">
                                 <span id="check_text_msg"></span>
@@ -159,7 +160,7 @@
             </tr>
             <tr>
                 <td>
-                    <button type="button" class="btn btn-block btn-outline-info"  data-toggle="modal" data-target="#address_Modal22">
+                    <button class="btn btn-block btn-outline-info">
                        가입완료
                     </button>
                 </td>

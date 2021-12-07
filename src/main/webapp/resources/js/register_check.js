@@ -193,7 +193,7 @@ var GetAjaxID = function (val) {
 			url : '/idCheck/' + val,
 			type : 'get',
 			dataType : 'text',
-      async: false,
+      		async: false,
 			success : function(result){
 				if(result.trim() == 'false'){
           console.log(result)
@@ -326,66 +326,125 @@ on('focusout', '#useremail', function(e) {
 /*
  * 5. PHONE CHECK
 */
+var goodToggle = function(e) {
+  select('.user_phone .check_text_box').classList.add('good')
+  select('.user_phone .check_text_box').classList.remove('bad')
+}
+var badToggle = function(e) {
+  select('.user_phone .check_text_box').classList.add('bad')
+  select('.user_phone .check_text_box').classList.remove('good')
+}
+
 on('focusout', '#userphone', function(e) {
   var phone_check = select('.user_phone .check_text_box span')
   var msg = '',
   phone = this.value
   select('.user_phone .check_text_box').classList.add('active')
   if (reg[4].test(phone)) {
-    select('.user_phone .check_text_box').classList.add('good')
-    select('.user_phone .check_text_box').classList.remove('bad')
+    goodToggle()
     msg = '✔ 전화번호가 정확히 입력되었습니다.'
   } else if (!reg[4].test(phone) && phone.length > 0) {
-    select('.user_phone .check_text_box').classList.add('bad')
-    select('.user_phone .check_text_box').classList.remove('good')
+    badToggle()
     msg = 'X 10자리 또는 11자리 숫자만 사용가능 합니다.'
   } else {
-    select('.user_phone .check_text_box').classList.add('bad')
-    select('.user_phone .check_text_box').classList.remove('good')
+    badToggle()
     msg = 'X 필수 입력입니다.'
   }
   phone_check.textContent = msg;
 })
 
-on('click', '.phone-access_btn', function(e){
-  e.preventDefault();
+var phone_btt_status = false;
+// acc on
+on('click', '#phone-access_btn', function(e){
   var val = select('#userphone').value
-  var json = {"phone_no" : val}
-  console.log(time_span)
-  var time_span = $('.inline_form.cert').append($("<span>", {'id':'phone_cert_time'}));
-  if(val.length >= 10){
+  phone_btt_status = phone_btt_status == false ? true : false;
+  if(reg[4].test(val) && val.length >= 10 && phone_btt_status){
   $.ajax({
     url : '/phone/check',
     type : 'post',
-    dataType : 'application/json; charset=utf-8',
-    data : json, 
-    success : function(result, data){
-    }, error : function(result){
-      phoneCertTime()
-      select('.user_phone .check_text_box span').textContent = result.responseText;
-      select('.user_phone .check_text_box').classList.add('bad')
-      select('.user_phone .check_text_box').classList.remove('good')
+    dataType : 'text',
+    data : {"phone_no" : val},
+    async: false,
+    success : function(data, status, xhr){
+      if(xhr.status == 200){
+        phoneCertTime();
+        select('.phone-access_cert').classList.toggle("active")
+        $('#userphonecert').removeAttr("disabled")
+        $('[id=userphone]').attr('readonly',true)
+        $('#phone-access_btn').html("재인증")
+        phone_btt_status = true
+        select('.user_phone .check_text_box span').textContent = data
+        goodToggle()
+      } else if(xhr.status==202) {
+        select('.user_phone .check_text_box span').textContent = xhr.responseText;
+        badToggle()
+      }
+    }, error : function(xhr, status, error){
     }
   })
+} else {
+  select('.phone-access_cert').classList.remove("active")
+  $('[id=userphone]').attr('readonly',false)
+  $('[id=userphonecert]').attr('disabled',true)
+  $('[id=userphonecert]').attr('readonly',false);
+  $('[id=phone-access_cert_btn]').html("인증 확인")
+  $('[id=phone-access_cert_btn]').attr('disabled',false);
+  $('#phone-access_btn').html("인증번호전송")
+  select('.user_phone .check_text_box span').textContent = ""
+  clearInterval(x)
+  document.getElementById("phone_cert_time").innerHTML = ""
 }
 })
 
+// Timer
+var x;
 function phoneCertTime() {
-  document.getElementById("phone_cert_time").classList.toggle("active");
-  var time = document.getElementById("phone_cert_time").classList.contains('active') ? 180 : clearInterval(x);
+  clearInterval(x);
+  var time = 180;
   var min = "";
   var sec = "";
-  var x = setInterval(() => {
+  x = setInterval(() => {
     min = parseInt(time/60);
     sec = time%60;
     document.getElementById("phone_cert_time").innerHTML =  min + "분&nbsp;" + sec +"초";
     time--;
     if(time < 0){
       clearInterval(x);
-      document.getElementById("phone_cert_time").innerHTML = "인증 시간 만료"
+      document.getElementById("phone_cert_time").innerHTML = "시간 만료"
     }
   }, 1000); 
 }
+
+// acc
+on('click', '.phone-access_cert', function(e){
+  e.preventDefault();
+  var varphone = select('#userphone').value
+  var valcert = select('#userphonecert').value
+  var json = {"phone_no" : varphone, "token" : valcert}
+  if(valcert.length >= 6){
+  $.ajax({
+    url : '/phone/check/success',
+    type : 'post',
+    dataType : 'text',
+    data : json, 
+    success : function(data, status, xhr){
+      if(xhr.status == 200){
+        select('.user_phone .check_text_box span').textContent = data;
+        clearInterval(x);
+        document.getElementById("phone_cert_time").innerHTML = ""
+        $('[id=phone-access_cert_btn]').html("인증 완료")
+        $('[id=phone-access_cert_btn]').attr('disabled',true);
+        $('[id=userphonecert]').attr('readonly',true);
+        goodToggle()
+      } else if (xhr.status == 202) {
+        select('.user_phone .check_text_box span').textContent = xhr.responseText;
+        badToggle()
+      }
+    }, error : function(xhr, status, error){
+    }
+  })
+}
+})
 
 /*
  * 6. ADDRESS CHECK
