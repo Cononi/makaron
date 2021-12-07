@@ -5,9 +5,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 /**
- * SHA-256 암호화
- * 
- * @author Minchang Jang
  *
  */
 public class SHA256Util {
