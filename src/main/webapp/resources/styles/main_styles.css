@@ -21,7 +21,6 @@
 8. Extra
 9. Gallery
 10. Testimonials
-11. Newsletter
 12. Footer
 
 
@@ -820,6 +819,12 @@ section
 
 .promo
 {
+	width: 100%;
+	padding-top: 88px;
+	padding-left: 44px;
+	padding-right: 44px;
+	padding-bottom: 42px;
+	margin-top: 99px;
 	padding-top: 88px;
 }
 .promo_container
@@ -939,8 +944,11 @@ section
 }
 .product
 {
-
+	width: 290px;
+	float:none;
+	margin:0 auto;
 }
+
 .product_image
 {
 	width: 100%;
@@ -1210,6 +1218,7 @@ section
 9. Gallery
 *********************************/
 
+
 .gallery
 {
 	width: 100%;
@@ -1280,6 +1289,80 @@ section
 	margin-top: 55px;
 }
 
+
+/*********************************
+9. Gallery
+*********************************/
+
+.select
+{
+	width: 100%;
+	padding-top: 88px;
+	padding-left: 44px;
+	padding-right: 44px;
+	padding-bottom: 42px;
+	margin-top: 99px;
+}
+.user_select_item a
+{
+	display: block;
+	outline: none;
+}
+.select_image
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.select_title
+{
+
+}
+.select_title ul li
+{
+	display: inline-block;
+	margin-right: 34px;
+}
+.select_title ul li:last-child
+{
+	margin-right: 0;
+}
+.select_title ul li a
+{
+	font-family: 'Lucida', serif;
+	font-size: 36px;
+	font-weight: 700;
+	color: #FFFFFF;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.select_title ul li a:hover
+{
+	color: #937c6f;
+}
+.select_text
+{
+	font-size: 14px;
+	color: #FFFFFF;
+	margin-top: 5px;
+}
+.select_button
+{
+	margin: 0 auto;
+	margin-top: 40px;
+}
+.user_select_slider_container
+{
+	margin-top: 55px;
+}
 /*********************************
 10. Testimonials
 *********************************/
@@ -1334,117 +1417,56 @@ section
 }
 
 /*********************************
-11. Newsletter
+11. User Select List
 *********************************/
 
-.newsletter
-{
-	width: 100%;
-	padding-left: 62px;
-	padding-right: 62px;
-}
-.newsletter_content
+.testimonials
 {
 	width: 100%;
 	padding-top: 88px;
-	padding-bottom: 94px;
+	padding-bottom: 93px;
 }
-.newsletter_image
+.user_slider_container
 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
+	margin-top: 65px;
 }
-.newsletter .section_subtitle,
-.newsletter .section_title
+.user_text
 {
-	color: #FFFFFF;
-}
-.newsletter_container
-{
-	margin-top: 75px;
-}
-.newsletter_input
-{
-	width: 100%;
-	height: 46px;
-	background: #FFFFFF;
-	padding-left: 25px;
-	border: none;
-	outline: none;
-}
-.newsletter_input::-webkit-input-placeholder
-{
-	font-size: 12px !important;
-	font-weight: 400 !important;
+	font-family: 'Lucida', serif;
+	font-size: 24px;
+	color: #8a8a8a;
 	font-style: italic;
-	color: #b3b3b3 !important;
+	line-height: 1.75;
 }
-.newsletter_input:-moz-placeholder
+.user_image
 {
-	font-size: 12px !important;
-	font-weight: 400 !important;
-	font-style: italic;
-	color: #b3b3b3 !important;
+	width: 186px;
+	height: 186px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 26px;
 }
-.newsletter_input::-moz-placeholder
+.user_image img
 {
-	font-size: 12px !important;
-	font-weight: 400 !important;
-	font-style: italic;
-	color: #b3b3b3 !important;
-} 
-.newsletter_input:-ms-input-placeholder
-{ 
-	font-size: 12px !important;
-	font-weight: 400 !important;
-	font-style: italic;
-	color: #b3b3b3 !important;
+	max-width: 100%;
 }
-.newsletter_input::input-placeholder
+.user_name
 {
-	font-size: 12px !important;
-	font-weight: 400 !important;
-	font-style: italic;
-	color: #b3b3b3 !important;
-}
-.newsletter_button
-{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 142px;
-	height: 46px;
-	background: #937c6f;
-	color: #FFFFFF;
-	font-size: 12px;
-	letter-spacing: 0.2em;
-	text-transform: uppercase;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.newsletter_button:hover
-{
-	background: #e0e3e4;
+	font-family: 'Lucida', serif;
+	font-size: 16px;
+	font-weight: 700;
 	color: #232323;
+	margin-top: 14px;
 }
-.newsletter_text
+.user_title
 {
-	font-size: 14px;
-	font-style: italic;
-	color: #FFFFFF;
-	margin-top: 19px;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-weight: 600;
+	color: #937c6f;
+	margin-top: 4px;
 }
 
 /*********************************

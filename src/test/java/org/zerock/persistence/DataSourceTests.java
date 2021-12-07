@@ -32,6 +32,7 @@ public class DataSourceTests {
 	
 	@Test
     public void testConnection() { // 커넥션풀 테스트( hikariCP)
+		log.info("으이");
 		try {
 			Connection con=dataSource.getConnection();
 			log.info("커넥션풀 테스트 성공");
