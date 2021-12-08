@@ -16,24 +16,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	private CustomerMapper cus_mapper;
 	
-	@Override
-	public int register(CustomerDTO customerDTO) {
-		//SHA256 암호화 - Hash 알고리즘 기반
-		//salt 난수 생성
-		String salt = SHA256Util.generateSalt();
-		
-		//salt 저장
-		customerDTO.setSalt(salt);
-		
-		// 패스워드 저장
-		String password = customerDTO.getPassword();
-		// 저장한 비밀번호를 난수화 합한후 함께 암호화 한다.
-		password = SHA256Util.getEncrypt(password, salt);
-		// 다시 DTO에 저장
-		customerDTO.setPassword(password);
-		// 로직 실행과 결과값 반환
-		return cus_mapper.register(customerDTO);
-	}
 
 	@Override
 	public void lastDateCheck(String access_date) {

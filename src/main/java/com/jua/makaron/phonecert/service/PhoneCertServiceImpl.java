@@ -43,5 +43,14 @@ public class PhoneCertServiceImpl implements PhoneCertService {
 		// 암호화 토큰 전송
 		return token;
 	}
+	
+	@Override
+	public PhoneCertVO phoneCertHistoryNumberSuccess(String token) {
+		return phoneCertMapper.phoneCertHistoryNumberSuccess(token);
+	}
 
+	@Override
+	public int phoneCertUserError(String phone_no) {
+		return phoneCertMapper.phoneCertUserError(phone_no);
+	}
 }

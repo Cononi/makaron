@@ -1,18 +1,12 @@
 package com.jua.makaron.controller;
 
-import java.util.HashMap;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,8 +46,13 @@ public class PhoneCertController {
 		
 		// 인증 횟수 카운팅
 		int count = service.phoneCertHistoryCount(phoneCertVO.getPhone_no());
+		// 인증 회원 조회
+//		int joinUser = service.phoneCertUserError(phoneCertVO.getPhone_no());
 		
-		if(count >= 5) {
+//		if(joinUser == 1) {
+//			return ResponseEntity.status(203).body("이미 가입되어있는 회원 입니다. 자신의 번호이나 타인이 등록한 경우 고객센터에 문의 주세요.");
+//		} else 
+			if(count >= 5) {
 			return ResponseEntity.status(202).body("당일 최대 인증가능 횟수인 5회를 초과하여 더 이상 인증할 수 없습니다.");
 		} else {
 			// 6자리 메세지 전송
@@ -89,6 +88,7 @@ public class PhoneCertController {
 				// 인증 세션 제거
 				session.removeAttribute("phoneCertNumSssion");
 				// 인증 완료 세션 생성
+				token.setSalt("");
 				session.setAttribute("phoneCertComplete", userCert);
 				return ResponseEntity.status(200).body("인증이 완료되었습니다.");
 			} else if(!clientCert.equals(userCert)) {

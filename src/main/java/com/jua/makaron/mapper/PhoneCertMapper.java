@@ -13,5 +13,9 @@ public interface PhoneCertMapper {
 	// 인증 입력
 	public void phoneCertInsert(PhoneCertVO phoneCertVO);
 	
+	// 인증 검증
+	public PhoneCertVO phoneCertHistoryNumberSuccess(String token);
 	
+	// 가입 조회
+	public int phoneCertUserError(String phone_no);
 }
