@@ -1333,3 +1333,30 @@ section
 	font-size: 12px;
 	color: #232323;
 }
+.allCheck 
+{ 
+	margin-top: 5px;
+	float:left; 
+	width:100px;
+}
+.allCheck input 
+{ 
+	width:16px; 
+	height:16px;
+	margin-left:10px; 
+}
+.allCheck label 
+{ 
+	margin-left:10px; 
+}
+.checkBox 
+{ 
+	float:left; 
+	width:100px; 
+}
+.checkBox input
+{ 
+	width:16px; 
+	height:16px; 
+	margin-left: 10px;
+}

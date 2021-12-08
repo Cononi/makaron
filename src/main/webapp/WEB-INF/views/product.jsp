@@ -141,11 +141,11 @@
 				<div class="col-lg-7">
 					<div class="product_image">
 						<div class="product_image_large"><img src="resources/images/cake1.jpg" alt=""></div>
-						<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
+					<!-- 	<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
 							<div class="product_image_thumbnail" style="background-image:url(images/product_image_1.jpg)" data-image="images/product_image_1.jpg"></div>
 							<div class="product_image_thumbnail" style="background-image:url(images/product_image_2.jpg)" data-image="images/product_image_2.jpg"></div>
 							<div class="product_image_thumbnail" style="background-image:url(images/product_image_4.jpg)" data-image="images/product_image_4.jpg"></div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 
@@ -208,8 +208,8 @@
 								</ul>
 							</div>
 							
-							<div class="button cart_button"><a href="#">장바구니에 추가</a></div>
-							<div class="button cart_button btn2"><a href="#">결제창가기</a></div>
+							<div class="button cart_button"><a href="/cart">장바구니에 추가</a></div>
+							<div class="button cart_button btn2"><a href="/checkout">결제창가기</a></div>
 							
 						</div>
 					</div>
@@ -221,6 +221,25 @@
 			<div class="row">
 				<div class="col">
 					<div class="reviews">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item">
+								  <a class="nav-link active col" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">상세정보</a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link col" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">상품평</a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link col" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">상품문의</a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link col" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">배송/교환/반품 안내</a>
+								</li>
+					 </ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+					</div>
 						<div class="reviews_title">상품후기</div>
 						<div class="reviews_container">
 							<ul>
@@ -280,7 +299,7 @@
 									<input type="text" class="review_form_input" placeholder="Subject">
 								</div>
 								<textarea class="review_form_text" name="review_form_text" placeholder="Message"></textarea>
-								<button type="submit" class="review_form_button">leave a review</button>
+								<button type="submit" class="review_form_button">문의하기</button>
 							</form>
 						</div>
 					</div>

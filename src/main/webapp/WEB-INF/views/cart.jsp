@@ -12,7 +12,7 @@
 <link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="resources/styles/cart.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/cart_responsive.css">
-
+<script src="resources/js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
@@ -132,7 +132,19 @@
 			<div class="row">
 				<div class="col">
 					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
-						
+						<div class="allCheck">
+							<input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck"></label> 
+							<script>
+								$("#allCheck").click(function(){
+								 var chk = $("#allCheck").prop("checked");
+								 if(chk) {
+								  $(".chBox").prop("checked", true);
+								 } else {
+								  $(".chBox").prop("checked", false);
+								 }
+								});
+								</script>
+						</div>
 						<div class="cart_bar_title_name">상품</div>
 						<div class="cart_bar_title_content ml-auto">
 							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
@@ -150,7 +162,14 @@
 					<div class="cart_products">
 						<ul>
 							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
-								 
+								 <div class="checkBox">
+									<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNum}" />
+									<script>
+										$(".chBox").click(function(){
+										 $("#allCheck").prop("checked", false);
+										});
+									 </script>
+								</div>
 								<!-- Product Image -->
 								<div class="cart_product_image"><img src="resources/images/cart_product_1.jpg" alt=""></div>
 								<!-- Product Name -->
@@ -185,7 +204,7 @@
 					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
 						<button class="button_clear cart_button">장바구니 비우기</button>
 						<button class="button_update cart_button">update cart</button>
-						<button class="button_update cart_button_2 ml-md-auto">continue shopping</button>
+						<button class="button_update cart_button_2 ml-md-auto" onclick="location.href='/product'">continue shopping</button>
 					</div>
 				</div>
 			</div>
@@ -335,7 +354,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</footer>
 </div>
 
-<script src="resources/js/jquery-3.2.1.min.js"></script>
+
 <script src="resources/styles/bootstrap4/popper.js"></script>
 <script src="resources/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="resources/plugins/easing/easing.js"></script>
