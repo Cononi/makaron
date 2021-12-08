@@ -209,7 +209,8 @@
 							</div>
 							
 							<div class="button cart_button"><a href="#">장바구니에 추가</a></div>
-								
+							<div class="button cart_button btn2"><a href="#">결제창가기</a></div>
+							
 						</div>
 					</div>
 				</div>
@@ -290,7 +291,7 @@
 
 	<!-- Newsletter -->
 
-	<div class="newsletter">
+	<!-- <div class="newsletter">
 		<div class="newsletter_content">
 			<div class="newsletter_image" style="background-image:url(images/newsletter.jpg)"></div>
 			<div class="container">
@@ -315,7 +316,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>  -->
 
 	<!-- Footer -->
 
