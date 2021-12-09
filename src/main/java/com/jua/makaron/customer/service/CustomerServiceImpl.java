@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.jua.makaron.domain.CustomerDTO;
 import com.jua.makaron.mapper.CustomerMapper;
-import com.jua.makaron.utilities.SHA256Util;
 
 import lombok.AllArgsConstructor;
 
@@ -14,14 +13,8 @@ import lombok.AllArgsConstructor;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-	private CustomerMapper cus_mapper;
+	private CustomerMapper customerMapper;
 	
-
-	@Override
-	public void lastDateCheck(String access_date) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public CustomerDTO customerSearch(String customer_id) {

@@ -417,7 +417,6 @@ if($(e).attr('id') == 'address_modal2_btt_form'){
   var address_copy = select('.address_item input', true)
   var address_base = select('.address_item #address_bases')
   select('.address_item .check_text_box').classList.add('active')
-  console.log(address_base)
   for (var i = 0; i < address.length; i++) {
     address_copy[i].value = address[i].value
   }
@@ -541,9 +540,14 @@ on('click', '#phone-access_btn', function(e){
         select('.user_phone .check_text_box').classList.remove('good')
       }
     }, error : function(xhr, status, error){
+      if(xhr.status == 400){
+        select('.user_phone .check_text_box span').textContent = "잘못된 요청 입니다.";
+        select('.user_phone .check_text_box').classList.add('bad')
+        select('.user_phone .check_text_box').classList.remove('good')
+      }
     }
   })
-} else {
+} else if(reg[4].test(val) && val.length >= 10) {
   select('.phone-access_cert').classList.remove("active")
   $('[id=userphone]').attr('readonly',false)
   $('[id=userphonecert]').attr('disabled',true)
@@ -554,6 +558,8 @@ on('click', '#phone-access_btn', function(e){
   select('.user_phone .check_text_box span').textContent = ""
   clearInterval(x)
   document.getElementById("phone_cert_time").innerHTML = ""
+} else {
+  phone_btt_status = false
 }
 })
 

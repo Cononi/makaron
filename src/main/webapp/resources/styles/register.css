@@ -36,15 +36,18 @@
 
 
 #phone_cert_time {
+  display: grid;
   position: absolute;
-  left: -15px;
+  align-items: end;
+  flex-direction: column;
+  width: 100px;
   top: 10px;
-  width: 100%;
   font-size: 14px;
   color: #b3130b;
   line-height: 20px;
   text-align: right;
   letter-spacing: -.5px;
+  right: 10px;
 }
 
 
@@ -130,15 +133,18 @@
     padding: 10px
   }
   #phone_cert_time {
+    display: grid;
     position: absolute;
-    right: 10px;
+    align-items: end;
+    flex-direction: column;
+    width: 60px;
     top: 10px;
-    width: 100px;
     font-size: 14px;
     color: #b3130b;
     line-height: 20px;
     text-align: right;
     letter-spacing: -.5px;
+    right: 90px;
   }
   .register-line {
   	width: 100%;

@@ -4,9 +4,13 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,7 +29,7 @@ import lombok.AllArgsConstructor;
 public class PhoneCertController {
 
 	//인증 객체
-	SMSKeyVO smskeys;
+	private SMSKeyVO smskeys;
 	
 	// 휴대폰 인증
 	private PhoneCertService service;
@@ -34,7 +38,8 @@ public class PhoneCertController {
 	 * 회원가입 핸드폰 인증 여부, 조회, 완료 처리
 	 */
 	@RequestMapping(value ="register/phone/check",	produces = "text/plain; charset=UTF-8"  ,method =RequestMethod.POST)
-	public ResponseEntity<String> smsSummit(PhoneCertVO phoneCertVO, HttpServletRequest request) {
+	public ResponseEntity<String> smsSummit(@ModelAttribute @Valid PhoneCertVO phoneCertVO, HttpServletRequest request, BindingResult result) {
+		
 		// 세션 생성 - 세션이 없으면 null
 		HttpSession session = request.getSession(false);
 		// 랜덤 객체
@@ -83,7 +88,7 @@ public class PhoneCertController {
 	 */
 	@ResponseBody
 	@RequestMapping(value ="register/phone/check/success", produces = "text/plain; charset=UTF-8", method = RequestMethod.POST)
-	public ResponseEntity<String> certSummit(PhoneCertVO token, Model model,  HttpServletRequest request) {
+	public ResponseEntity<String> certSummit(@ModelAttribute @Valid PhoneCertVO token, Model model,  HttpServletRequest request) {
 		// 세션 생성
 		HttpSession session = request.getSession(false);
 		// 인증 만료 및 인증 번호 검증

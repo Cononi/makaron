@@ -52,7 +52,7 @@ public class RegisterCertController {
 	@PostMapping(value = "/register/check", consumes = "application/json; charset=UTF-8", produces = "application/json; charset=UTF-8")
 	public HashMap<String, String> regiseterCheck(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
-		// 에러 내용을 JSON으로 파싱
+		//  에러 내용을 JSON으로 파싱할 맵
 		HashMap<String, String> message = new HashMap<>();
 		// 객체를 json으로 바꾸기 위한 객체
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -65,7 +65,7 @@ public class RegisterCertController {
 			// 에러 번호 저장
 			message.put("status", "400");
 			
-			ValidationUtils.rejectIfEmptyOrWhitespace(result, "id", "required");
+			//ValidationUtils.rejectIfEmptyOrWhitespace(result, "id", "required");
 			for (FieldError error : errorFileds) {
 				// 에러를 순환하면서 map에 저장 (key,value)
 				message.put(error.getField(), error.getDefaultMessage());

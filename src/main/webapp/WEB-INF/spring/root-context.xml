@@ -21,6 +21,7 @@
 	
 	<import resource="classpath:/config/service-context.xml"/>
 
+
 	<!-- DB 정보 -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<property name="driverClassName" value="${spring.datasource.driverClassName}"/>

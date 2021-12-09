@@ -13,7 +13,7 @@
 	<div class="register-line">
 		<h2 class="text-center">회원 가입</h2>
 		<form:form modelAttribute="joinUser" action="/register/check/success">
-			<form:hidden path="id" value="${joinUser.id}"/>
+			<form:hidden path="id"/>
 			<form:hidden path="password"/>
 			<form:hidden path="name"/>
 			<form:hidden path="email"/>
