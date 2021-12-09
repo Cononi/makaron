@@ -218,27 +218,28 @@
 
 			<!-- Reviews -->
 
-			<div class="row">
+			<div class="row roww">
 				<div class="col">
 					<div class="reviews">
 					<ul class="nav nav-tabs" id="myTab" role="tablist">
 								<li class="nav-item">
-								  <a class="nav-link active col" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">상세정보</a>
+								  <a class="nav-link active coll" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" >상세정보</a>
 								</li>
 								<li class="nav-item">
-								  <a class="nav-link col" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">상품평</a>
+								  <a class="nav-link coll" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">상품평</a>
 								</li>
 								<li class="nav-item">
-								  <a class="nav-link col" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">상품문의</a>
+								  <a class="nav-link coll" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" >상품문의</a>
 								</li>
 								<li class="nav-item">
-								  <a class="nav-link col" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">배송/교환/반품 안내</a>
+								  <a class="nav-link coll" id="contact-tab" data-toggle="tab" href="#deli" role="tab" aria-controls="contact" aria-selected="false">배송/교환/반품 안내</a>
 								</li>
-					 </ul>
+					</ul>
 					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">상세정보</div>
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">상품평</div>
+						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">상품문의</div>
+						<div class="tab-pane fade" id="deli" role="tabpanel" aria-labelledby="contact-tab">배송</div>
 					</div>
 						<div class="reviews_title">상품후기</div>
 						<div class="reviews_container">
