@@ -535,6 +535,7 @@ on('click', '#phone-access_btn', function(e){
         select('.user_phone .check_text_box').classList.add('good')
         select('.user_phone .check_text_box').classList.remove('bad')
       } else if(xhr.status==202) {
+        phone_btt_status = false;
         select('.user_phone .check_text_box span').textContent = xhr.responseText;
         select('.user_phone .check_text_box').classList.add('bad')
         select('.user_phone .check_text_box').classList.remove('good')

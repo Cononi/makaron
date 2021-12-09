@@ -46,44 +46,8 @@
   text-align: right;
   letter-spacing: -.5px;
 }
-/**
-* check_text_box
-*/
-
-div .check_text_box {
-  display: none;
-}
-
-.check_text_box.active {
-  display: block;
-}
 
 
-.check_text_box span:nth-child(n) {
-  display: block;
-  font-size: 12px;
-  margin: 8px 0 0 5px ;
-  font-weight: 600;
-  color: #666;
-}
-
-.check_text_box.active.bad {
-  border-color: #B3130A;
-}
-
-.check_text_box.active.bad span:nth-child(n) {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: #B3130A;
-}
-
-.check_text_box.active.good span:nth-child(n) {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: #0f851a;
-}
   #postal_code2 {
     width: 150px;
   }
@@ -180,6 +144,7 @@ div .check_text_box {
   	width: 100%;
   	padding: 0;
   	margin: 0;
+  	border: 0;
   }
   .register-table {
     width: 100%; 

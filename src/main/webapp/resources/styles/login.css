@@ -1,0 +1,45 @@
+.login-form {
+    display: grid;
+    height: 50vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    margin: 130px 0;
+}
+
+.login-form input {
+	width: 340px;
+	padding-left : 45px;
+}
+
+span .login-logo{
+	font-family: 'Lucida', serif;
+    font-size: 30px;
+    color: #2f2f2f;
+}
+
+.login-logo h1{
+	padding: 40px;
+}
+
+label {
+	display: flex;
+	position : absolute;
+}
+
+.footer {
+    padding-top: 0px;
+}
+
+.login-icon:before {
+	position: absolute;
+    left: 15px;
+    bottom: 5px;
+    color: #eee;
+}
+
+.login-icon.active:before {
+    color: #2f2f2f;
+}

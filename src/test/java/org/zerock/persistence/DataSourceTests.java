@@ -104,11 +104,11 @@ public class DataSourceTests {
 	
 	@Test
 	public void Testss2() {
-		PhoneCertVO vo = serviceP.phoneCertHistoryNumber("01048121565");
-		String s = SHA256Util.getEncrypt("123456", vo.getSalt());
+		String vo = serviceP.phoneCertHistoryNumber("01048121565");
+		String s = SHA256Util.getEncrypt("123456", vo);
 		
 		
-		if(s.equals(vo.getToken())) {
+		if(s.equals(vo)) {
 			log.info("------------------------------------------------------------------");
 			log.info("아주 기냥 판박이네!");
 		}
