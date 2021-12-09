@@ -415,16 +415,17 @@ if($(e).attr('id') == 'address_modal2_btt_form'){
   var address_check = select('.address_item div span')
   var address = select('#wraps input', true)
   var address_copy = select('.address_item input', true)
-  var address_base = select('.address_item .address_base')
+  var address_base = select('.address_item #address_bases')
   select('.address_item .check_text_box').classList.add('active')
-  if(address_base == null && address_base == ""){
+  console.log(address_base)
+  for (var i = 0; i < address.length; i++) {
+    address_copy[i].value = address[i].value
+  }
+  if(address_base.value == null || address_base.value == ""){
     select('.address_item .check_text_box').classList.remove('good')
     select('.address_item .check_text_box').classList.add('bad')
     address_check.textContent = "X 주소는 필수 입력입니다."
   } else {
-    for (var i = 0; i < address.length; i++) {
-      address_copy[i].value = address[i].value
-    }
     select('.address_body').classList.remove('active')
     select('.address_body').classList.add('active')
     select('.address_item .check_text_box').classList.remove('bad')
@@ -464,12 +465,14 @@ var birth_check = select('.user_birth .check_text_box span')
 }
 
 select_check = select('#sex_category .check_text_box span')
-if($(e).attr('name') == 'sex' || $(e).attr('category_id')){
+if($(e).attr('name') == 'sex' || $(e).attr('name') == 'category_id'){
     select('#sex_category .check_text_box').classList.add('active')
     if($("select[name=sex]").val() == ""){
+      select('#sex_category .check_text_box').classList.remove('good')
       select('#sex_category .check_text_box').classList.add('bad')
       select_check.textContent = 'X 성별은 필수 선택 입니다.'
     } else if($("select[name=category_id]").val() == ""){
+      select('#sex_category .check_text_box').classList.remove('good')
       select('#sex_category .check_text_box').classList.add('bad')
       select_check.textContent = 'X 선호도는 필수 선택 입니다.'
     }else {
@@ -488,14 +491,16 @@ var GetAjaxID = function (val) {
 			url : '/idCheck/' + val,
 			type : 'get',
 			dataType : 'text',
-      		async: false,
+      async: false,
 			success : function(result){
-				if(result.trim() == 'false'){
+        if(result.trim() == 'false'){
           console.log(result)
+          select('.user_id .check_text_box').classList.add('good')
+          select('.user_id .check_text_box').classList.remove('bad')
           msg = "✔ " + val + '는 사용할 수 있는 아이디 입니다.'			
 				} else {
-          nextEl(this).add('bad')
-          nextEl(this).remove('good')
+          select('.user_id .check_text_box').classList.add('bad')
+          select('.user_id .check_text_box').classList.remove('good')
 					msg = "X " + val + '는 사용할 수 없는 아이디 입니다.'				
 				}
 			}
@@ -513,7 +518,7 @@ on('click', '#phone-access_btn', function(e){
   phone_btt_status = phone_btt_status == false ? true : false;
   if(reg[4].test(val) && val.length >= 10 && phone_btt_status){
   $.ajax({
-    url : '/phone/check',
+    url : 'register/phone/check',
     type : 'post',
     dataType : 'text',
     data : {"phone_no" : val},
@@ -578,7 +583,7 @@ on('click', '.phone-access_cert', function(e){
   var json = {"phone_no" : varphone, "token" : valcert}
   if(valcert.length >= 6){
   $.ajax({
-    url : '/phone/check/success',
+    url : 'register/phone/check/success',
     type : 'post',
     dataType : 'text',
     data : json, 

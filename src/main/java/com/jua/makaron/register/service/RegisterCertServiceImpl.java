@@ -36,6 +36,8 @@ public class RegisterCertServiceImpl implements RegisterCertService{
 		password = SHA256Util.getEncrypt(password, salt);
 		// 다시 DTO에 저장
 		customerDTO.setPassword(password);
+		// 인증이 완료된 회원임으로 표시
+		customerDTO.setPhone_cert("Y");
 		
 		System.out.println(customerDTO);
 		// 로직 실행과 결과값 반환

@@ -8,7 +8,7 @@ public interface PhoneCertService {
 	public int phoneCertHistoryCount(String phone_no);
 	
 	// 인증 번호 조회
-	public PhoneCertVO phoneCertHistoryNumber(String phone_no);
+	public String phoneCertHistoryNumber(String phone_no);
 	
 	// 인증 입력
 	public String phoneCertInsert(PhoneCertVO phoneCertVO);

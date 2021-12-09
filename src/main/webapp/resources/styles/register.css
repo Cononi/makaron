@@ -4,11 +4,16 @@
 .section_register {
   padding: 0;
   margin: 80px 0 0 0;
+  display: grid;
+  justify-items: center;
 }
 
 .register-line {
   margin: 40px;
   font-weight: 800;
+  border: 1px solid #222;
+  width: 800px;
+  text-shadow: rgb(0 0 0 / 1%) 0 0 1px;
 }
 
 .register-table {
@@ -19,7 +24,7 @@
 .register-line h2 {
   padding: 80px 0 40px 0;
   border-bottom: 2px solid #222;
-  width: 40%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -62,12 +67,15 @@ div .check_text_box {
   color: #666;
 }
 
+.check_text_box.active.bad {
+  border-color: #B3130A;
+}
+
 .check_text_box.active.bad span:nth-child(n) {
   display: block;
   font-size: 12px;
   font-weight: 600;
   color: #B3130A;
-  border-color: #B3130A;
 }
 
 .check_text_box.active.good span:nth-child(n) {
@@ -159,9 +167,9 @@ div .check_text_box {
   }
   #phone_cert_time {
     position: absolute;
-    left: -93px;
+    right: 10px;
     top: 10px;
-    width: 100%;
+    width: 100px;
     font-size: 14px;
     color: #b3130b;
     line-height: 20px;

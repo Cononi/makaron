@@ -8,7 +8,7 @@ public interface PhoneCertMapper {
 	public int phoneCertHistory(String phone_no);
 	
 	// 인증 번호 조회
-	public PhoneCertVO phoneCertHistoryNumber(String phone_no);
+	public String phoneCertHistoryNumber(String phone_no);
 	
 	// 인증 입력
 	public void phoneCertInsert(PhoneCertVO phoneCertVO);

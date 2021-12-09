@@ -20,8 +20,8 @@ public class PhoneCertServiceImpl implements PhoneCertService {
 	}
 
 	@Override
-	public PhoneCertVO phoneCertHistoryNumber(String phone_no) {
-		// TODO Auto-generated method stub
+	public String phoneCertHistoryNumber(String phone_no) {
+		
 		return phoneCertMapper.phoneCertHistoryNumber(phone_no);
 	}
 	

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.kerberos.ServicePermission;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -36,7 +37,6 @@ public class RegisterCertController {
 
 	private RegisterCertService service;
 	private PhoneCertService servicePhone;
-	private HttpSession session;
 	
 
 	// 아이디 중복 검증
@@ -50,10 +50,13 @@ public class RegisterCertController {
 	
 	// 회원 가입 유효성 체크
 	@PostMapping(value = "/register/check", consumes = "application/json; charset=UTF-8", produces = "application/json; charset=UTF-8")
-	public HashMap<String, String> regiseterCheck(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result) {
+	public HashMap<String, String> regiseterCheck(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
 		// 에러 내용을 JSON으로 파싱
 		HashMap<String, String> message = new HashMap<>();
+		// 객체를 json으로 바꾸기 위한 객체
 		ObjectMapper objectMapper = new ObjectMapper();
+		
 		// 해당 유효성 검증 실패일 경우
 		if (result.hasErrors()) {
 			// 에러 필드정보를 담을 리스트
@@ -72,28 +75,36 @@ public class RegisterCertController {
 			return message;
 			}
 		
-		System.out.println(session.getAttribute("phoneCertComplete"));
 		
-		if(session.getAttribute("phoneCertComplete") != null) {
+		// 인증 내역이 있는지
+		if(session != null) {
+			// 세션에 저장된 암호화된 인증키를 가져옴
 			String cert = (String)session.getAttribute("phoneCertComplete");
+			// 암호화된 인증키를 전체 인증내역에서 찾아서 2차 검토
 			PhoneCertVO cert_main = servicePhone.phoneCertHistoryNumberSuccess(cert);
+			// 원키와 암호화된 키가 서로 맞을경우
 			if(cert.equals(cert_main.getToken()) && cert_main.getPhone_no().equals(customerDTO.getPhone())) {	
 				
 				// 휴대폰 인증 검사
 				message.put("status", "200");
 				message.put("success", "OK");
-				// 맵 데이터를 반환
+				// 받아온 데이터를 json화 즉 Key, value를 맵으로 바꿔 다시 반환
 				HashMap<String, Object> s = objectMapper.convertValue(customerDTO, HashMap.class);
 				for(String key : s.keySet()) {
 					message.put(key, (String) s.get(key));
 		            System.out.println(key + " : " + s.get(key));
 				}
+				
+				// 가입후 인증 세션 삭제
 				session.removeAttribute("phoneCertComplete");
 			} else {
 				message.put("status", "500");
 				message.put("success", "미인증");
 			}
-		} 
+		} else {
+			message.put("status", "500");
+			message.put("success", "미인증");
+		}
 		return message;
 
 	
@@ -101,12 +112,23 @@ public class RegisterCertController {
 		
 	}
 	
-	// 회원 가입 완료
+	/*
+	 * 회원 가입 완료 페이지
+	 */
 	@PostMapping(value = "/register/check/success")
-	public void success(@ModelAttribute("joinUser") CustomerDTO customerDTO, HttpServletResponse response) throws IOException {
-		customerDTO.setPhone_cert("Y");
-		System.out.println(customerDTO);
+	public void success(@ModelAttribute("joinUser") CustomerDTO customerDTO, HttpServletResponse response, HttpServletRequest request) throws IOException {
+	
+		// 회원가입하면서 발생된 세션을 모두 삭제
+		// 세션이 존재하면 null을 반환
+		HttpSession httpSession = request.getSession(false);
+		// 세션을 삭제
+		if(httpSession != null)
+			httpSession.invalidate();
+		
+		// 가입 처리
 		service.register(customerDTO);
+	
+		// 페이지 이동
 		response.sendRedirect("/");
 	}
 	

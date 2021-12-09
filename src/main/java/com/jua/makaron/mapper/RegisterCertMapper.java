@@ -8,4 +8,5 @@ public interface RegisterCertMapper {
 	public String idCheck(String id);
 	//회원 가입
 	public int register(CustomerDTO customerDTO);
+
 }

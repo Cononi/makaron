@@ -2,9 +2,9 @@ package com.jua.makaron.controller;
 
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +30,13 @@ public class PhoneCertController {
 	// 휴대폰 인증
 	private PhoneCertService service;
 	
-	@Autowired
-    private HttpSession session;
-	
-	@RequestMapping(value ="/phone/check",	produces = "text/plain; charset=UTF-8"  ,method =RequestMethod.POST)
-	public ResponseEntity<String> smsSummit(PhoneCertVO phoneCertVO) {
+	/*
+	 * 회원가입 핸드폰 인증 여부, 조회, 완료 처리
+	 */
+	@RequestMapping(value ="register/phone/check",	produces = "text/plain; charset=UTF-8"  ,method =RequestMethod.POST)
+	public ResponseEntity<String> smsSummit(PhoneCertVO phoneCertVO, HttpServletRequest request) {
+		// 세션 생성 - 세션이 없으면 null
+		HttpSession session = request.getSession(false);
 		// 랜덤 객체
 		Random rand = new Random();
 		// 랜덤 암호 생성
@@ -43,18 +45,22 @@ public class PhoneCertController {
 		String numberChange = String.format("%06d", number);
 		// SMS 생성 객체
 		SignatureCreate signatureCreate = new SignatureCreate();
-		
 		// 인증 횟수 카운팅
 		int count = service.phoneCertHistoryCount(phoneCertVO.getPhone_no());
 		// 인증 회원 조회
-//		int joinUser = service.phoneCertUserError(phoneCertVO.getPhone_no());
+		int joinUser = service.phoneCertUserError(phoneCertVO.getPhone_no());
 		
-//		if(joinUser == 1) {
-//			return ResponseEntity.status(203).body("이미 가입되어있는 회원 입니다. 자신의 번호이나 타인이 등록한 경우 고객센터에 문의 주세요.");
-//		} else 
+		if(joinUser == 1) {
+			return ResponseEntity.status(202).body("이미 가입되어있는 회원 입니다. 자신의 번호이나 타인이 등록한 경우 고객센터에 문의 주세요.");
+		} else 
 			if(count >= 5) {
 			return ResponseEntity.status(202).body("당일 최대 인증가능 횟수인 5회를 초과하여 더 이상 인증할 수 없습니다.");
 		} else {
+			// 만약 인증번호 발송후에 재인증 시도를 했을경우 기존 세션을 제거하고 새로운 세션으로 인증번호를 발송
+			if(session != null) {
+				session.removeAttribute("phoneCertNumberSession");
+			}
+			
 			// 6자리 메세지 전송
 			signatureCreate.sendSMS(smskeys,phoneCertVO.getPhone_no(),"[마카롱쥬아] 휴대폰 인증번호는 " + numberChange +" 입니다.");
 			
@@ -65,40 +71,47 @@ public class PhoneCertController {
 			// 토큰 암호화 및 저장
 			String token = service.phoneCertInsert(phoneCertVO);
 			
-			session.setAttribute("phoneCertNumSssion", token);
+			session.setAttribute("phoneCertNumberSession", token);
 			session.setMaxInactiveInterval(3*60);
 			return ResponseEntity.status(200).body("인증 번호가 전송되었습니다.");
 		}
 	}
 	
+	
+	/*
+	 * 회원 가입페이지 휴대폰 인증번호 검증
+	 */
 	@ResponseBody
-	@RequestMapping(value ="/phone/check/success", produces = "text/plain; charset=UTF-8", method = RequestMethod.POST)
-	public ResponseEntity<String> certSummit(PhoneCertVO token, Model model) {
+	@RequestMapping(value ="register/phone/check/success", produces = "text/plain; charset=UTF-8", method = RequestMethod.POST)
+	public ResponseEntity<String> certSummit(PhoneCertVO token, Model model,  HttpServletRequest request) {
+		// 세션 생성
+		HttpSession session = request.getSession(false);
 		// 인증 만료 및 인증 번호 검증
-		PhoneCertVO phoneCertVO = service.phoneCertHistoryNumber(token.getPhone_no());
-		// 클라이언트 인증 번호 
-		String clientCert = (String)session.getAttribute("phoneCertNumSssion");
+		String userSalt = service.phoneCertHistoryNumber(token.getPhone_no());
 		// 유저 인증 번호
 		String userCert =  token.getToken();
-		// token 키값 변환
-		try {
+		// token 키값 변환 및 userSalt값이 있다면 실행
+		if(userSalt != null) {
+			// 인증 세션 값 저장
+			String phoneSession = (String)session.getAttribute("phoneCertNumberSession");
 			// 인증 내역 검증
-			userCert = SHA256Util.getEncrypt(userCert,phoneCertVO.getSalt());
-			if(clientCert.equals(userCert)) {
+			userCert = SHA256Util.getEncrypt(userCert,userSalt);
+			if(phoneSession.equals(userCert)) {
 				// 인증 세션 제거
-				session.removeAttribute("phoneCertNumSssion");
+				session.removeAttribute("phoneCertNumberSession");
+				
 				// 인증 완료 세션 생성
-				token.setSalt("");
 				session.setAttribute("phoneCertComplete", userCert);
 				return ResponseEntity.status(200).body("인증이 완료되었습니다.");
-			} else if(!clientCert.equals(userCert)) {
+			} else if(!phoneSession.equals(userCert)) {
 				return ResponseEntity.status(202).body("인증 번호가 다릅니다.");
+			} else {
+				return ResponseEntity.status(202).body("잘못된 요청입니다.");	
 			}
-		} catch (NullPointerException e) {
-			System.out.println(e);
+		}else { // 만료되었거나 요청하지 않은 경우
+			return ResponseEntity.status(202).body("인증이 만료되었습니다. 재인증 바랍니다.");	
 		}
-		session.setAttribute("phoneCertComplete", userCert);
-		return ResponseEntity.status(202).body("인증이 만료되었습니다. 재인증 바랍니다.");
 	}
+	
 	
 }
