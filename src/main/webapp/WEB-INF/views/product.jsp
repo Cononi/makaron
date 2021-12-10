@@ -238,7 +238,28 @@
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">상세정보</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">상품평</div>
-						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">상품문의</div>
+						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+							<table class="table">
+								<thead>
+								 <tr>
+								 	<th>번호</th>
+								 	<th>문의</th>
+								 	<th>작성자</th>
+								 	<th>작성일</th>
+								 	<th>답변</th>
+								 </tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>1</td>
+									<td>배송문의</td>
+									<td>test</td>
+									<td>2021.12.10</td>
+									<td>답변완료</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
 						<div class="tab-pane fade" id="deli" role="tabpanel" aria-labelledby="contact-tab">배송</div>
 					</div>
 						<div class="reviews_title">상품후기</div>
