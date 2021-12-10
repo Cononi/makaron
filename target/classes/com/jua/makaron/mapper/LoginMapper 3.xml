@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.LoginMapper">	
+
+	<!-- 로그인 확인 -->
+	<select id="userLoginCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM customer
+		WHERE id=#{id} AND password=#{password}
+	</select>
+	<!-- 접속 날짜 확인 -->
+	<update id="userLastLoginCheck">
+		<![CDATA[
+		UPDATE customer 
+		SET access_date = sysdate
+		WHERE id=#{id}
+		]]>
+	</update>
+	<!-- salt 값 확인 -->
+	<select id="userSaltGet" resultType="String">
+		<![CDATA[
+		SELECT salt 
+		FROM customer
+		WHERE id=#{id}
+		]]>
+	</select>
+</mapper>

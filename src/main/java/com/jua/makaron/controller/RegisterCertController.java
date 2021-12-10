@@ -9,6 +9,7 @@ import javax.security.auth.kerberos.ServicePermission;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 import javax.validation.Valid;
 
 import org.springframework.ui.Model;
@@ -24,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jua.makaron.domain.CustomerDTO;
-import com.jua.makaron.phonecert.service.PhoneCertService;
-import com.jua.makaron.register.service.RegisterCertService;
+import com.jua.makaron.service.PhoneCertService;
+import com.jua.makaron.service.RegisterCertService;
 import com.jua.makaron.vo.PhoneCertVO;
 
 import lombok.AllArgsConstructor;
@@ -77,7 +78,7 @@ public class RegisterCertController {
 		
 		
 		// 인증 내역이 있는지
-		if(session != null) {
+		if(session != null && session.getAttribute("phoneCertComplete") != null) {
 			// 세션에 저장된 암호화된 인증키를 가져옴
 			String cert = (String)session.getAttribute("phoneCertComplete");
 			// 암호화된 인증키를 전체 인증내역에서 찾아서 2차 검토
@@ -94,7 +95,6 @@ public class RegisterCertController {
 					message.put(key, (String) s.get(key));
 		            System.out.println(key + " : " + s.get(key));
 				}
-				
 				// 가입후 인증 세션 삭제
 				session.removeAttribute("phoneCertComplete");
 			} else {
@@ -129,7 +129,7 @@ public class RegisterCertController {
 		service.register(customerDTO);
 	
 		// 페이지 이동
-		response.sendRedirect("/");
+		response.sendRedirect(request.getContextPath());
 	}
 	
 	

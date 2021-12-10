@@ -20,8 +20,8 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.jua.makaron.domain.CustomerDTO;
-import com.jua.makaron.phonecert.service.PhoneCertService;
-import com.jua.makaron.register.service.RegisterCertService;
+import com.jua.makaron.service.PhoneCertService;
+import com.jua.makaron.service.RegisterCertService;
 import com.jua.makaron.utilities.SHA256Util;
 import com.jua.makaron.utilities.SignatureCreate;
 import com.jua.makaron.vo.PhoneCertVO;

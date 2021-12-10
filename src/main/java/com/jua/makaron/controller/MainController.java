@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jua.makaron.domain.CustomerDTO;
+import com.jua.makaron.vo.LoginVO;
 
 import lombok.AllArgsConstructor;
 
@@ -36,7 +37,9 @@ public class MainController {
 	 * 로그인 페이지
 	 */
 	@GetMapping("/login")
-	public void login(CustomerDTO customerDTO) {
+	public void login(LoginVO loginVO, Model model) {
+		// hidden Form 세팅
+		model.addAttribute("userLoginForm", loginVO);
 	}
 
 }

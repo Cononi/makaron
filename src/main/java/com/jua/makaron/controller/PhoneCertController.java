@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jua.makaron.phonecert.service.PhoneCertService;
+import com.jua.makaron.service.PhoneCertService;
 import com.jua.makaron.utilities.SHA256Util;
 import com.jua.makaron.utilities.SignatureCreate;
 import com.jua.makaron.vo.PhoneCertVO;

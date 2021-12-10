@@ -9,6 +9,11 @@
     margin: 130px 0;
 }
 
+.check_text_box {
+    margin: 10px;
+    width: 300px;
+    text-align: left;
+}
 .login-form input {
 	width: 340px;
 	padding-left : 45px;
@@ -42,4 +47,24 @@ label {
 
 .login-icon.active:before {
     color: #2f2f2f;
+}
+
+@media (max-width : 912px) {
+	
+	.login-form input {
+	width: auto;
+	padding-left : 45px;
+}
+}
+@media (max-width : 312px) {
+	
+	.login-form input {
+	width: 270px;
+	padding-left : 45px;
+}
+.check_text_box {
+    margin: 10px 0;
+    width: 260px;
+    text-align: left;
+}
 }

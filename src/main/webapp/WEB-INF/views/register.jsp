@@ -12,7 +12,7 @@
 <section class="section_register">
 	<div class="register-line">
 		<h2 class="text-center">회원 가입</h2>
-		<form:form modelAttribute="joinUser" action="/register/check/success">
+		<form:form modelAttribute="joinUser" action="${pageContext.request.contextPath}/register/check/success">
 			<form:hidden path="id"/>
 			<form:hidden path="password"/>
 			<form:hidden path="name"/>
@@ -273,6 +273,6 @@
 
 <%@ include file="./includes/footer.jsp"%>
 <!-- login -->
-<script src="/resources/js/register_check.js"></script>
+<script src="resources/js/register_check.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

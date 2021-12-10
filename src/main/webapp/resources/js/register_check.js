@@ -208,7 +208,7 @@ $.each (arrayData, function (i, e) {
 
 // 검증
 $.ajax({
-  url : '/register/check',
+  url : 'register/check',
   type : 'post',
   dataType : 'json',
   data : JSON.stringify(json),
@@ -217,14 +217,15 @@ $.ajax({
   error: function(xhr, status, error){
   },
   success: function(data, status, xhr){
+    var error_key = Object.keys(data);
     if(data.status==200){
       error_key = Object.keys(data)
       error_key.forEach(e => {
+        if(e=="selected_type"){data[e].trim()}
         $("input[name="+ e +"]").val(data[e])
       })
       $('#joinUser').submit()
     }else if(data.status==400) {
-      var error_key = Object.keys(data);
         error_key.forEach(e => {
           if(e == "address_base"){$(".address_item .check_text_box span").html(data[e])
           } else{ $(".user_"+ e +" .check_text_box span").html(data[e]) }
@@ -237,6 +238,8 @@ $.ajax({
         });
       // $('#errorModal .modal-body').text(data['id'])
       // $('#errorModal').modal('show')
+    } else if(data.status==500){
+      alert("휴대폰 미인증 입니다. 인증해주시기 바랍니다.")
     }
   }
 })
@@ -255,7 +258,6 @@ function checkU(e) {
       nextEl(e).remove('bad')
       msg = GetAjaxID(val);
       id_check.textContent = msg;
-      return true
     } else if (!reg[0].test(val) && val.length > 0) {
       nextEl(e).add('bad')
       nextEl(e).remove('good')
@@ -266,7 +268,6 @@ function checkU(e) {
       msg = 'X 아이디는 필수 입력 값입니다'
     }
     id_check.textContent = msg;
-    return false
   }
   //------------------
 
@@ -283,7 +284,6 @@ function checkU(e) {
       nextEl(e).remove('bad')
       msg = '사용가능한 패스워드 입니다.'
       pass_check.textContent = msg;
-      return true
     } else if (!reg[1].test(pass) && pass.length > 0) {
       nextEl(e).add('bad')
       nextEl(e).remove('good')
@@ -305,7 +305,6 @@ function checkU(e) {
     }
     pass_check.textContent = msg;
     pass_check_c.textContent = msg_c;
-    return false
   }
 
   if($(e).attr('id') == 'userpassword_check') {
@@ -319,7 +318,6 @@ function checkU(e) {
       nextEl(e).remove('bad')
       msg = '비밀번호가 일치합니다!'
       pass_check.textContent = msg;
-      return true
     } else if (pass != pass_c.value && pass.length > 0) {
       nextEl(e).add('bad')
       nextEl(e).remove('good')
@@ -330,7 +328,6 @@ function checkU(e) {
       msg = 'X 필수 입력입니다.'
     }
     pass_check.textContent = msg;
-    return false
   }
   //------------------
   if($(e).attr('id') == 'username'){
@@ -343,7 +340,6 @@ function checkU(e) {
       nextEl(e).remove('bad')
       msg = '✔ 이름 체크 완료'
       name_check.textContent = msg;
-      return true
     } else if (!reg[2].test(name) && name.length > 0) {
       nextEl(e).add('bad')
       nextEl(e).remove('good')
@@ -354,7 +350,6 @@ function checkU(e) {
       msg = 'X 필수 입력입니다.'
     }
     name_check.textContent = msg;
-    return false
   }
 //------------------
 if($(e).attr('id') == 'useremail'){
@@ -367,7 +362,6 @@ if($(e).attr('id') == 'useremail'){
     nextEl(e).remove('bad')
     msg = '✔ 사용가능한 이메일 입니다.'
     email_check.textContent = msg;
-    return true
   } else if (!reg[3].test(email)  && email.length > 0) {
     nextEl(e).add('bad')
     nextEl(e).remove('good')
@@ -378,7 +372,6 @@ if($(e).attr('id') == 'useremail'){
     msg = 'X 필수 입력입니다.'
   }
   email_check.textContent = msg;
-  return false
 }
 //------------------
 var goodToggle = function(e) {
@@ -399,7 +392,6 @@ if($(e).attr('id') == 'userphone'){
     goodToggle()
     msg = '✔ 전화번호가 정확히 입력되었습니다.'
     phone_check.textContent = msg;
-    return true
   } else if (!reg[4].test(phone) && phone.length > 0) {
     badToggle()
     msg = 'X 10자리 또는 11자리의 휴대폰 번호를 정확히 입력해주세요.'
@@ -408,7 +400,6 @@ if($(e).attr('id') == 'userphone'){
     msg = 'X 필수 입력입니다.'
   }
   phone_check.textContent = msg;
-  return false
 }
 //------------------
 if($(e).attr('id') == 'address_modal2_btt_form'){
@@ -487,7 +478,7 @@ if($(e).attr('name') == 'sex' || $(e).attr('name') == 'category_id'){
 var GetAjaxID = function (val) {
   var msg = ''
    $.ajax({
-			url : '/idCheck/' + val,
+			url : 'idCheck/' + val,
 			type : 'get',
 			dataType : 'text',
       async: false,
