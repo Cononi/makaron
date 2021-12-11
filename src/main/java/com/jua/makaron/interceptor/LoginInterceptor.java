@@ -23,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		// 기존 세션을 받아 옵니다.
 		HttpSession session = request.getSession(false);
 		Object userSession = session.getAttribute("login");
-		// 세션이 존재한다면 해당 페이지로감
+		// 로그인 세션이 존재한다면 해당 페이지로감
 		if(userSession != null) {
 			response.sendRedirect(request.getContextPath());
 			return false;
