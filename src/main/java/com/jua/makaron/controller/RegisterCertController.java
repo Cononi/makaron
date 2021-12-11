@@ -76,9 +76,9 @@ public class RegisterCertController {
 			return message;
 			}
 		
-		
+		Object phoneCC = session.getAttribute("phoneCertComplete");
 		// 인증 내역이 있는지
-		if(session != null && session.getAttribute("phoneCertComplete") != null) {
+		if(phoneCC != null) {
 			// 세션에 저장된 암호화된 인증키를 가져옴
 			String cert = (String)session.getAttribute("phoneCertComplete");
 			// 암호화된 인증키를 전체 인증내역에서 찾아서 2차 검토
@@ -129,7 +129,7 @@ public class RegisterCertController {
 		service.register(customerDTO);
 	
 		// 페이지 이동
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath()+ "/register/check/main");
 	}
 	
 	

@@ -26,11 +26,26 @@
 	
 	<!-- Interceptor -->
 	<beans:bean id="loginInterceptor" class="com.jua.makaron.interceptor.LoginInterceptor"/>
+	<beans:bean id="authInterceptor"  class="com.jua.makaron.interceptor.AuthInterceptor"/>
+	<beans:bean id="RegisterInterceptor"  class="com.jua.makaron.interceptor.RegisterInterceptor"/>
 		<interceptors>
+		<!-- login 화면 -->
 		  <interceptor>
 		    <mapping path="/login"/>
 		    <beans:ref bean="loginInterceptor"/>
 		  </interceptor>
-		</interceptors>
+		  <interceptor>
+		    <!-- 회원가입 화면 -->
+		    <mapping path="/register"/>
+		    <beans:ref bean="RegisterInterceptor"/>
+		  </interceptor>
+		   <interceptor>
+		    <!-- login 인증이 필요한 URI 들 -->
+		    <mapping path="/userpage"/>
+		    <mapping path="/sboard/modify"/>
+		    <mapping path="/sboard/remove"/>
+		    <beans:ref bean="authInterceptor"/>
+		  </interceptor>
+	</interceptors>
 
 </beans:beans>

@@ -174,7 +174,9 @@
 					</select> &nbsp;&nbsp; <label for="category_id">선호도&nbsp;</label> <select
 						class="custom-select user_category_id" name="category_id">
 							<option value="" selected>선호 선택</option>
-							<option value="1000">One</option>
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
 					</select>
 					<div class="check_text_box">
 						<span id="check_text_msg"></span>

@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -12,9 +14,11 @@ import com.jua.makaron.vo.LoginVO;
 
 import lombok.extern.log4j.Log4j;
 
+
 @Log4j
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 	
+	 private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -23,7 +27,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		// 기존 세션을 받아 옵니다.
 		HttpSession session = request.getSession(false);
 		Object userSession = session.getAttribute("login");
-		// 로그인 세션이 존재한다면 해당 페이지로감
+		// 세션이 존재한다면 해당 페이지로감
 		if(userSession != null) {
 			response.sendRedirect(request.getContextPath());
 			return false;
@@ -48,7 +52,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		if(session != null)
 			session.removeAttribute("login");
 		// 로그인 정보를 받아와서 저장
-		LoginVO loginVO = (LoginVO) request.getAttribute("loginVO");
+		LoginVO loginVO = (LoginVO)request.getAttribute("loginVO");
 
 		// 로그인 성공시 로직
 		if (loginVO != null) {
@@ -71,7 +75,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				loginSessionManager.setSession(loginVO.getId(), session);
 				System.out.println("기존 사용자 세션 삭제!!");
 			}
-			// 캐시삭제하는게 필요할거같다.
+			// 메인 페이지로 이동
 			response.sendRedirect(request.getContextPath());
 		}
 	}
