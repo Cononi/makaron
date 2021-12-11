@@ -1,7 +1,5 @@
 properties/
 
-Libraries/
-
 # ignore properties file
 config.properties
 
