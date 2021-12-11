@@ -343,7 +343,7 @@ function checkU(e) {
     } else if (!reg[2].test(name) && name.length > 0) {
       nextEl(e).add('bad')
       nextEl(e).remove('good')
-      msg = 'X 최소 3 자, 최대 15 자 그리고 완성된 한글만 입력이 가능합니다.'
+      msg = 'X 최소 1 자, 최대 15 자 그리고 완성된 한글만 입력이 가능합니다.'
     } else {
       nextEl(e).add('bad')
       nextEl(e).remove('good')
