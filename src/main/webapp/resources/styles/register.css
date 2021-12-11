@@ -4,22 +4,27 @@
 .section_register {
   padding: 0;
   margin: 80px 0 0 0;
+  display: grid;
+  justify-items: center;
 }
 
 .register-line {
   margin: 40px;
   font-weight: 800;
+  border: 1px solid #222;
+  width: 800px;
+  text-shadow: rgb(0 0 0 / 1%) 0 0 1px;
 }
 
 .register-table {
-  width: 35vh; 
+  width: 50vh; 
   margin: 30px auto;
   table-layout: fixed;
 }
 .register-line h2 {
   padding: 80px 0 40px 0;
   border-bottom: 2px solid #222;
-  width: 40%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -29,41 +34,23 @@
     width: 100%;
 }
 
-/**
-* check_text_box
-*/
 
-div .check_text_box {
-  display: none;
+#phone_cert_time {
+  display: grid;
+  position: absolute;
+  align-items: end;
+  flex-direction: column;
+  width: 100px;
+  top: 10px;
+  font-size: 14px;
+  color: #b3130b;
+  line-height: 20px;
+  text-align: right;
+  letter-spacing: -.5px;
+  right: 10px;
 }
 
-.check_text_box.active {
-  display: block;
-}
 
-
-.check_text_box span:nth-child(n) {
-  display: block;
-  font-size: 12px;
-  margin: 8px 0 0 5px ;
-  font-weight: 600;
-  color: #666;
-}
-
-.check_text_box.active.bad span:nth-child(n) {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: #B3130A;
-  border-color: #B3130A;
-}
-
-.check_text_box.active.good span:nth-child(n) {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: #0f851a;
-}
   #postal_code2 {
     width: 150px;
   }
@@ -87,24 +74,23 @@ div .check_text_box {
 .inline_form {
   display: -webkit-box;
   width: auto;
-  padding: 0 0 5px 0;
-}
-
-.birth-form span:after {
-  content: "/";
-    float: left;
-    width: 22px;
-    height: 100%;
-    font-size: 14px;
-    color: #ccc;
-    line-height: 42px;
-    text-align: center;
 }
 
 
-.birth-form input {
-  border: 0;
-  text-align : center;
+#userphonecert[disabled] {
+  display: none;
+}
+
+#userphonecert {
+  display: block;
+}
+
+.phone-access_cert {
+  display: none;
+}
+
+.phone-access_cert.active {
+  display: block;
 }
 .birth-form{
   display: flex;
@@ -123,49 +109,48 @@ div .check_text_box {
   font-weight: 400;
   letter-spacing: 0;
   overflow: hidden;
-  width: 332px;
+  width: auto;
   border: 1px solid #ccc;
   border-radius: 3px;
-  
+}
+.birth-form input {
+  border: 0;
+  text-align : center;
+}
+.bar:after{
+  content: "/";
+  float: left;
+  width: 22px;
+  height: 100%;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 42px;
+  text-align: center;
 }
 
-#userphonecert[disabled] {
-  display: none;
-}
-
-#userphonecert {
-  display: block;
-}
-
-.phone-access_cert {
-  display: none;
-}
-
-.phone-access_cert.active {
-  display: block;
-}
-#phone_cert_time {
-  right: 20px;
-  position: absolute;
-  top: 8px;
-}
 @media (max-width : 992px) {
-  .inline_form {
-    display: flex;
-  }
-
-  #phone_cert_time {
-    right: 90px;
-    position: absolute;
-    top: 8px;
-}
   .section_register {
     padding: 10px
+  }
+  #phone_cert_time {
+    display: grid;
+    position: absolute;
+    align-items: end;
+    flex-direction: column;
+    width: 60px;
+    top: 10px;
+    font-size: 14px;
+    color: #b3130b;
+    line-height: 20px;
+    text-align: right;
+    letter-spacing: -.5px;
+    right: 90px;
   }
   .register-line {
   	width: 100%;
   	padding: 0;
   	margin: 0;
+  	border: 0;
   }
   .register-table {
     width: 100%; 
@@ -181,6 +166,10 @@ div .check_text_box {
   }
   #wrap {
     border:1px solid;width:auto;height:600px;position:relative
+  }
+  .inline_form {
+    display:flex;
+    width: auto;
   }
 
 }

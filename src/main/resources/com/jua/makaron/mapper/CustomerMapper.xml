@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jua.makaron.mapper.CustomerMapper">
-	<insert id="register">
-			<!-- 태그로 인식하기 때문에 감싸야함 -->
- 		<![CDATA[
-		INSERT INTO customer(id,password,name,email,phone,postal_code,address_base,address_sub,
-		address_type,sex,birthday,phone_cert,salt)
-    		VALUES(#{id},#{password},#{name},#{email},#{phone},#{postal_code},#{address_base},#{address_sub},
-    		#{address_type},#{sex},#{birthday},#{phone_cert},#{salt})
- 		]]>
-	</insert>
+
 </mapper>

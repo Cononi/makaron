@@ -20,8 +20,8 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.jua.makaron.domain.CustomerDTO;
-import com.jua.makaron.phonecert.service.PhoneCertService;
-import com.jua.makaron.register.service.RegisterCertService;
+import com.jua.makaron.service.PhoneCertService;
+import com.jua.makaron.service.RegisterCertService;
 import com.jua.makaron.utilities.SHA256Util;
 import com.jua.makaron.utilities.SignatureCreate;
 import com.jua.makaron.vo.PhoneCertVO;
@@ -104,11 +104,11 @@ public class DataSourceTests {
 	
 	@Test
 	public void Testss2() {
-		PhoneCertVO vo = serviceP.phoneCertHistoryNumber("01048121565");
-		String s = SHA256Util.getEncrypt("123456", vo.getSalt());
+		String vo = serviceP.phoneCertHistoryNumber("01048121565");
+		String s = SHA256Util.getEncrypt("123456", vo);
 		
 		
-		if(s.equals(vo.getToken())) {
+		if(s.equals(vo)) {
 			log.info("------------------------------------------------------------------");
 			log.info("아주 기냥 판박이네!");
 		}

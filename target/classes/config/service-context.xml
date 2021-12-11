@@ -10,12 +10,8 @@
 	
 	<!-- 서비스 로직 -->
 	<!--  회원 가입 관련 -->
-	<context:component-scan base-package="com.jua.makaron.register.service"></context:component-scan>
+
 	<!-- 카테고리 -->
-	<context:component-scan base-package="com.jua.makaron.productcategory.service"></context:component-scan>
-	<!--  서비스 관련 -->
-	<context:component-scan base-package="com.jua.makaron.customer.service"></context:component-scan>
-	<!--  폰인증 관련 -->
-	<context:component-scan base-package="com.jua.makaron.phonecert.service"></context:component-scan>
+	<context:component-scan base-package="com.jua.makaron.service"></context:component-scan>
 
 </beans>
