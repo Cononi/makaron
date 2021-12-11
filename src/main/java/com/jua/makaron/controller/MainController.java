@@ -42,4 +42,13 @@ public class MainController {
 		model.addAttribute("userLoginForm", loginVO);
 	}
 
+	/*
+	 *	회원가입 완료 
+	 * 
+	 */
+	@GetMapping(value = "/register/check/main")
+	public String main() {
+		
+		return "redirect:/status/success";
+	}
 }
