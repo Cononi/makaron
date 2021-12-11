@@ -68,8 +68,9 @@
 
 				<!-- order -->
 				<div class="address">
-					<span style="float:left">
-						<h3><b>배송지 관리</b></h3>
+					<h3><b>배송지 관리</b></h3>
+					<span class="address_description" style="float:left">
+						배송지는 최대 5개까지 등록이 가능합니다.
 					</span> 
 					<span style="float:right">
 						<button class="add_address">+ 새 배송지 추가</button> 

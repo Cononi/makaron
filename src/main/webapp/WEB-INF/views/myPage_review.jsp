@@ -68,8 +68,9 @@
 
 				<!-- order -->
 				<div class="review">
-					<span style="float:left">
-						<h3><b>상품 후기</b></h3>
+					<h3><b>상품 후기</b></h3>
+					<span class="review_description" style="float:left">
+						상품 후기는 구매확정 후 30일간 작성이 가능합니다.
 					</span> 
 					<span style="float:right">
 						<button class="add_address">+ 상품 후기 등록</button> 

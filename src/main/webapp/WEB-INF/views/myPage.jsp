@@ -70,14 +70,16 @@
 				<!-- order -->
 				<div class="order">
 					<h3><b>주문 내역</b></h3>
-					<span class="order_description" style="float:left">지난 3년간의 주문을 조회할 수 있습니다.</span>
+					<span class="order_description" style="float:left">
+						지난 3년간의 주문을 조회할 수 있습니다.
+					</span>
 					<span style="float:right">
-					<select class="order-term">
-						<option id="all">전체기간</option>
-						<option id="y2021">2021년</option>
-						<option id="y2020">2020년</option>
-						<option id="y2019">2019년</option>
-					</select>
+						<select class="order-term">
+							<option id="all">전체기간</option>
+							<option id="y2021">2021년</option>
+							<option id="y2020">2020년</option>
+							<option id="y2019">2019년</option>
+						</select>
 					</span>
 					<br>
 					<hr style="border: solid 1px black;">

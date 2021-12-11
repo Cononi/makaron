@@ -25,8 +25,8 @@ div.myPage
     margin: 10px;
 }
 
-.user_infor a:link, .user_infor a:visited { color: black; }
-.user_infor a:hover { color : #828282; }
+.user_infor a:link, .user_infor a:visited { color: #828282; }
+.user_infor a:hover { color : black; }
 
 
 .myPageMain
@@ -41,7 +41,7 @@ div.myPage
 	margin-top: 50px;
 }
 
-.order_description
+span.order_description, span.address_description, span.review_description, span.question_description
 {
 	color: #aaaaaa;
 }

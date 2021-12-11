@@ -68,9 +68,10 @@
 
 				<!-- order -->
 				<div class="question">
-					<span style="float:left">
-						<h3><b>상품 문의</b></h3>
-					</span> 
+					<h3><b>상품 문의</b></h3>
+					<span class="question_description" style="float:left">
+						도움이 필요하신 경우 문의를 남겨주세요.
+					</span>  
 					<span style="float:right">
 						<button class="add_address">+ 상품 문의 등록</button> 
 					</span>
