@@ -10,6 +10,7 @@ config.properties
 .metadata
 bin/
 tmp/
+log/
 *.tmp
 *.bak
 *.swp
@@ -20,9 +21,13 @@ local.properties
 .recommenders
 .target/
 
+.DS_Store
+
+
 # sbteclipse plugin
 .target
-
+.classpath
+.factorypath
 # Package Files #
 *.jar
 *.war
@@ -34,3 +39,8 @@ local.properties
 
 # STS (Spring Tool Suite)
 .springBeans
+
+
+### Eclipse Patch ###
+# Eclipse Core
+.project
