@@ -44,3 +44,11 @@ local.properties
 ### Eclipse Patch ###
 # Eclipse Core
 .project
+
+### Maven ###
+target/
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
