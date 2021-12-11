@@ -37,4 +37,4 @@
 
 <%@ include file="./includes/footer.jsp"%>
 <!-- login -->
-<script src="resources/js/login.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/login.js"></script>

@@ -39,6 +39,11 @@
 		    <mapping path="/register"/>
 		    <beans:ref bean="RegisterInterceptor"/>
 		  </interceptor>
+		  <interceptor>
+		    <!-- login 인증이 필요한 URI 들 -->
+		    <mapping path="/status/success"/>
+		    <beans:ref bean="RegisterSuccessInterceptor"/>
+		  </interceptor>
 		   <interceptor>
 		    <!-- login 인증이 필요한 URI 들 -->
 		    <mapping path="/userpage"/>
@@ -46,6 +51,7 @@
 		    <mapping path="/sboard/remove"/>
 		    <beans:ref bean="authInterceptor"/>
 		  </interceptor>
+		  
 	</interceptors>
 
 </beans:beans>

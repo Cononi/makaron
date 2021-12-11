@@ -5,27 +5,16 @@
 <%@ include file="./includes/header.jsp"%>
 
 <link rel="stylesheet" type="text/css"
-	href="resources/styles/register.css">
+	href="${pageContext.request.contextPath}/resources/styles/register.css">
 
 <!-- regiset -->
 
 <section class="section_register">
 	<div class="register-line">
 		<h2 class="text-center">회원 가입</h2>
-		<form:form modelAttribute="joinUser" action="${pageContext.request.contextPath}/register/check/success">
+		<form:form modelAttribute="joinUser" action="${pageContext.request.contextPath}/status/success">
 			<form:hidden path="id"/>
-			<form:hidden path="password"/>
 			<form:hidden path="name"/>
-			<form:hidden path="email"/>
-			<form:hidden path="phone"/>
-			<form:hidden path="address_type"/>
-			<form:hidden path="selected_type"/>
-			<form:hidden path="postal_code"/>
-			<form:hidden path="address_base"/>
-			<form:hidden path="address_sub"/>
-			<form:hidden path="birthday"/>
-			<form:hidden path="sex"/>
-			<form:hidden path="category_id"/>
 		</form:form>
 		<form id="register-form">
 			<table class="register-table table table-borderless">
@@ -70,7 +59,7 @@
 				<!-- 이름 체크 -->
 				<tr>
 					<td>
-						<div class="user_name md-3">
+						<div class="user_name_s md-3">
 							<label for="username">이름</label> <input type="text"
 								maxlength="15" class="form-control" id="username" name="name"
 								placeholder="이름">
@@ -271,6 +260,6 @@
 
 <%@ include file="./includes/footer.jsp"%>
 <!-- login -->
-<script src="resources/js/register_check.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/register_check.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

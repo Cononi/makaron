@@ -98,7 +98,7 @@
 */
 const reg = [/^[a-z0-9]{5,16}$/
             ,/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/
-            , /[가-힣]{3,}$/
+            , /[가-힣]{1,}$/
             ,/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
             ,/^01(?:0|1|[6-9])(?:\d{3}|\d{3,4})\d{4}$/
             ,/^(19|20)[\d]{2}$/
@@ -331,7 +331,7 @@ function checkU(e) {
   }
   //------------------
   if($(e).attr('id') == 'username'){
-    var name_check = select('.user_name span')
+    var name_check = select('.user_name_s span')
     var msg = '',
       name = e.value
     nextEl(e).add('active')
@@ -478,9 +478,10 @@ if($(e).attr('name') == 'sex' || $(e).attr('name') == 'category_id'){
 var GetAjaxID = function (val) {
   var msg = ''
    $.ajax({
-			url : 'idCheck/' + val,
-			type : 'get',
+			url : 'idCheck',
+			type : 'post',
 			dataType : 'text',
+      data : {"id" : val},
       async: false,
 			success : function(result){
         if(result.trim() == 'false'){

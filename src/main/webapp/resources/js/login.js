@@ -1,10 +1,10 @@
-// $('.login-form input').focus(function (e) { 
-// 	$($(this).prev().addClass("active"))
-// });
+$('.login-form input').focus(function (e) { 
+	$($(this).prev().addClass("active"))
+});
 
-// $('.login-form input').focusout(function (e) { 
-// 	$($(this).prev().removeClass("active"))
-// });
+$('.login-form input').focusout(function (e) { 
+	$($(this).prev().removeClass("active"))
+});
 
 
 

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.kerberos.ServicePermission;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,7 +22,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jua.makaron.domain.CustomerDTO;
@@ -30,6 +35,7 @@ import com.jua.makaron.service.RegisterCertService;
 import com.jua.makaron.vo.PhoneCertVO;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @RestController
 @AllArgsConstructor
@@ -41,9 +47,8 @@ public class RegisterCertController {
 	
 
 	// 아이디 중복 검증
-	@GetMapping(value = "/idCheck/{id}", produces = "text/plain; charset=UTF-8")
-	public String idCheck(@PathVariable String id) {
-		
+	@PostMapping(value = "/idCheck", produces = "text/plain; charset=UTF-8")
+	public String idCheck(@ModelAttribute("id") String id) {
 		boolean chk = service.idCheck(id);
 		
 		return chk + "";
@@ -57,7 +62,6 @@ public class RegisterCertController {
 		HashMap<String, String> message = new HashMap<>();
 		// 객체를 json으로 바꾸기 위한 객체
 		ObjectMapper objectMapper = new ObjectMapper();
-		
 		// 해당 유효성 검증 실패일 경우
 		if (result.hasErrors()) {
 			// 에러 필드정보를 담을 리스트
@@ -97,6 +101,7 @@ public class RegisterCertController {
 				}
 				// 가입후 인증 세션 삭제
 				session.removeAttribute("phoneCertComplete");
+				service.register(customerDTO);
 			} else {
 				message.put("status", "500");
 				message.put("success", "미인증");
@@ -110,26 +115,6 @@ public class RegisterCertController {
 	
 		
 		
-	}
-	
-	/*
-	 * 회원 가입 완료 페이지
-	 */
-	@PostMapping(value = "/register/check/success")
-	public void success(@ModelAttribute("joinUser") CustomerDTO customerDTO, HttpServletResponse response, HttpServletRequest request) throws IOException {
-	
-		// 회원가입하면서 발생된 세션을 모두 삭제
-		// 세션이 존재하면 null을 반환
-		HttpSession httpSession = request.getSession(false);
-		// 세션을 삭제
-		if(httpSession != null)
-			httpSession.invalidate();
-		
-		// 가입 처리
-		service.register(customerDTO);
-	
-		// 페이지 이동
-		response.sendRedirect(request.getContextPath()+ "/register/check/main");
 	}
 	
 	

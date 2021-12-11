@@ -20,7 +20,9 @@ public class RegisterInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setHeader("Expires", "0"); // Proxies.
 		// 기존 세션을 받아 옵니다.
 		HttpSession session = request.getSession(false);
 		Object userSession = session.getAttribute("login");
