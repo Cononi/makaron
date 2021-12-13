@@ -8,10 +8,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="resources/styles/bootstrap4/bootstrap.min.css">
-<link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="resources/styles/checkout.css">
-<link rel="stylesheet" type="text/css" href="resources/styles/checkout_responsive.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/bootstrap4/bootstrap.min.css">
+<link href="${pageContext.request.contextPath}/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/checkout.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/checkout_responsive.css">
 
 </head>
 <body>

@@ -8,12 +8,19 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 		
 	 <!-- config파일 자동 로드 location="classpath:database.properties"  /!-->
-    <context:property-placeholder location="classpath:/properties/*.properties" /> 
+    <context:property-placeholder location="classpath:/properties/config.properties" /> 
     
 	<!-- Root Context: defines shared resources visible to all other web components -->
 			<!-- Root Context: defines shared resources visible to all other web components -->
 			<!--  		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>  -->
+
+	<import resource="classpath:/config/sms-context.xml"/>
+	
+	<import resource="classpath:/config/mapper-context.xml"/>
+	
+	<import resource="classpath:/config/service-context.xml"/>
+
 
 	<!-- DB 정보 -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
@@ -27,9 +34,4 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<!-- mapper(DB 쿼리 처리) -->
-<!-- 	<mybatis-spring:scan base-package="com.jua.makaron.mapper"/> -->
-	
-	<!-- 서비스 로직 -->
-	<context:component-scan base-package="com.jua.makaron.service"></context:component-scan>
 </beans>

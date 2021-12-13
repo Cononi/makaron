@@ -23,13 +23,13 @@
 10. Testimonials
 12. Footer
 
-
 ******************************/
 
 /***********
 1. Fonts
 ***********/
 
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 @font-face
 {
@@ -63,7 +63,7 @@
 }
 body
 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'jua', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
 	background: #FFFFFF;
@@ -157,7 +157,7 @@ h6::selection
 }
 .form-control
 {
-	color: #db5246;
+	color: #222222;
 }
 section
 {
@@ -249,8 +249,8 @@ section
 }
 .section_subtitle
 {
-	font-size: 14px;
-	font-weight: 600;
+	font-size: 15px;
+	font-weight: 500;
 	color: #937c6f;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;
@@ -1547,4 +1547,64 @@ section
 	font-family: 'Lucida', serif;
 	font-size: 12px;
 	color: #232323;
+}
+
+/* 보드 */
+.check_text_box span:nth-child(n) {
+	display: block;
+	font-size: 12px;
+	margin: 8px 0 0 5px ;
+	font-weight: 400;
+	color: #666;
+  }
+  
+  .check_text_box.active.bad span:nth-child(n) {
+	display: block;
+	font-size: 12px;
+	font-weight: 400;
+	color: #B3130A;
+  }
+  
+  .check_text_box.active.good span:nth-child(n) {
+	display: block;
+	font-size: 12px;
+	font-weight: 400;
+	color: #0f851a;
+  }
+  
+/**
+* check_text_box
+*/
+
+div .check_text_box {
+  display: none;
+}
+
+.check_text_box.active {
+  display: block;
+}
+
+
+/**
+* reg msg
+*/
+div .user_register_msg {
+display: block;
+    margin: 150px 0 0 0;
+    background-color: white;
+    text-align: center;
+}
+
+div .user_register_msg h1 {
+	font-family : 'jua', sans-serif;
+}
+
+div .user_register_msg p {
+	font-family : 'jua', sans-serif;
+	color: #2f2f2f;
+}
+
+div .user_register_msg b {
+	color: chocolate;
+    font-size: 23px;
 }

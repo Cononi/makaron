@@ -4,6 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.jua.makaron.utilities.SignatureCreate;
+import com.jua.makaron.vo.SMSKeyVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -29,5 +35,13 @@ public class JDBCTests {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	
+	@Test
+	public void tses() {
+		SMSKeyVO keyVO = new SMSKeyVO();
+		
+		log.info(keyVO.getAccesskey());
 	}
 }
