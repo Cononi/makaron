@@ -8,7 +8,7 @@
 		FROM customer
 		WHERE id=#{id} AND password=#{password}
 	</select>
-	<!-- 접속 날짜 확인 -->
+	<!-- 접속 날짜 확인하면서 로그인 카운트 리셋 -->
 	<update id="userLastLoginCheck">
 		<![CDATA[
 		UPDATE customer 
@@ -16,10 +16,10 @@
 		WHERE id=#{id}
 		]]>
 	</update>
-	<!-- salt 값 확인 -->
+	<!-- salt 값과 로그인정보를 확인 -->
 	<select id="userSaltGet" resultType="String">
 		<![CDATA[
-		SELECT salt 
+		SELECT salt
 		FROM customer
 		WHERE id=#{id}
 		]]>

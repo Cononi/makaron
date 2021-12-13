@@ -21,4 +21,5 @@ public class LoginVO {
 //	@NotBlank
 //	@Pattern(regexp="[01]")
 	private String autoLoginCheck;
+	
 }

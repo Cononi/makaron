@@ -62,18 +62,20 @@ public class LoginController {
 		// 암호화된 패스워드로 비밀번호 변경
 		loginVO.setPassword(certPassword);
 		
+		// 로그인 카운트와 로그인 차단여부를 검사함.
+		
 		// 로그인 검증 로직후 데이터를 받아옴 검증이 맞다면 True, 아니면 False
 		boolean userLoginPWIDCheck = service.userLoginCheck(loginVO);
 		// 로그인 성공시
 		if(userLoginPWIDCheck) {
-			HashMap<String, Object> s = objectMapper.convertValue(loginVO, HashMap.class);
-			for(String key : s.keySet()) {
-				message.put(key, (String) s.get(key));
-			}
+//			HashMap<String, Object> s = objectMapper.convertValue(loginVO, HashMap.class);
+//			for(String key : s.keySet()) {
+//				message.put(key, (String) s.get(key));
+//			}
 			// 로그인 정보를 보냅니다.
 			message.put("status", "200");
 			request.setAttribute("loginVO", loginVO);
-			// 마지막 로그인 시간을 갱신
+			// 마지막 로그인 시간갱신
 			service.userLastLoginCheck(loginVO.getId());
 		} else {
 			message.put("status", "400");

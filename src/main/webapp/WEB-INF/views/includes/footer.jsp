@@ -37,6 +37,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</footer>
 </div>
 
+
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/popper.js"></script>
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/bootstrap.min.js"></script>
@@ -45,8 +46,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="${pageContext.request.contextPath}/resources/plugins/parallax-js-master/parallax.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-
-
-
 </body>
 </html>
