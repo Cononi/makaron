@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.MypageMapper">
+
+	<!-- 0-1. 유저 이름 얻기 -->
+	<select id="getCustomerName" resultType="String">
+		<![CDATA[
+			SELECT 
+				name 
+			FROM 
+				customer
+			WHERE 
+				id = #{id}
+		]]>
+	</select>
+	
+	
+	<!-- X 0-2. 유저 등급/혜택 얻기 -->
+	<select id="getCustomerRating" resultType="com.jua.makaron.vo.Customer_ratingVO">
+		<![CDATA[
+			SELECT 
+				r.name 
+			FROM
+				customer c, customer_rating r 
+			WHERE 
+				r.code = c.rating_code 
+				AND c.id = #{id}
+		]]>
+	</select>
+<!-- 	VO만들어야함
+	<select id="getCustomerRatingBenefit" resultType="com.jua.makaron.vo.Customer_ratingBenefitVO">
+		<![CDATA[
+			 SELECT 
+			    c.name,
+			    R.*
+			 FROM customer c, 
+			    (
+			    SELECT
+			        r.code, 
+			        r.name AS rating_name, 
+			        rb.standard, 
+			        rb.accrual_rate
+			    FROM
+			        customer_rating r, 
+			        customer_rating_benefit rb
+			    WHERE
+			        r.code = rb.rating_code
+			    ) R
+			WHERE 
+			    c.rating_code = r.code
+			    AND c.id = #{id}
+		]]>
+	</select> -->
+	
+	
+	<!-- 0-3. 유저 적립금 잔액/X내역 얻기 -->
+	<select id="getPointBalance" resultType="int">
+		<![CDATA[
+			SELECT 
+				sum(point_save)-sum(point_used) AS point_balance 
+			FROM 
+				customer_point 
+			WHERE 
+				customer_id = #{id}
+			GROUP BY 
+				customer_id
+		]]>
+	</select>
+<!-- VO 만들어야함
+	<select id="getPointHistory" resultType="com.jua.makaron.vo.PointVO">
+		<![CDATA[ 
+			SELECT
+			    point_save,
+			    point_used
+			FROM
+			    customer_point
+			WHERE
+			    customer_id = #{id}
+		]]>
+	</select> -->
+	
+		
+	<!-- 0-4. 유저 쿠폰 개수/X내역 얻기 -->
+	<select id="getCouponQuantity" resultType="int">
+		<![CDATA[
+			SELECT 
+				count(*) 
+			FROM 
+				customer_coupon_history 
+			WHERE 
+				customer_id = #{id} 
+				AND state = 'N'
+		]]>
+	</select>
+	
+	<select id="getCouponHistory" resultType="com.jua.makaron.vo.CouponVO">
+		<![CDATA[
+			SELECT
+			    pc.info,
+			    pc.discount_rate,
+			    pc.discount_amount,
+			    pc.open_validity_date,
+			    pc.close_validity_date
+			FROM
+			    product_coupon pc, customer_coupon_history cc
+			WHERE 
+			    cc.coupon_no = pc.no
+			    AND cc.customer_id = #{id}
+			    AND cc.state='N'
+			    AND pc.validity_state = 'Y'
+		]]>
+	</select>
+	
+	
+	<!-- 1. 주문내역 불러오기 -->
+	<select id="getOrderList" resultType="com.jua.makaron.vo.OrderListVO">
+		<![CDATA[
+			SELECT
+			   B.*,
+			   cos2.NAME AS STATE_NAME
+			FROM
+			   CUSTOMER_ORDER_STATE cos2,
+			   (
+			   SELECT
+			      A.*,
+			      cod.ADDRESS_BASE,
+			      cod.ADDRESS_SUB,
+			      CONCAT(cod.ADDRESS_BASE, cod.ADDRESS_SUB) AS ADDRESS,
+			      cod.ADDRESS_TYPE,
+			      cod.ORDER_DATE,
+			      cod.CUSTOMER_ORDER_STATE_CODE
+			   FROM 
+			      CUSTOMER_ORDER_DETAILS cod,
+			      (
+			      SELECT 
+			         po.ID AS ORDER_ID,
+			         po.PRODUCT_ID,
+			         po.CUSTOMER_ID,
+			         po.TOTAL_COUNT,
+			         po.TOTAL_PRICE,
+			         po.INVOICE_NUMBER ,
+			         po.ORDER_MESSAGE,
+			         po.COUPON_NO,
+			         p.TITLE,
+			         p.SUB_TITLE,
+			         p.PRICE,
+			         p.SALE_PRICE,
+			         p.price - p.price * (p.SALE_PRICE/100) AS FINAL_PRICE
+			      FROM
+			         PRODUCT_ORDER po,
+			         (
+			         SELECT 
+			            *
+			         FROM
+			            PRODUCT p
+			         ) p
+			      WHERE 
+			         p.ID = po.PRODUCT_ID
+			      ) A
+			   WHERE
+			      cod.ORDER_ID = A.ORDER_ID
+			   ) B
+			WHERE 
+			   cos2.CODE = B.CUSTOMER_ORDER_STATE_CODE
+			   AND customer_id = #{id}
+		]]>
+	</select>
+	
+	
+	<!-- 배송지 우선순위 제일뒤 -->
+	<!-- 2-1. 배송지 불러오기 -->
+	<select id="getShipping" resultType="com.jua.makaron.vo.ShippingVO">
+		<![CDATA[
+			SELECT 
+				* 
+			FROM 
+				customer_address_book 
+			WHERE 
+				customer_id = #{id}
+		]]>
+	</select>
+	
+	<!-- 2-2. 배송지 추가하기 -->
+	<insert id="insertShipping">
+		<![CDATA[
+			INSERT INTO 
+				customer_address_book 
+				(no, Customer_id, Nickname, postal_code, address_base, address_sub, ADDRESS_TYPE) 
+			VALUES 
+				(
+				SEQ_CUSTOMER_ADDRESS_BOOK.nextval, 
+				#{id}, 
+				#{Nickname}, 
+				#{postal_code}, 
+				#{address_base}, 
+				#{address_sub}, 
+				#{address_type}
+				)
+		]]>
+	</insert>
+	
+	
+	<!-- 2-3. 배송지 삭제하기 -->
+	<delete id="deleteShipping">
+		<![CDATA[
+			DELETE 
+			FROM
+				customer_address_book 
+			WHERE 
+				No = #{no}
+		]]>
+	</delete>
+	
+	
+	<!-- 후기 이미지 제거 -->
+	<!-- 3-1. 후기 내역 불러오기 -->
+	<select id="getReviewList" resultType="com.jua.makaron.vo.ReviewVO">
+		<![CDATA[
+			SELECT 
+				pr.no,
+			    p.title,
+			    p.price,
+			    pr.title,
+			    pr.content,
+			    pr.update_date
+			FROM 
+			    product p, product_review pr
+			WHERE 
+			    p.id = pr.product_id
+			    AND pr.customer_id = #{id}
+			    AND pr.is_del = 'N'
+			ORDER BY update_date desc
+		]]>
+	</select>
+	
+	<!-- <select id="" resultType="com.jua.makaron.vo.ReviewVO">
+	<![CDATA[
+			SELECT 
+			    p.title,
+			    p.price,
+			    pr.title,
+			    pr.content,
+			    pr.update_date,
+			    pri.file_name,
+			    pri.file_url
+			FROM 
+			    product p, product_review pr, product_review_image pri
+			WHERE 
+			    p.id = pr.product_id
+			    AND pr.no = pri.product_review_no
+			    AND pr.customer_id = #{id}
+			    AND pr.is_del = 'N'
+			ORDER BY update_date desc
+		]]>
+	</select> -->
+	
+	<!-- 3-2. 후기 작성하기 -->
+	<insert id="insertReview">
+		<![CDATA[
+			INSERT INTO 
+			    product_review 
+			VALUES
+			    (
+			    SEQ_PRODUCT_REVIEW.nextval, 
+			    (
+			    SELECT 
+			    	id 
+			    FROM 
+			    	product 
+			    WHERE 
+			    	title= #{product_title}
+			    ), 
+			   	#{id}, 
+			    #{review_title}, 
+			    #{review_content}, 
+			    '0', 
+			    sysdate, 
+			    sysdate,
+			    'N'
+			    )
+		]]>
+	</insert>
+	
+	<!-- <insert id="insertReViewImage">
+		<![CDATA[
+			INSERT INTO
+			    product_review_image
+			VALUES
+			    (
+			    SEQ_PRODUCT_REVIEW_IMAGE.nextval, 
+			    (
+			    SELECT 
+			        no
+			    FROM
+			        (SELECT 
+			            no 
+			        FROM 
+			            product_review 
+			        WHERE 
+			            customer_id = #{id}
+			        ORDER BY 
+			            update_date desc)
+			    WHERE 
+			        ROWNUM <= 1
+			    ), 
+			    #{file_url}, 
+			    #{file_name}, 
+			    'N', 
+			    sysdate, 
+			    sysdate
+			    )
+		]]>
+	</insert> -->
+	
+	
+	<!-- 3-3. 후기 삭제하기 -->
+	<update id="deleteReview">
+		<![CDATA[
+			UPDATE 
+			    product_review
+			SET 
+			   is_del = 'Y'
+			WHERE
+   				no = #{no}
+		    	)
+		    ]]>
+	</update>
+	
+	
+	<!-- 4-1. 상품 문의 내역 불러오기 -->
+	<select id="getQuestionList" resultType="com.jua.makaron.vo.ReviewVO">
+		<![CDATA[
+			SELECT 
+			    pq.no AS no,
+			    customer_id,
+			    c.name AS customer_name,
+			    p.title AS product_name,
+			    pq.title AS qna_title,
+			    pq.content AS qna_content,
+			    pq.update_date AS qna_update_date
+			FROM 
+			    product_qna pq, product p, customer c
+			WHERE
+			    p.id = pq.product_id
+			    AND c.id = pq.customer_id
+			    AND customer_id = #{id}
+			    AND pq.is_del = 'N'
+		]]>
+	</select>
+	
+	
+	<!-- 4-2. 상품 문의 등록 -->
+	<insert id="insertQuestion">
+		<![CDATA[
+			INSERT INTO 
+			    product_qna
+			VALUES
+			    (
+			    SEQ_PRODUCT_QNA.nextval, 
+			    (
+			    SELECT 
+			    	id 
+			    FROM 
+			    	product 
+			    WHERE 
+			    	title= #{product_title}
+			    ), 
+			   	#{id}, 
+			    #{qna_title}, 
+			    #{qna_content}, 
+			    sysdate, 
+			    sysdate,
+			    'N'
+			    )
+		]]>
+	</insert>
+	
+	
+	<!-- 4-3. 상품 문의 삭제 -->
+	<update id="deleteQuestion">
+		<![CDATA[
+			UPDATE s
+			    product_qna
+			SET 
+			    is_del = 'Y'
+			WHERE
+			    no = #{no}
+		]]>
+	</update>
+</mapper>
