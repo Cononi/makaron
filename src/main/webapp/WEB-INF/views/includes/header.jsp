@@ -37,7 +37,7 @@
 					<li><a href="categories.html">accessories</a></li>
 					<li><a href="categories.html">lingerie</a></li>
 					<li><a href="contact.html">contact</a></li>
-					<li><a href="/notice">notice</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice">notice</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">

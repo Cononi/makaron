@@ -27,10 +27,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		// 기존 세션을 받아 옵니다.
 		HttpSession session = request.getSession();
 		// 로그인 세션을 받아 옵니다.
-		Object userSession = session.getAttribute("login");
+//		Object userSession = session.getAttribute("login");
 		
-		// 로그인중일경우 접근 제한
-		if(userSession != null) {
+		// 로그인 차단 검증
+		if(session.getAttribute("login") != null) {
 			response.sendRedirect(request.getContextPath());
 			return false;
 		} else {

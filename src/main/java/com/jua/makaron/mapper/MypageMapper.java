@@ -1,5 +1,8 @@
 package com.jua.makaron.mapper;
 
+import java.util.List;
+
+import com.jua.makaron.vo.CouponVO;
 import com.jua.makaron.vo.CustomerVO;
 import com.jua.makaron.vo.Customer_ratingVO;
 import com.jua.makaron.vo.OrderListVO;
@@ -9,51 +12,49 @@ import com.jua.makaron.vo.ShippingVO;
 
 public interface MypageMapper {
 	
-	//0-1. À¯Àú ÀÌ¸§ ¾ò±â
-	public CustomerVO getCustomerName(String id);
+	//0-1. ìœ ì € ì´ë¦„ ì–»ê¸°
+	public String getCustomerName(String id);
 	
-	//0-2. À¯Àú µî±Ş ¾ò±â
-	public Customer_ratingVO getCustomerRating(String id);
+	//0-2. ìœ ì € ë“±ê¸‰/í˜œíƒ ì–»ê¸°
+	//public Customer_ratingVO getCustomerRating(String id);
+	//public Customer_ratingBenefitVO getCustomerRaingBenefit(String id); //VOë§Œë“¤ì–´ì•¼í•¨
 	
-	//0-3. À¯Àú Àû¸³±İ ÀÜ¾× ¾ò±â
+	//0-3. ìœ ì € ì ë¦½ê¸ˆ ì”ì•¡/ë‚´ì—­ ì–»ê¸°
 	public int getPointBalance(String id);
+	//public List<PointVO> getPointHistory(String id); //VOë§Œë“¤ì–´ì•¼í•¨
 	
-	//0-4. À¯Àú ÄíÆù °³¼ö ¾ò±â
+	//0-4. ìœ ì € ì¿ í° ê°œìˆ˜/ë‚´ì—­ ì–»ê¸°
 	public int getCouponQuantity(String id);
+	//public List<CouponVO> getCouponHistory(String id);
 	
-	//1. ÁÖ¹®³»¿ª ºÒ·¯¿À±â
-	public OrderListVO getOrderList(String id);
+	//1. ì£¼ë¬¸ë‚´ì—­ ë¶ˆëŸ¬ì˜¤ê¸°
+	public List<OrderListVO> getOrderList(String id);
 	
-	//2-1. ¹è¼ÛÁö ºÒ·¯¿À±â
-	public ShippingVO getShipping(String id);
+	//2-1. ë°°ì†¡ì§€ ë¶ˆëŸ¬ì˜¤ê¸°
+	//public ShippingVO getShipping(String id);
 	
-	//2-2. ¹è¼ÛÁö Ãß°¡ÇÏ±â
-	public void insertShipping(String id);
+	//2-2. ë°°ì†¡ì§€ ì¶”ê°€í•˜ê¸°
+	//public void insertShipping(String id, String Nickname, String postal_code, String address_base, String address_sub, String address_type);
 	
-	//2-3. ¹è¼ÛÁö ¼öÁ¤ÇÏ±â
-	public void updateShipping(String id);
+	//2-3. ë°°ì†¡ì§€ ì‚­ì œí•˜ê¸°
+	//public void deleteShipping(String no);
 	
-	//2-4. ¹è¼ÛÁö »èÁ¦ÇÏ±â
-	public void deleteShipping(String id);
-	
-	//3-1. ÈÄ±â ³»¿ª ºÒ·¯¿À±â
+	//3-1. í›„ê¸° ë‚´ì—­ ë¶ˆëŸ¬ì˜¤ê¸°
 	public ReviewVO getReviewList(String id);
 	
-	//3-2. ÈÄ±â ÀÛ¼ºÇÏ±â
-	public void insertReview(String id);
+	//3-2. í›„ê¸° ì‘ì„±í•˜ê¸° / í›„ê¸° ì´ë¯¸ì§€ ì‘ì„±í•˜ê¸°
+	public void insertReview(String id, String product_title, String review_title, String review_content);
+	//public void insertReviewImage(String id, String file_url, String file_name);
 	
-	//3-3. ÈÄ±â ¼öÁ¤ÇÏ±â
-	public void updateReview(String id);
+	//3-3. í›„ê¸° ì‚­ì œí•˜ê¸°
+	public void deleteReview(String id, String no);
 	
-	//3-4. ÈÄ±â »èÁ¦ÇÏ±â
-	public void deleteReview(String id);
-	
-	//4-1. »óÇ° ¹®ÀÇ ³»¿ª ºÒ·¯¿À±â
+	//4-1. ìƒí’ˆ ë¬¸ì˜ ë‚´ì—­ ë¶ˆëŸ¬ì˜¤ê¸°
 	public QuestionVO getQuestionList(String id);
 	
-	//4-2. »óÇ° ¹®ÀÇ µî·Ï
-	public void insertQuestion(String id);
+	//4-2. ìƒí’ˆ ë¬¸ì˜ ë“±ë¡
+	public void insertQuestion(String id, String product_title, String qna_title, String qna_content);
 	
-	//4-3. »óÇ° ¹®ÀÇ »èÁ¦
+	//4-3. ìƒí’ˆ ë¬¸ì˜ ì‚­ì œ
 	public void deleteQuestion(String id);
 }
