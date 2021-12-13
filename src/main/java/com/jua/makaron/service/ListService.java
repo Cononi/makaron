@@ -7,8 +7,8 @@ import com.jua.makaron.domain.ProductVO;
 
 public interface ListService {
 	
-	public ProductVO get(String title);
-	
+	public ProductVO get(String ID);
+		
 	//목록보기
 	public List<ProductVO> getList();
 	
