@@ -21,9 +21,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/myPage.css">
 
-
-
-
 </head>
 <body>
 
@@ -45,10 +42,11 @@
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form action="/search">
+					<form action="${pageContext.request.contextPath}/list">
 							<input class="search_input" type="search" id="keyword" name="keyword" placeholder="검색어를 입력하세요" />
 							<button id="search_button" type="submit" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
-						</form>
+					</form>
+					
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
@@ -91,10 +89,12 @@
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
 		<div class="logo menu_mm"><a href="index.html">Makaron</a></div>
-		<div class="search">
-			<form action="#">
+		<div class="list">
+			<form action="${pageContext.request.contextPath}/list">
+			
 				<input type="search" class="search_input menu_mm" required="required">
 				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="${pageContext.request.contextPath}/resources/images/magnifying-glass.svg" alt=""></button>
+
 			</form>
 		</div>
 		<nav class="menu_nav">
