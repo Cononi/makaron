@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.MypageMainMapper">
+
+	<!-- 1. 유저 이름 얻기 -->
+	<select id="getCustomerName" resultType="String">
+		<![CDATA[
+			SELECT 
+				name 
+			FROM 
+				customer
+			WHERE 
+				id = #{id}
+		]]>
+	</select>
+	
+	
+	<!-- X 2. 유저 등급/혜택 얻기 -->
+	<!-- 
+	<select id="getCustomerRating" resultType="com.jua.makaron.vo.Customer_ratingVO">
+		<![CDATA[
+			SELECT 
+				r.name 
+			FROM
+				customer c, customer_rating r 
+			WHERE 
+				r.code = c.rating_code 
+				AND c.id = #{id}
+		]]>
+	</select> 
+	-->
+	
+	<!-- VO만들어야함
+	<select id="getCustomerRatingBenefit" resultType="com.jua.makaron.vo.Customer_ratingBenefitVO">
+		<![CDATA[
+			 SELECT 
+			    c.name,
+			    R.*
+			 FROM customer c, 
+			    (
+			    SELECT
+			        r.code, 
+			        r.name AS rating_name, 
+			        rb.standard, 
+			        rb.accrual_rate
+			    FROM
+			        customer_rating r, 
+			        customer_rating_benefit rb
+			    WHERE
+			        r.code = rb.rating_code
+			    ) R
+			WHERE 
+			    c.rating_code = r.code
+			    AND c.id = #{id}
+		]]>
+	</select>
+	-->
+	
+	
+	<!-- 3. 유저 적립금 잔액/X내역 얻기 -->
+	<select id="getPointBalance" resultType="int">
+		<![CDATA[
+			SELECT 
+				sum(point_save)-sum(point_used) AS point_balance 
+			FROM 
+				customer_point 
+			WHERE 
+				customer_id = #{id}
+			GROUP BY 
+				customer_id
+		]]>
+	</select>
+	
+	<!-- VO 만들어야함
+	<select id="getPointHistory" resultType="com.jua.makaron.vo.PointVO">
+		<![CDATA[ 
+			SELECT
+			    point_save,
+			    point_used
+			FROM
+			    customer_point
+			WHERE
+			    customer_id = #{id}
+		]]>
+	</select> 
+	-->
+	
+		
+	<!-- 4. 유저 쿠폰 개수/X내역 얻기 -->
+	<select id="getCouponQuantity" resultType="int">
+		<![CDATA[
+			SELECT 
+				count(*) 
+			FROM 
+				customer_coupon_history 
+			WHERE 
+				customer_id = #{id} 
+				AND state = 'N'
+		]]>
+	</select>
+	
+	<!-- 
+	<select id="getCouponHistory" resultType="com.jua.makaron.vo.CouponVO">
+		<![CDATA[
+			SELECT
+			    pc.info,
+			    pc.discount_rate,
+			    pc.discount_amount,
+			    pc.open_validity_date,
+			    pc.close_validity_date
+			FROM
+			    product_coupon pc, customer_coupon_history cc
+			WHERE 
+			    cc.coupon_no = pc.no
+			    AND cc.customer_id = #{id}
+			    AND cc.state='N'
+			    AND pc.validity_state = 'Y'
+		]]>
+	</select> 
+	-->
+	
+</mapper>

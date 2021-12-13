@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.MypageOrderMapper">
+
+	<!-- 1. 주문내역 불러오기 -->
+	<select id="getOrderList" resultType="com.jua.makaron.vo.OrderListVO">
+		<![CDATA[
+			SELECT
+			   B.*,
+			   cos2.NAME AS STATE_NAME
+			FROM
+			   CUSTOMER_ORDER_STATE cos2,
+			   (
+			   SELECT
+			      A.*,
+			      cod.ADDRESS_BASE,
+			      cod.ADDRESS_SUB,
+			      CONCAT(cod.ADDRESS_BASE, cod.ADDRESS_SUB) AS ADDRESS,
+			      cod.ADDRESS_TYPE,
+			      cod.ORDER_DATE,
+			      cod.CUSTOMER_ORDER_STATE_CODE
+			   FROM 
+			      CUSTOMER_ORDER_DETAILS cod,
+			      (
+			      SELECT 
+			         po.ID AS ORDER_ID,
+			         po.PRODUCT_ID,
+			         po.CUSTOMER_ID,
+			         po.TOTAL_COUNT,
+			         po.TOTAL_PRICE,
+			         po.INVOICE_NUMBER ,
+			         po.ORDER_MESSAGE,
+			         po.COUPON_NO,
+			         p.TITLE,
+			         p.SUB_TITLE,
+			         p.PRICE,
+			         p.SALE_PRICE,
+			         p.price - p.price * (p.SALE_PRICE/100) AS FINAL_PRICE
+			      FROM
+			         PRODUCT_ORDER po,
+			         (
+			         SELECT 
+			            *
+			         FROM
+			            PRODUCT p
+			         ) p
+			      WHERE 
+			         p.ID = po.PRODUCT_ID
+			      ) A
+			   WHERE
+			      cod.ORDER_ID = A.ORDER_ID
+			   ) B
+			WHERE 
+			   cos2.CODE = B.CUSTOMER_ORDER_STATE_CODE
+			   AND customer_id = #{id}
+		]]>
+	</select>
+	
+</mapper>

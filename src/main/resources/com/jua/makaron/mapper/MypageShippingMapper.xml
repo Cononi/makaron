@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.MypageShippingMapper">
+ 
+	<!-- 배송지 우선순위 제일뒤 -->
+	<!-- 1. 배송지 불러오기 -->
+	<!-- 
+	<select id="getShipping" resultType="com.jua.makaron.vo.ShippingVO">
+		<![CDATA[
+			SELECT 
+				* 
+			FROM 
+				customer_address_book 
+			WHERE 
+				customer_id = #{id}
+		]]>
+	</select> 
+	-->
+	
+	<!-- 2. 배송지 추가하기 -->
+	<!-- 
+	<insert id="insertShipping">
+		<![CDATA[
+			INSERT INTO 
+				customer_address_book 
+				(no, Customer_id, Nickname, postal_code, address_base, address_sub, ADDRESS_TYPE) 
+			VALUES 
+				(
+				SEQ_CUSTOMER_ADDRESS_BOOK.nextval, 
+				#{id}, 
+				#{Nickname}, 
+				#{postal_code}, 
+				#{address_base}, 
+				#{address_sub}, 
+				#{address_type}
+				)
+		]]>
+	</insert> 
+	-->
+	
+	
+	<!-- 3. 배송지 삭제하기 -->
+	<!-- 
+	<delete id="deleteShipping">
+		<![CDATA[
+			DELETE 
+			FROM
+				customer_address_book 
+			WHERE 
+				No = #{no}
+		]]>
+	</delete> 
+	-->
+	
+
+
+</mapper>

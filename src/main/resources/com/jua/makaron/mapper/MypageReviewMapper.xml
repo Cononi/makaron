@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.MypageReviewMapper">
+
+	<!-- 후기 이미지 제거 -->
+	<!-- 1. 후기 내역 불러오기 -->
+	<select id="getReviewList" resultType="com.jua.makaron.vo.ReviewVO">
+		<![CDATA[
+			SELECT 
+				pr.no,
+			    p.title,
+			    p.price,
+			    pr.title,
+			    pr.content,
+			    pr.update_date
+			FROM 
+			    product p, product_review pr
+			WHERE 
+			    p.id = pr.product_id
+			    AND pr.customer_id = #{id}
+			    AND pr.is_del = 'N'
+			ORDER BY update_date desc
+		]]>
+	</select>
+	
+	<!-- 
+	<select id="" resultType="com.jua.makaron.vo.ReviewVO">
+	<![CDATA[
+			SELECT 
+			    p.title,
+			    p.price,
+			    pr.title,
+			    pr.content,
+			    pr.update_date,
+			    pri.file_name,
+			    pri.file_url
+			FROM 
+			    product p, product_review pr, product_review_image pri
+			WHERE 
+			    p.id = pr.product_id
+			    AND pr.no = pri.product_review_no
+			    AND pr.customer_id = #{id}
+			    AND pr.is_del = 'N'
+			ORDER BY update_date desc
+		]]>
+	</select> 
+	-->
+	
+	<!-- 2. 후기 작성하기 -->
+	<insert id="insertReview">
+		<![CDATA[
+			INSERT INTO 
+			    product_review 
+			VALUES
+			    (
+			    SEQ_PRODUCT_REVIEW.nextval, 
+			    (
+			    SELECT 
+			    	id 
+			    FROM 
+			    	product 
+			    WHERE 
+			    	title= #{product_title}
+			    ), 
+			   	#{id}, 
+			    #{review_title}, 
+			    #{review_content}, 
+			    '0', 
+			    sysdate, 
+			    sysdate,
+			    'N'
+			    )
+		]]>
+	</insert>
+	
+	<!-- 
+	<insert id="insertReViewImage">
+		<![CDATA[
+			INSERT INTO
+			    product_review_image
+			VALUES
+			    (
+			    SEQ_PRODUCT_REVIEW_IMAGE.nextval, 
+			    (
+			    SELECT 
+			        no
+			    FROM
+			        (SELECT 
+			            no 
+			        FROM 
+			            product_review 
+			        WHERE 
+			            customer_id = #{id}
+			        ORDER BY 
+			            update_date desc)
+			    WHERE 
+			        ROWNUM <= 1
+			    ), 
+			    #{file_url}, 
+			    #{file_name}, 
+			    'N', 
+			    sysdate, 
+			    sysdate
+			    )
+		]]>
+	</insert> 
+	-->
+	
+	
+	<!-- 3. 후기 삭제하기 -->
+	<update id="deleteReview">
+		<![CDATA[
+			UPDATE 
+			    product_review
+			SET 
+			   is_del = 'Y'
+			WHERE
+   				no = #{no}
+		    	)
+		    ]]>
+	</update>
+</mapper>
