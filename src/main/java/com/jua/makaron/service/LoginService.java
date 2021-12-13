@@ -11,4 +11,10 @@ public interface LoginService {
 	
 	// salt값 받아오기
 	public String userSaltGet(LoginVO loginVO);
+	
+	// 로그인 정보 받아오기
+	public LoginVO userLoginCountCheck(String id);
+	
+	// 락 변경
+	public void userLoginLockSet(String login_lock, String id);
 }

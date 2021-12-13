@@ -53,5 +53,15 @@ public class LoginServiceImpl implements LoginService {
 		return loginVO.getPassword();
 	}
 	
+	@Override
+	public void userLoginLockSet(String login_lock, String id) {
+		loginMapper.userLoginLockSet(login_lock,id);
+	}
+	
+	
+	@Override
+	public LoginVO userLoginCountCheck(String id) {
+		return loginMapper.userLoginCountCheck(id);
+	}
 	
 }

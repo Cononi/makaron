@@ -8,18 +8,32 @@
 		FROM customer
 		WHERE id=#{id} AND password=#{password}
 	</select>
-	<!-- 접속 날짜 확인 -->
+	<!-- 접속 날짜 확인하면서 로그인 카운트 리셋 -->
 	<update id="userLastLoginCheck">
 		<![CDATA[
 		UPDATE customer 
-		SET access_date = sysdate
+		SET access_date = sysdate, login_count=0
 		WHERE id=#{id}
 		]]>
 	</update>
-	<!-- salt 값 확인 -->
+	<!-- salt 값-->
 	<select id="userSaltGet" resultType="String">
 		<![CDATA[
-		SELECT salt 
+		SELECT salt
+		FROM customer
+		WHERE id=#{id}
+		]]>
+	</select>
+	<!-- 로그인 차단 설정 -->
+	<update id="userLoginLockSet">
+		UPDATE customer 
+		SET login_lock=#{login_lock}, login_count=login_count+1
+		WHERE id=#{id}
+	</update>
+	<!--  로그인 시도 횟수 차단여부-->
+	<select id="userLoginCountCheck" resultType="com.jua.makaron.vo.LoginVO">
+		<![CDATA[
+		SELECT login_count, login_lock
 		FROM customer
 		WHERE id=#{id}
 		]]>

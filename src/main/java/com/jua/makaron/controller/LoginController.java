@@ -29,14 +29,13 @@ public class LoginController {
 	@PostMapping(value = "/login")
 	public @ResponseBody Object login(@Valid LoginVO loginVO, BindingResult result, HttpServletRequest request, 
 		ModelAndView modelAndView) {
-		// 세션이 존재하지 확인
-		HttpSession session = request.getSession(false);
 		// 에러 내용을 키값으로 파싱
 		HashMap<String, String> message = new HashMap<>();
 
 		// 객체를 키값 형식으로 바꾸거나 JSON형식으로 파싱
 		ObjectMapper objectMapper = new ObjectMapper();
-				
+		
+		LoginVO loginCountLockCheck = service.userLoginCountCheck(loginVO.getId());
 		// 하나로만 처리해서 필요가 없어짐.
 //		// 해당 유효성 검증 실패일 경우
 //		if (result.hasErrors()) {
@@ -61,21 +60,33 @@ public class LoginController {
 		String certPassword = service.userSaltGet(loginVO);
 		// 암호화된 패스워드로 비밀번호 변경
 		loginVO.setPassword(certPassword);
-		
+		// 로그인 카운트와 로그인 차단여부를 검사함.
+		if(loginCountLockCheck!=null && loginCountLockCheck.getLogin_count() < 10) {
+			loginVO.setLogin_lock(loginCountLockCheck.getLogin_lock());
+			if(loginCountLockCheck.getLogin_lock().equals("N")) {
+				service.userLoginLockSet(loginVO.getLogin_lock(), loginVO.getId());
+				}
+			} else {
+				loginVO.setLogin_lock("Y");
+				message.put("status", "400");
+				message.put("loginError", "로그인이 차단되었습니다. 비밀번호 초기화후 진행해주시기 바랍니다.");
+				// 화면으로 에러 메세지 전송
+				request.setAttribute("errorLoginMSG",message);
+			}
 		// 로그인 검증 로직후 데이터를 받아옴 검증이 맞다면 True, 아니면 False
 		boolean userLoginPWIDCheck = service.userLoginCheck(loginVO);
 		// 로그인 성공시
 		if(userLoginPWIDCheck) {
-			HashMap<String, Object> s = objectMapper.convertValue(loginVO, HashMap.class);
-			for(String key : s.keySet()) {
-				message.put(key, (String) s.get(key));
-			}
+//			HashMap<String, Object> s = objectMapper.convertValue(loginVO, HashMap.class);
+//			for(String key : s.keySet()) {
+//				message.put(key, (String) s.get(key));
+//			}
 			// 로그인 정보를 보냅니다.
 			message.put("status", "200");
 			request.setAttribute("loginVO", loginVO);
-			// 마지막 로그인 시간을 갱신
+			// 마지막 로그인 시간과 로그인 카운트 갱신
 			service.userLastLoginCheck(loginVO.getId());
-		} else {
+		} else if(loginVO.getLogin_lock().equals("N")) {
 			message.put("status", "400");
 			message.put("loginError", " 아이디 또는 비밀번호가 잘못 입력 되었습니다. 아이디와 비밀번호를 정확히 입력해 주세요.");
 			// 화면으로 에러 메세지 전ㅅ

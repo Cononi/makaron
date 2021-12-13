@@ -52,7 +52,13 @@ label {
 @media (max-width : 912px) {
 	
 	.login-form input {
-	width: auto;
+	width: 100%;
+	padding-left : 45px;
+}
+@media (max-width : 480px) {
+	
+	.login-form input {
+	width: autopx;
 	padding-left : 45px;
 }
 }

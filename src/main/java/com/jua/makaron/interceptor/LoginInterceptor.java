@@ -25,9 +25,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		
 		// 기존 세션을 받아 옵니다.
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
+		// 로그인 세션을 받아 옵니다.
 		Object userSession = session.getAttribute("login");
-		// 세션이 존재한다면 해당 페이지로감
+		
+		// 로그인중일경우 접근 제한
 		if(userSession != null) {
 			response.sendRedirect(request.getContextPath());
 			return false;
@@ -53,7 +55,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			session.removeAttribute("login");
 		// 로그인 정보를 받아와서 저장
 		LoginVO loginVO = (LoginVO)request.getAttribute("loginVO");
-
+		
 		// 로그인 성공시 로직
 		if (loginVO != null) {
 			// 로그인 세션 매니저 객체 생성 ( 싱글톤 )

@@ -24,7 +24,7 @@ public class CustomerDTO {
 	private String password;
 
 	@NotBlank(message = "X 이름은 필수 입력 값입니다.")
-	@Pattern(regexp="[가-힣]{3,10}", message = "X 최소 3 자, 최대 15 자 그리고 완성된 한글만 입력이 가능합니다.")
+	@Pattern(regexp="^[가-힣]{1,15}$", message = "X 최소 3 자, 최대 15 자 그리고 완성된 한글만 입력이 가능합니다.")
 	private String name;
 
 	@NotBlank(message = "X 이메일은 필수 입력 값입니다.")
@@ -76,4 +76,6 @@ public class CustomerDTO {
 	private String selected_type;
 	
 	private String category_id;
+	
+	
 }
