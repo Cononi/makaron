@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class IndexController {
+
 	
 	@GetMapping("/product")
 	public String product() {
@@ -31,5 +32,4 @@ public class IndexController {
 	public String search() {
 		return "/includes/search";
 	}
-
 }
