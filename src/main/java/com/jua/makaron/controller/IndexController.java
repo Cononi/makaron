@@ -10,7 +10,7 @@ public class IndexController {
 	public String index() {
 		
 		return "index";
-	}
+	}   
 	@GetMapping("/product")
 	public String product() {
 		
@@ -26,4 +26,15 @@ public class IndexController {
 		
 		return "/checkout";
 	}
+	
+	@GetMapping("/notice")
+	public String notice() {
+		return "/includes/notice";
+	}
+	
+	@GetMapping("/search")
+	public String search() {
+		return "/includes/search";
+	}
+
 }

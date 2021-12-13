@@ -20,6 +20,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
 
+
 </head>
 <body>
 
@@ -29,21 +30,22 @@
 
 	<header class="header"> 
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
-			<div class="logo"><a href="#">Makaron</a></div>
+			<div class="logo"><a href="/">Makaron</a></div>
 			<nav class="main_nav">
 				<ul>
 					<li><a href="categories.html">clothes</a></li>
 					<li><a href="categories.html">accessories</a></li>
 					<li><a href="categories.html">lingerie</a></li>
 					<li><a href="contact.html">contact</a></li>
+					<li><a href="/notice">notice</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="${pageContext.request.contextPath}/resources/images/magnifying-glass.svg" alt=""></button>
-					</form>
+					<form action="/search">
+							<input class="search_input" type="search" id="keyword" name="keyword" placeholder="검색어를 입력하세요" />
+							<button id="search_button" type="submit" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
+						</form>
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
@@ -98,6 +100,8 @@
 				<li class="menu_mm"><a href="#">accessories</a></li>
 				<li class="menu_mm"><a href="#">lingerie</a></li>
 				<li class="menu_mm"><a href="#">contact</a></li>
+				<li class="menu_mm"><a href="#">notice</a></li>
 			</ul>
 		</nav>
 	</div>
+</div>
