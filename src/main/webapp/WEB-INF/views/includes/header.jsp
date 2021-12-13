@@ -19,6 +19,9 @@
 <link href="${pageContext.request.contextPath}/resources/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/myPage.css">
+
+
 
 
 </head>

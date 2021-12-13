@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/styles/notice.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/styles/notice.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
