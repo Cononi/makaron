@@ -23,13 +23,6 @@ public class ListServiceImpl implements ListService{
 	}
 
 	@Override
-	public ProductVO get(String title) {
-		
-		log.info("get......"+title);
-		return mapper.read(title);
-	}
-
-	@Override
 	public List<ProductVO> getList() {
 		
 		log.info("getList...........");
@@ -39,6 +32,18 @@ public class ListServiceImpl implements ListService{
 
 	@Override
 	public List<ProductVO> getList(Criteria cri) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProductVO get(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductVO> getListWithPaging(Criteria cri) {
 		// TODO Auto-generated method stub
 		return null;
 	}
