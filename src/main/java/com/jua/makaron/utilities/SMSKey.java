@@ -1,4 +1,4 @@
-package com.jua.makaron.vo;
+package com.jua.makaron.utilities;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -11,9 +11,8 @@ import lombok.ToString;
 @Component
 @Getter
 @Setter
-@ToString
 @PropertySource("classpath:/properties/smskeys.properties")
-public class SMSKeyVO {
+public class SMSKey {
 	
 	@Value("${sms.naver.accesskey}")
 	private String accesskey;

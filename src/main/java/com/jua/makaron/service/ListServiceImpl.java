@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.jua.makaron.domain.Criteria;
-import com.jua.makaron.domain.ProductVO;
+import com.jua.makaron.domain.CriteriaDTO;
 import com.jua.makaron.mapper.ListMapper;
+import com.jua.makaron.vo.ProductVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -32,13 +32,13 @@ public class ListServiceImpl implements ListService {
 	}
 
 	@Override
-	public List<ProductVO> getList(Criteria cri) {
+	public List<ProductVO> getList(CriteriaDTO cri) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ProductVO> getListWithPaging(Criteria cri) {
+	public List<ProductVO> getListWithPaging(CriteriaDTO cri) {
 		// TODO Auto-generated method stub
 		return null;
 	}

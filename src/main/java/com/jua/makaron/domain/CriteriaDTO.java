@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Criteria {
+public class CriteriaDTO {
 	private int pageNum; //페이지 번호
 	private int amount; //페이지당 개수
 	
@@ -15,14 +15,14 @@ public class Criteria {
 	private String keyword; //검색어
 	
 	//기본 생성자를 통한 초기값
-	public Criteria(){
+	public CriteriaDTO(){
 		//pageNum=1;
 		//amount=10;
 		this(1,10);
 	}
 	
 	//값을 넣어서 생성
-	public Criteria(int pageNum, int amount) {
+	public CriteriaDTO(int pageNum, int amount) {
 		this.pageNum = pageNum;
 		this.amount = amount;
 	}

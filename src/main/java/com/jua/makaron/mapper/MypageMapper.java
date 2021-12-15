@@ -2,13 +2,7 @@ package com.jua.makaron.mapper;
 
 import java.util.List;
 
-import com.jua.makaron.vo.CouponVO;
 import com.jua.makaron.vo.CustomerVO;
-import com.jua.makaron.vo.Customer_ratingVO;
-import com.jua.makaron.vo.OrderListVO;
-import com.jua.makaron.vo.QuestionVO;
-import com.jua.makaron.vo.ReviewVO;
-import com.jua.makaron.vo.ShippingVO;
 
 public interface MypageMapper {
 	
@@ -28,7 +22,6 @@ public interface MypageMapper {
 	//public List<CouponVO> getCouponHistory(String id);
 	
 	//1. 주문내역 불러오기
-	public List<OrderListVO> getOrderList(String id);
 	
 	//2-1. 배송지 불러오기
 	//public ShippingVO getShipping(String id);
@@ -40,7 +33,7 @@ public interface MypageMapper {
 	//public void deleteShipping(String no);
 	
 	//3-1. 후기 내역 불러오기
-	public ReviewVO getReviewList(String id);
+
 	
 	//3-2. 후기 작성하기 / 후기 이미지 작성하기
 	public void insertReview(String id, String product_title, String review_title, String review_content);
@@ -50,7 +43,6 @@ public interface MypageMapper {
 	public void deleteReview(String id, String no);
 	
 	//4-1. 상품 문의 내역 불러오기
-	public QuestionVO getQuestionList(String id);
 	
 	//4-2. 상품 문의 등록
 	public void insertQuestion(String id, String product_title, String qna_title, String qna_content);

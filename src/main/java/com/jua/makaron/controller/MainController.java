@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.jua.makaron.domain.CustomerDTO;
-import com.jua.makaron.vo.LoginVO;
+import com.jua.makaron.domain.LoginDTO;
+import com.jua.makaron.vo.CustomerVO;
 
 import lombok.AllArgsConstructor;
 
@@ -33,16 +33,16 @@ public class MainController {
 	 * 가입 페이지
 	 */
 	@GetMapping("/register")
-	public void register(CustomerDTO customerDTO, Model model) {
+	public void register(CustomerVO customerVO, Model model) {
 		// hidden Form 세팅
-		model.addAttribute("joinUser", customerDTO);
+		model.addAttribute("joinUser", customerVO);
 	}
 	
 	/*
 	 * 로그인 페이지
 	 */
 	@GetMapping("/login")
-	public void login(LoginVO loginVO, Model model) {
+	public void login(LoginDTO loginVO, Model model) {
 		// hidden Form 세팅
 		model.addAttribute("userLoginForm", loginVO);
 	}

@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.jua.makaron.utilities.SMSKey;
 import com.jua.makaron.utilities.SignatureCreate;
-import com.jua.makaron.vo.SMSKeyVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -40,7 +40,7 @@ public class JDBCTests {
 	
 	@Test
 	public void tses() {
-		SMSKeyVO keyVO = new SMSKeyVO();
+		SMSKey keyVO = new SMSKey();
 		
 		log.info(keyVO.getAccesskey());
 	}

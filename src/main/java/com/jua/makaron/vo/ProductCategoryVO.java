@@ -12,5 +12,4 @@ public class ProductCategoryVO {
 	private String categori_id;
 	private String name;
 	private String ctg_path;
-	private String icon_name;
 }

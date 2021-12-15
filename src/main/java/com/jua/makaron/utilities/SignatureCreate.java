@@ -16,8 +16,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.jua.makaron.vo.SMSKeyVO;
-
 
 public class SignatureCreate {
 	
@@ -46,7 +44,7 @@ public class SignatureCreate {
 	}
 	
 	
-	public void sendSMS(SMSKeyVO smsKeyVO, String phone, String content) {
+	public void sendSMS(SMSKey smsKeyVO, String phone, String content) {
 		
 		String hostNameUrl = "https://sens.apigw.ntruss.com";     		// 호스트 URL
 		String requestUrl= "/sms/v2/services/";                   		// 요청 URL

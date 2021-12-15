@@ -9,8 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.jua.makaron.domain.LoginDTO;
 import com.jua.makaron.manager.LoginSessionManager;
-import com.jua.makaron.vo.LoginVO;
+import com.jua.makaron.vo.CustomerVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -31,12 +32,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		// 로그인 차단 검증
 		if(session.getAttribute("login") != null) {
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect("/");
 			return false;
 		} else {
 			return true;
 		}
-		
 	}
 	
 	 
@@ -54,31 +54,34 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		if(session != null)
 			session.removeAttribute("login");
 		// 로그인 정보를 받아와서 저장
-		LoginVO loginVO = (LoginVO)request.getAttribute("loginVO");
-		
+		CustomerVO loginDTO = (CustomerVO)request.getAttribute("loginDTO");
+	    // 이전 destination 불러오기
+        // response.sendRedirect("/");        
+        Object dest = session.getAttribute("dest");
+        
 		// 로그인 성공시 로직
-		if (loginVO != null) {
+		if (loginDTO != null) {
 			// 로그인 세션 매니저 객체 생성 ( 싱글톤 )
 			LoginSessionManager loginSessionManager = LoginSessionManager.getInstance();
 			// 로그을 성공한 사용자 id가 있는지 확인
-			HttpSession loginSession = loginSessionManager.getSession(loginVO.getId());
+			HttpSession loginSession = loginSessionManager.getSession(loginDTO.getId());
 			if (loginSession == null) {
 				// 로그인 세션 생성
-				session.setAttribute("login", loginVO);
+				session.setAttribute("login", loginDTO);
 				// 로그인 성공한 사용자 추가
-				loginSessionManager.setSession(loginVO.getId(), session);
+				loginSessionManager.setSession(loginDTO.getId(), session);
 				System.out.println("새로운 접속!!");
 			} else { // 로그인한 사용자가 있다면
 				// 기존 접속자 세션 삭제
-				loginSessionManager.removeSession(loginVO.getId());
+				loginSessionManager.removeSession(loginDTO.getId());
 				// 현재 접속자 로그인 세션 생성
-				session.setAttribute("login", loginVO);
+				session.setAttribute("login", loginDTO);
 				// 로그인 성공한 사용자 추가
-				loginSessionManager.setSession(loginVO.getId(), session);
+				loginSessionManager.setSession(loginDTO.getId(), session);
 				System.out.println("기존 사용자 세션 삭제!!");
 			}
 			// 메인 페이지로 이동
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(dest != null ? (String)dest : "");
 		}
 	}
 	

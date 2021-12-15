@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.jua.makaron.mapper.PhoneCertMapper;
 import com.jua.makaron.utilities.SHA256Util;
-import com.jua.makaron.vo.PhoneCertVO;
+import com.jua.makaron.vo.CustomerPhoneHistoryVO;
 
 import lombok.AllArgsConstructor;
 
@@ -26,7 +26,7 @@ public class PhoneCertServiceImpl implements PhoneCertService {
 	}
 	
 	@Override
-	public String phoneCertInsert(PhoneCertVO phoneCertVO) {
+	public String phoneCertInsert(CustomerPhoneHistoryVO phoneCertVO) {
 		// salt키 생성
 		String salt = SHA256Util.generateSalt();
 		// salt키 저장
@@ -45,7 +45,7 @@ public class PhoneCertServiceImpl implements PhoneCertService {
 	}
 	
 	@Override
-	public PhoneCertVO phoneCertHistoryNumberSuccess(String token) {
+	public CustomerPhoneHistoryVO phoneCertHistoryNumberSuccess(String token) {
 		return phoneCertMapper.phoneCertHistoryNumberSuccess(token);
 	}
 

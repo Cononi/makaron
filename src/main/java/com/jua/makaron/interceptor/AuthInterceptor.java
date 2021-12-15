@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.jua.makaron.domain.LoginDTO;
+
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 	
 	 private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
@@ -35,10 +37,10 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, 
 	    HttpServletResponse response,
 	    Object handler) throws Exception {
-	        
+		
 	    HttpSession session = request.getSession();
-	        
-	    if(session.getAttribute("login") != null) {
+	    
+	    if(session.getAttribute("login") == null) {
 	        
 	        logger.info("current user is not logined");
 	        

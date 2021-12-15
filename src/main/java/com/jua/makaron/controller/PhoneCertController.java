@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jua.makaron.service.PhoneCertService;
 import com.jua.makaron.utilities.SHA256Util;
+import com.jua.makaron.utilities.SMSKey;
 import com.jua.makaron.utilities.SignatureCreate;
-import com.jua.makaron.vo.PhoneCertVO;
-import com.jua.makaron.vo.SMSKeyVO;
+import com.jua.makaron.vo.CustomerPhoneHistoryVO;
 
 import lombok.AllArgsConstructor;
 
@@ -29,7 +29,7 @@ import lombok.AllArgsConstructor;
 public class PhoneCertController {
 
 	//인증 객체
-	private SMSKeyVO smskeys;
+	private SMSKey smskeys;
 	
 	// 휴대폰 인증
 	private PhoneCertService service;
@@ -38,7 +38,7 @@ public class PhoneCertController {
 	 * 회원가입 핸드폰 인증 여부, 조회, 완료 처리
 	 */
 	@RequestMapping(value ="register/phone/check",	produces = "text/plain; charset=UTF-8"  ,method =RequestMethod.POST)
-	public ResponseEntity<String> smsSummit(@ModelAttribute @Valid PhoneCertVO phoneCertVO, HttpServletRequest request, BindingResult result) {
+	public ResponseEntity<String> smsSummit(@ModelAttribute @Valid CustomerPhoneHistoryVO phoneCertVO, HttpServletRequest request, BindingResult result) {
 		
 		// 세션 생성 - 세션이 없으면 null
 		HttpSession session = request.getSession(false);
@@ -88,7 +88,7 @@ public class PhoneCertController {
 	 */
 	@ResponseBody
 	@RequestMapping(value ="register/phone/check/success", produces = "text/plain; charset=UTF-8", method = RequestMethod.POST)
-	public ResponseEntity<String> certSummit(@ModelAttribute @Valid PhoneCertVO token, Model model,  HttpServletRequest request) {
+	public ResponseEntity<String> certSummit(@ModelAttribute @Valid CustomerPhoneHistoryVO token, Model model,  HttpServletRequest request) {
 		// 세션 생성
 		HttpSession session = request.getSession(false);
 		// 인증 만료 및 인증 번호 검증

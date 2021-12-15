@@ -30,7 +30,7 @@
 		 VALUES (SEQ_CUSTOMER_PHONE_HISTORY.nextval, #{phone_no}, #{token}, #{salt})
 	</insert>
 <!-- 인증 검증 -->
-	<select id="phoneCertHistoryNumberSuccess" resultType="com.jua.makaron.vo.PhoneCertVO">
+	<select id="phoneCertHistoryNumberSuccess" resultType="com.jua.makaron.vo.CustomerPhoneHistoryVO">
 	SELECT * 
 	FROM customer_phone_history
 	    WHERE token=#{token}

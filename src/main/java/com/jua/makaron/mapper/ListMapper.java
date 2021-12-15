@@ -2,8 +2,8 @@ package com.jua.makaron.mapper;
 
 import java.util.List;
 
-import com.jua.makaron.domain.ProductVO;
-import com.jua.makaron.domain.Criteria;
+import com.jua.makaron.domain.CriteriaDTO;
+import com.jua.makaron.vo.ProductVO;
 
 public interface ListMapper {
 	
@@ -23,7 +23,7 @@ public interface ListMapper {
 	public List<ProductVO> HighPriceList(String keyword);
 	
 	
-	public List<ProductVO> getListWithPaging(Criteria cri);
+	public List<ProductVO> getListWithPaging(CriteriaDTO cri);
 	
 	
 }
