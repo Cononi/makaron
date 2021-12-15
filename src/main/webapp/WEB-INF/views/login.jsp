@@ -8,7 +8,7 @@
 <!-- All the files that are required -->
 <div class="text-center login-form" style="padding:50px 0">
 
-<form:form modelAttribute="userLoginForm" action="${pageContext.request.contextPath}/login/check" >
+<form:form modelAttribute="userLoginForm" action="${pageContext.request.contextPath}/login" >
 	<form:hidden path="id"/>
 	<form:hidden path="password"/>
 	<form:hidden path="autoLoginCheck"/>
@@ -25,9 +25,10 @@
 	    <i class="fa fa-lock fa-2x login-icon" aria-hidden="true"></i>
 	    <input type="password" class="form-control" id="userpassword" name="password" autocomplete="off">
 	  </div>
-<!-- 	  <div class="form-group">
-      <input type="checkbox" class="" id="exampleCheck1">
-	  </div> -->
+ 	  <div class="form-group auto-logincheck">
+ 	  	 <label for="autologin">자동 로그인</label>	
+     	 <input type="checkbox" class="" id="autologin" name="autoLoginCheck">
+	  </div> 
 	  <div class="check_text_box active bad">
 	  		 <span id="check_text_msg"><c:out value='${errorLoginMSG.loginError}'/></span>
 	  </div>

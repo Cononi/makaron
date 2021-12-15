@@ -2,9 +2,9 @@ package com.jua.makaron.service;
 
 import org.springframework.stereotype.Service;
 
-import com.jua.makaron.domain.CustomerDTO;
 import com.jua.makaron.mapper.RegisterCertMapper;
 import com.jua.makaron.utilities.SHA256Util;
+import com.jua.makaron.vo.CustomerVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -23,7 +23,7 @@ public class RegisterCertServiceImpl implements RegisterCertService{
 	}
 	
 	@Override
-	public int register(CustomerDTO customerDTO) {
+	public int register(CustomerVO customerDTO) {
 		//SHA256 암호화 - Hash 알고리즘 기반
 		//salt 난수 생성
 		String salt = SHA256Util.generateSalt();

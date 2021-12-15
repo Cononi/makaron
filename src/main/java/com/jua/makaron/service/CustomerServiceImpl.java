@@ -3,8 +3,8 @@ package com.jua.makaron.service;
 
 import org.springframework.stereotype.Service;
 
-import com.jua.makaron.domain.CustomerDTO;
 import com.jua.makaron.mapper.CustomerMapper;
+import com.jua.makaron.vo.CustomerVO;
 
 import lombok.AllArgsConstructor;
 
@@ -17,13 +17,13 @@ public class CustomerServiceImpl implements CustomerService {
 	
 
 	@Override
-	public CustomerDTO customerSearch(String customer_id) {
+	public CustomerVO customerSearch(String customer_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int modify(CustomerDTO customerDTO) {
+	public int modify(CustomerVO customerDTO) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

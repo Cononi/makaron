@@ -1,6 +1,6 @@
 package com.jua.makaron.service;
 
-import com.jua.makaron.vo.PhoneCertVO;
+import com.jua.makaron.vo.CustomerPhoneHistoryVO;
 
 public interface PhoneCertService {
 
@@ -11,10 +11,10 @@ public interface PhoneCertService {
 	public String phoneCertHistoryNumber(String phone_no);
 	
 	// 인증 입력
-	public String phoneCertInsert(PhoneCertVO phoneCertVO);
+	public String phoneCertInsert(CustomerPhoneHistoryVO phoneCertVO);
 	
 	// 인증 검증
-	public PhoneCertVO phoneCertHistoryNumberSuccess(String token);
+	public CustomerPhoneHistoryVO phoneCertHistoryNumberSuccess(String token);
 	
 	// 폰 등록 검증
 	public int phoneCertUserError(String phone_no);

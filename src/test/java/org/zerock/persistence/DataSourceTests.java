@@ -19,13 +19,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.jua.makaron.domain.CustomerDTO;
 import com.jua.makaron.service.PhoneCertService;
 import com.jua.makaron.service.RegisterCertService;
 import com.jua.makaron.utilities.SHA256Util;
+import com.jua.makaron.utilities.SMSKey;
 import com.jua.makaron.utilities.SignatureCreate;
-import com.jua.makaron.vo.PhoneCertVO;
-import com.jua.makaron.vo.SMSKeyVO;
+import com.jua.makaron.vo.CustomerVO;
+import com.jua.makaron.vo.CustomerPhoneHistoryVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -38,7 +38,7 @@ public class DataSourceTests {
 	
 
 	@Autowired
-	SMSKeyVO smskeys;
+	SMSKey smskeys;
 	
 	@Autowired
 	RegisterCertService service;
@@ -96,7 +96,7 @@ public class DataSourceTests {
 	//테스트 검증
 	@Test
 	public void Testss() {
-		PhoneCertVO vo = new PhoneCertVO();
+		CustomerPhoneHistoryVO vo = new CustomerPhoneHistoryVO();
 		vo.setPhone_no("01048121565");
 		vo.setToken("123456");
 		serviceP.phoneCertInsert(vo);

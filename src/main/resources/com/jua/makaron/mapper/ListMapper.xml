@@ -5,31 +5,31 @@
 
 <mapper namespace="com.jua.makaron.mapper.ListMapper">
 
-	<select id="getAllList" resultType="com.jua.makaron.domain.ProductVO">
+	<select id="getAllList" resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
 			select title, sub_title, price, sale_price from product order by id;
 		]]>
 	</select>
 
-	<select id="searchAllList" resultType="com.jua.makaron.domain.ProductVO">
+	<select id="searchAllList" resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
 			select title, sub_title, price, sale_price from product where title like '%'||#{keyword}||'%' or sub_title like '%'||#{keyword}||'%' order by id;
 		]]>
 	</select>
 	
-	<select id="PopularList" resultType="com.jua.makaron.domain.ProductVO">
+	<select id="PopularList" resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
 			select title, sub_title, price, sale_price from product where title like '%'||#{keyword}||'%' order by max_count DESC;
 		]]>
 	</select>
 
-	<select id="LowPriceList" resultType="com.jua.makaron.domain.ProductVO">
+	<select id="LowPriceList" resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
 			select title, sub_title, price, sale_price, price - price * (sale_price/100) AS Final_price from product where title like '%'||#{keyword}||'%' order by Final_price desc;
 		]]>
 	</select>
 	
-	<select id="HighPriiceList" resultType="com.jua.makaron.domain.ProductVO">
+	<select id="HighPriiceList" resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
 			select title, sub_title, price, sale_price, price - price * (sale_price/100) AS Final_price from product where title like '%마카롱%' order by Final_price;
 		]]>
@@ -67,7 +67,7 @@
 	</sql>
 
 
-<!-- 	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+<!-- 	<select id="getListWithPaging" resultType="org.zerock.vo.BoardVO">
  	<![CDATA[ 
 	 select *
 	 from(select /*+INDEX_DESC(tbl_board pk_board)*/ 

@@ -1,10 +1,14 @@
 package com.jua.makaron.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jua.makaron.domain.LoginDTO;
 import com.jua.makaron.mapper.LoginMapper;
 import com.jua.makaron.utilities.SHA256Util;
-import com.jua.makaron.vo.LoginVO;
+import com.jua.makaron.vo.CustomerVO;
 
 import lombok.AllArgsConstructor;
 
@@ -16,13 +20,24 @@ public class LoginServiceImpl implements LoginService {
 	
 	/**
 	 * 로그인 서비스
-	 * @return int값을 받아와서 boolean으로 반환
+	 * @return 회원정보 반환
 	 */
 	@Override
-	public boolean userLoginCheck(LoginVO loginVO) {
+	public CustomerVO userLoginCheck(LoginDTO loginDTO) {
+		// 아이디로 회원정보 조회
+		CustomerVO customerDTO = loginMapper.userLoginCheck(loginDTO);
+		if(customerDTO != null) {
+			// 회원 복호화 단서 가져오기
+			String userSalt = customerDTO.getSalt();
+			// 회원의 복호화 단서키와 웹상에서 받은키를 SHA256으로 암호화키 변환
+			loginDTO.setPassword(SHA256Util.getEncrypt(loginDTO.getPassword(), userSalt));
+			// 토큰 비교시 맞으면 회원정보를 반환 아니면 null
+			if(customerDTO.getPassword().equals(loginDTO.getPassword())) {
+				return customerDTO;
+			}
+		} 
 		
-		// 암호화 토큰과 아이디 전송후 반환값을 받음
-		return loginMapper.userLoginCheck(loginVO) == 1 ? true : false;
+		return null;
 	}
 	
 	/**
@@ -34,25 +49,6 @@ public class LoginServiceImpl implements LoginService {
 	}
 	
 	
-	/**
-	 * salt값 받아오기
-	 */
-	@Override
-	public String userSaltGet(LoginVO loginVO) {
-		
-		// 사실 줄여도 무방
-		// 회원의 slat값
-		String userSalt = loginMapper.userSaltGet(loginVO.getId()) == null ? loginVO.getId() : loginMapper.userSaltGet(loginVO.getId());
-		// 회원 비밀번호
-		String password = loginVO.getPassword();
-		// SHA256으로 암호화키 변환
-		String token = SHA256Util.getEncrypt(password, userSalt);
-		// 다시 LoginVO에 비밀번호 저장
-		loginVO.setPassword(token);
-		
-		return loginVO.getPassword();
-	}
-	
 	@Override
 	public void userLoginLockSet(String login_lock, String id) {
 		loginMapper.userLoginLockSet(login_lock,id);
@@ -60,7 +56,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	
 	@Override
-	public LoginVO userLoginCountCheck(String id) {
+	public LoginDTO userLoginCountCheck(String id) {
 		return loginMapper.userLoginCountCheck(id);
 	}
 	

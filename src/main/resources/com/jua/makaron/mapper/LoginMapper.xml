@@ -3,10 +3,10 @@
 <mapper namespace="com.jua.makaron.mapper.LoginMapper">	
 
 	<!-- 로그인 확인 -->
-	<select id="userLoginCheck" resultType="int">
-		SELECT COUNT(*)
+	<select id="userLoginCheck" resultType="com.jua.makaron.vo.CustomerVO">
+		SELECT *
 		FROM customer
-		WHERE id=#{id} AND password=#{password}
+		WHERE id=#{id}
 	</select>
 	<!-- 접속 날짜 확인하면서 로그인 카운트 리셋 -->
 	<update id="userLastLoginCheck">
@@ -16,12 +16,4 @@
 		WHERE id=#{id}
 		]]>
 	</update>
-	<!-- salt 값과 로그인정보를 확인 -->
-	<select id="userSaltGet" resultType="String">
-		<![CDATA[
-		SELECT salt
-		FROM customer
-		WHERE id=#{id}
-		]]>
-	</select>
 </mapper>

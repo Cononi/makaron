@@ -1,4 +1,4 @@
-package com.jua.makaron.vo;
+package com.jua.makaron.domain;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -8,10 +8,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LoginVO {
+public class LoginDTO {
 	
 	@NotBlank
-	@Pattern(regexp="^[a-z0-9!]{5,16}$")
+	@Pattern(regexp="^[a-z0-9]{5,16}$")
 	private String id;
 	
 	@NotBlank
@@ -20,6 +20,6 @@ public class LoginVO {
 	
 //	@NotBlank
 //	@Pattern(regexp="[01]")
-	private String autoLoginCheck;
+	private Boolean autoLoginCheck;
 	
 }
