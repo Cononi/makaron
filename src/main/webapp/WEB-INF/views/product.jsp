@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,7 +122,7 @@
 	</div>
 
 	<!-- Product -->
-
+	
 	<div class="product">
 		<div class="container">
 			<div class="row">
@@ -135,12 +136,13 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="row product_row">
 
 				<!-- Product Image -->
 				<div class="col-lg-7">
 					<div class="product_image">
-						<div class="product_image_large"><img src="resources/images/cake1.jpg" alt=""></div>
+						<div class="product_image_large"><img src="${product.file_url}/${product.file_name}" alt=""></div>
 					<!-- 	<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
 							<div class="product_image_thumbnail" style="background-image:url(images/product_image_1.jpg)" data-image="images/product_image_1.jpg"></div>
 							<div class="product_image_thumbnail" style="background-image:url(images/product_image_2.jpg)" data-image="images/product_image_2.jpg"></div>
@@ -148,12 +150,12 @@
 						</div> -->
 					</div>
 				</div>
-
+		
 				<!-- Product Content -->
 				<div class="col-lg-5">
 					<div class="product_content">
-						<div class="product_name">2 Piece Swimsuit</div>
-						<div class="product_price">$35.00</div>
+						<div class="product_name">${product.product_title}</div>
+						<div class="product_price">${product.product_price}</div>
 						<div class="rating rating_4" data-rating="4">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
@@ -215,7 +217,7 @@
 					</div>
 				</div>
 			</div>
-
+			
 			<!-- Reviews -->
 
 			<div class="row roww">

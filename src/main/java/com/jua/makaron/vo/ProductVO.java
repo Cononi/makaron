@@ -16,4 +16,7 @@ public class ProductVO {
 	private int delivery_charge;
 	private String product_content;
 	private Date product_date;
+	//ch 추가 url, name필요
+	private String file_url;
+	private String file_name;
 }

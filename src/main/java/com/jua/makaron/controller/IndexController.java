@@ -2,9 +2,15 @@ package com.jua.makaron.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jua.makaron.service.ListService;
+import com.jua.makaron.service.ProductService;
+import com.jua.makaron.vo.ProductCategoryVO;
+import com.jua.makaron.vo.ProductImageVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -14,11 +20,14 @@ import lombok.extern.log4j.Log4j;
 @Controller
 public class IndexController {
 
+	
+	private ProductService pro_service;
 	private ListService service;
 	
 	@GetMapping("/product")
-	public String index() {
-		return "/product";
+	public void product(@RequestParam("product_id") String product_id, Model model) {
+		model.addAttribute("product", pro_service.get(product_id));
+		
 	}
 
 	@GetMapping("/cart")

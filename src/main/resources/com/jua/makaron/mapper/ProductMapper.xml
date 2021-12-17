@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jua.makaron.mapper.ProductMapper">
+	<select id="getList" resultType="com.jua.makaron.vo.ProductVO">
+<!-- 		select product_title, product_price, max_count -->
+<!-- 		from product -->
+<!-- 		where product_id= -->
+<!-- 		(select product_id -->
+<!-- 		from product_image -->
+<!-- 		where file_name=#{file_name}) -->
+
+			select product_title, product_price,file_url, file_name,product.product_id
+			from product_Image, product
+			where product.product_id=product_image.product_id
+	</select>
+	<select id="get" resultType="com.jua.makaron.vo.ProductVO">
+ 		select product_title, product_price,file_url, file_name
+from product_Image, product
+where product.product_id=product_image.product_id and product.product_id = #{product_id}
+ 	</select>
+	
+</mapper>
