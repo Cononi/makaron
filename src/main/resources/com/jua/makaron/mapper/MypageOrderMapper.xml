@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.MypageOrderMapper">
+
+	<!-- 1. 주문내역 불러오기  -->
+	<select id="getOrderList" resultType="com.jua.makaron.vo.CustomerOrderDetatilsVO">
+		<![CDATA[
+			SELECT
+			    pi.file_url,
+                pi.file_name, 
+			    p.product_title,
+			    p.product_price,
+			    po.order_id,
+			    po.total_count,
+			    total_count * total_price AS final_price,
+			    cod.order_date,
+			    cosl.state_list_name
+			FROM 
+			    product_image pi,
+			    product p, 
+			    product_order po, 
+			    customer_order_details cod,
+			    customer_order_state_list cosl
+			WHERE 
+			    p.product_id = pi.product_id
+			    AND p.product_id = po.product_id
+			    AND po.order_id = cod.order_id
+			    AND cod.customer_order_state_code = cosl.state_list_code
+			   	AND customer_id = #{id}
+		]]>
+	</select>
+	
+</mapper>
