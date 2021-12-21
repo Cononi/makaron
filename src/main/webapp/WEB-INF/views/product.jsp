@@ -212,7 +212,7 @@
 <!-- 								</ul> -->
 <!-- 							</div> -->
 							
-							<div class="button cart_button"><a href="/cart">장바구니에 추가</a></div>
+							<div class="button cart_button"><a href="/cart?product_id=${product.product_id}">장바구니에 추가</a></div>
 							<div class="button cart_button btn2"><a href="/checkout">결제창가기</a></div>
 							
 						</div>

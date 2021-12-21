@@ -34,8 +34,8 @@ public class IndexController {
 	}
 
 	@GetMapping("/cart")
-	public String cart() {
-		
+	public String cart(@RequestParam("product_id") String product_id, Model model) {
+		model.addAttribute("product", pro_service.get(product_id));
 		return "/cart";
 	}
 	

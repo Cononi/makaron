@@ -171,13 +171,13 @@
 									 </script>
 								</div>
 								<!-- Product Image -->
-								<div class="cart_product_image"><img src="resources/images/cart_product_1.jpg" alt=""></div>
+								<div class="cart_product_image"><img src="${product.file_url}/${product.file_name}" alt="" width="110" height="110"></div>
 								<!-- Product Name -->
-								<div class="cart_product_name"><a href="product.html">2 Piece Swimsuit</a></div>
+								<div class="cart_product_name"><a href="/product?product_id=${product.product_id}">${product.product_title}</a></div>
 								<div class="cart_product_info ml-auto">
 									<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
 										<!-- Product Price -->
-										<div class="cart_product_price">$35.00</div>
+										<div class="cart_product_price">${product.product_price}</div>
 										<!-- Product Quantity -->
 										<div class="product_quantity_container">
 											<div class="product_quantity clearfix">
@@ -189,7 +189,7 @@
 											</div>
 										</div>
 										<!-- Products Total Price -->
-										<div class="cart_product_total">$35.00</div>
+										<div class="cart_product_total">${product.product_price}</div>
 										<!-- Product Cart Trash Button -->
 										
 									</div>
@@ -226,7 +226,7 @@
 						<ul>
 							<li class="d-flex flex-row align-items-center justify-content-start">
 								<div class="cart_total_title">상품금액</div>
-								<div class="cart_total_price ml-auto">$35.00</div>
+								<div class="cart_total_price ml-auto">${product.product_price}</div>
 							</li>
 							<li class="d-flex flex-row align-items-center justify-content-start">
 								<div class="cart_total_title">배송비</div>
@@ -234,7 +234,7 @@
 							</li>
 							<li class="d-flex flex-row align-items-center justify-content-start">
 								<div class="cart_total_title">총금액</div>
-								<div class="cart_total_price ml-auto">$40.00</div>
+								<div class="cart_total_price ml-auto">${product.product_price}</div>
 							</li>
 						</ul>
 						<button onclick="location.href='/checkout'"class="cart_total_button">결제창으로 가기</button>

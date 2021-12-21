@@ -164,8 +164,8 @@
 						<div class="product_content clearfix">
 				
 							<div class="product_info">
-								<div class="product_name"><a href="/product">${pro.product_title}</a></div>
-								<div class="product_price"><a href="/product">${pro.product_price}</a></div>
+								<div class="product_name"><a href="/product?product_id=${pro.product_id}">${pro.product_title}</a></div>
+								<div class="product_price"><a href="/product?product_id=${pro.product_id}">${pro.product_price}</a></div>
 							</div>
 							<div class="product_options">
 								<div class="product_buy product_option"><img src="resources/images/shopping-bag-white.svg" alt=""></div>
