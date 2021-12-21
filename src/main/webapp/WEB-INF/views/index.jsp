@@ -157,7 +157,6 @@
 				<div class="owl-item">					
 				<div class="col-lg-4 product_col">
 					<div class="product">
-						
 						<div class="product_image">
 							<a href="/product?product_id=${pro.product_id}"><img src="${pro.file_url}/${pro.file_name}" alt=""></a>
 						</div>

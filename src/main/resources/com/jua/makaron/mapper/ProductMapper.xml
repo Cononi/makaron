@@ -14,10 +14,28 @@
 			from product_Image, product
 			where product.product_id=product_image.product_id
 	</select>
+	
 	<select id="get" resultType="com.jua.makaron.vo.ProductVO">
- 		select product_title, product_price,file_url, file_name
-from product_Image, product
-where product.product_id=product_image.product_id and product.product_id = #{product_id}
+ 		select product_title, product_price,file_url, file_name, product.product_id
+		from product_Image, product
+		where product.product_id=product_image.product_id and product.product_id = #{product_id}
+ 	</select>
+ 	
+ 	<select id="qna" resultType="com.jua.makaron.vo.ProductVO">
+ 		select qna_no, customer_id, qna_title, create_date, product_title
+		from product_qna, product
+		where product_qna.product_id=product.product_id and product.product_id=#{product_id} and is_del= 'N'
+ 	</select>
+ 	
+ 	<select id="review" resultType="com.jua.makaron.vo.ProductVO">
+ 		select review_no, view_count,product_title, review_title,review_content, customer_id, create_date
+		from product_review, product
+		where product_review.product_id=product.product_id and product.product_id=#{product_id}
  	</select>
 	
+	<select id="product" resultType="com.jua.makaron.vo.ProductVO">
+ 		select product_title
+		from product
+		where product_id =#{product_id}
+ 	</select>
 </mapper>

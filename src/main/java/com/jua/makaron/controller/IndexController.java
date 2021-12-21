@@ -4,6 +4,7 @@ package com.jua.makaron.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,6 +28,8 @@ public class IndexController {
 	@GetMapping("/product")
 	public void product(@RequestParam("product_id") String product_id, Model model) {
 		model.addAttribute("product", pro_service.get(product_id));
+		model.addAttribute("qna", pro_service.qna(product_id));
+		model.addAttribute("review", pro_service.review(product_id));
 		
 	}
 
@@ -51,6 +54,13 @@ public class IndexController {
 	public String list() {
 		return "/includes/list";
 	}
+	@GetMapping("/addQna")
+	public void addQna(@RequestParam("product_id") String product_id, Model model) {
+		model.addAttribute("product", pro_service.product(product_id));
+	}
+	//qna에 작성후 보내는
+//	@PostMapping("/addQna")
+//	public String addQna
 }
 	
 //	@RequestMapping("/list")  //board/list?pageNum=1&amount=10

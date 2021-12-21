@@ -26,5 +26,22 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.get(product_id);
 	}
 	
+	@Override
+	public List<ProductVO> qna(String product_id) {
+		//qna보기
+		return mapper.qna(product_id);
+	}
+	
+	@Override
+	public List<ProductVO> review(String product_id) {
+		//qna보기
+		return mapper.review(product_id);
+	}
+	@Override
+	//상품문의에 보여줄 프로덕트
+	public List<ProductVO> product(String product_id) {
+		return mapper.product(product_id);
+	}
+	
 
 }
