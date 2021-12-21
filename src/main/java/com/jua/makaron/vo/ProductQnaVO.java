@@ -23,5 +23,6 @@ public class ProductQnaVO {
 	// MypageQuestionMapper에서 사용 (상품 문의 리스트 불러오기)
     private String name; // 유저 이름
     private String product_title; // 상품명
+    private String category_name; // 카테고리명
    
 }

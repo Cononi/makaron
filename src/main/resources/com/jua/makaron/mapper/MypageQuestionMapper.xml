@@ -21,7 +21,7 @@
 			    pq.product_id = p.product_id
 			    AND pq.customer_id = c.id
 			    AND customer_id = #{id}
-			    And pq.is_del = 'N'
+			    AND pq.is_del = 'N'
 			ORDER BY 
 			    update_date desc
 		]]>
@@ -29,15 +29,19 @@
 	
 	
 	<!-- 2. 상품 문의 등록 -->
-	<!-- 상품명 불러오기 -->
+	<!-- 카테고리명>상품명 불러오기 -->
 	<select id="allProductName" resultType="com.jua.makaron.vo.ProductQnaVO">
 		<![CDATA[
 			SELECT
-				product_title 
-			FROM
-			    product
-			ORDER BY 
-			    product_title
+            	pc.category_name,
+            	p.product_title
+           	FROM
+             	product p,
+              	product_category pc
+         	WHERE
+               	pc.category_id = p.category_id
+          	ORDER BY 
+               	category_name, product_title
 		]]>
 	</select>
 
@@ -56,6 +60,7 @@
 			    	product 
 			    WHERE 
 			    	product_title= #{qna.product_title}
+			    	AND category_id = (select category_id from product_category where category_name = #{qna.category_name})
 			    ), 
 			   	#{id}, 
 			    #{qna.qna_title}, 
