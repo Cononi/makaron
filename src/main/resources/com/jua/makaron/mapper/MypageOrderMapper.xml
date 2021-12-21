@@ -27,6 +27,8 @@
 			    AND po.order_id = cod.order_id
 			    AND cod.customer_order_state_code = cosl.state_list_code
 			   	AND customer_id = #{id}
+			ORDER BY 
+			    order_date desc
 		]]>
 	</select>
 	

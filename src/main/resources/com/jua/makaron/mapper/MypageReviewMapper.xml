@@ -52,7 +52,7 @@
 	<select id="chooseToWrite" resultType="com.jua.makaron.vo.ProductReviewVO">
 		<![CDATA[
 			SELECT
-			    A.*
+			    *
 			FROM
 			    (
 			    SELECT
@@ -63,9 +63,11 @@
 			    WHERE
 			        po.product_id = p.product_id
 			        AND po.customer_id = #{id}
-			    ) A
+			    )
 			WHERE
-			   A.order_id NOT IN(SELECT order_id from product_review where customer_id = #{id} AND is_del = 'N')
+				order_id NOT IN(SELECT order_id from product_review where customer_id = #{id} AND is_del = 'N')
+			ORDER BY 
+			    order_id
 		]]>
 	</select>
 	

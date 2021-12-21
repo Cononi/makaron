@@ -1,7 +1,6 @@
 package com.jua.makaron.service;
 
 import java.util.List;
-
 import com.jua.makaron.vo.ProductReviewVO;
 
 public interface MypageReviewService {

@@ -21,12 +21,27 @@
 			    pq.product_id = p.product_id
 			    AND pq.customer_id = c.id
 			    AND customer_id = #{id}
-			    And pq.is_del = 'N';
+			    And pq.is_del = 'N'
+			ORDER BY 
+			    update_date desc
 		]]>
 	</select>
 	
 	
 	<!-- 2. 상품 문의 등록 -->
+	<!-- 상품명 불러오기 -->
+	<select id="allProductName" resultType="com.jua.makaron.vo.ProductQnaVO">
+		<![CDATA[
+			SELECT
+				product_title 
+			FROM
+			    product
+			ORDER BY 
+			    product_title
+		]]>
+	</select>
+
+	<!-- 상품 문의 작성하기 -->
 	<insert id="insertQuestion">
 		<![CDATA[
 			INSERT INTO 
@@ -40,11 +55,11 @@
 			    FROM 
 			    	product 
 			    WHERE 
-			    	product_title= #{product_title}
+			    	product_title= #{qna.product_title}
 			    ), 
 			   	#{id}, 
-			    #{qna_title}, 
-			    #{qna_content}, 
+			    #{qna.qna_title}, 
+			    #{qna.qna_content}, 
 			    sysdate, 
 			    sysdate,
 			    'N'

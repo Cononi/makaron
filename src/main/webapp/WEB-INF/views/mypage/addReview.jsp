@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰 작성 페이지</title>
+<title>후기 작성 페이지</title>
 </head>
 <body>
 	<form action="addReview" method="post">
@@ -16,8 +16,8 @@
 		</c:forEach>
 		</select>
 		<br>
-		리뷰 제목 : <input type="text" name="review_title"> <br>
-		리뷰 내용 : <input type="text" name="review_content"> <br>
+		후기 제목 : <input type="text" name="review_title"> <br>
+		후기 내용 : <input type="text" name="review_content"> <br>
 		<button type="reset">다시 작성 하기</button>
 		<button type="submit">작성 하기</button>
 	</form>

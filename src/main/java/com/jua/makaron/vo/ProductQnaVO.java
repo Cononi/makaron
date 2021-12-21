@@ -4,9 +4,11 @@ import java.util.Date;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class ProductQnaVO {
 	private String qna_no;
 	private String product_id;
@@ -21,4 +23,5 @@ public class ProductQnaVO {
 	// MypageQuestionMapper에서 사용 (상품 문의 리스트 불러오기)
     private String name; // 유저 이름
     private String product_title; // 상품명
+   
 }

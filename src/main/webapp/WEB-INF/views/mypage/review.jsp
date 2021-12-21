@@ -67,7 +67,7 @@
 					</div>
 				</div> 
 
-				<!-- order -->
+				<!-- review -->
 				<div class="review">
 					<h3><b>상품 후기</b></h3>
 					<span class="review_description" style="float:left">
@@ -122,7 +122,7 @@
 	<script type="text/javascript">
 		function addReview() {
 			console.log("후기 작성 버튼 눌림");
-			window.open("addReview", "리뷰 작성 페이지", "width=640, height=400");
+			window.open("addReview", "후기 작성 페이지", "width=640, height=400");
 		}
 	</script>
 

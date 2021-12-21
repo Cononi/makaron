@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.jua.makaron.mapper.MypageMainMapper;
 import com.jua.makaron.mapper.MypageQuestionMapper;
 import com.jua.makaron.vo.ProductQnaVO;
 
@@ -14,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 @AllArgsConstructor
-public class MypageQuestionServiceImpl implements MypageQuestionMapper {
+public class MypageQuestionServiceImpl implements MypageQuestionService {
 
 	private MypageQuestionMapper mapper;
 	
@@ -26,7 +25,13 @@ public class MypageQuestionServiceImpl implements MypageQuestionMapper {
 		
 		return mapper.getQuestionList(id);
 	}
-
+	
+	@Override
+	//상품명 불러오기
+	public List<ProductQnaVO> allProductName() {
+		return mapper.allProductName();
+	}
+	
 	@Override
 	//상품 문의 등록
 	public void insertQuestion(String id, ProductQnaVO qna) {
