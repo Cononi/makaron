@@ -4,11 +4,9 @@ import java.util.Date;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 public class ProductQnaVO {
 	private String qna_no;
 	private String product_id;
@@ -24,5 +22,4 @@ public class ProductQnaVO {
     private String name; // 유저 이름
     private String product_title; // 상품명
     private String category_name; // 카테고리명
-   
 }
