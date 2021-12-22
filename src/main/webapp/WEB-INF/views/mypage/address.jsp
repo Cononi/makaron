@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<%@ include file="./includes/header.jsp" %>
+<%@ include file="../includes/header.jsp" %>
 
 <!-- 헤더 끝 -->
 
@@ -59,21 +59,21 @@
 						MyPage Menu
 					</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="myPage">주문 내역</a>
-						<a class="dropdown-item" href="myPage_address">배송지 관리</a>
-						<a class="dropdown-item" href="myPage_review">상품 후기</a>
-						<a class="dropdown-item" href="myPage_question">상품 문의</a>
+						<a class="dropdown-item" href="/mypage/main">주문 내역</a>
+						<a class="dropdown-item" href="/mypage/address">배송지 관리</a>
+						<a class="dropdown-item" href="/mypage/review">상품 후기</a>
+						<a class="dropdown-item" href="/mypage/question">상품 문의</a>
 					</div> 
 				</div> 
 
 				<!-- order -->
-				<div class="review">
-					<h3><b>상품 후기</b></h3>
-					<span class="review_description" style="float:left">
-						상품 후기는 구매확정 후 30일간 작성이 가능합니다.
+				<div class="address">
+					<h3><b>배송지 관리</b></h3>
+					<span class="address_description" style="float:left">
+						배송지는 최대 5개까지 등록이 가능합니다.
 					</span> 
 					<span style="float:right">
-						<button class="add_address">+ 상품 후기 등록</button> 
+						<button class="add_address">+ 새 배송지 추가</button> 
 					</span>
 					<br>
 					<hr style="border: solid 1px black;">
@@ -89,4 +89,4 @@
 	</div> 
 
 <!-- 푸터 시작 -->
-<%@ include file="./includes/footer.jsp" %>
+<%@ include file="../includes/footer.jsp" %>
