@@ -7,12 +7,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductImageVO {
-	private long image_no;
+public class ProductReviewQnaVO {
+	private String qna_no;
 	private String product_id;
-	private String file_url;
-	private String file_name;
-	private String is_del;
+	private String customer_id;
+	private String qna_title;
+	private String qna_content;
 	private Date create_date;
 	private Date update_date;
+	private String is_del;
 }

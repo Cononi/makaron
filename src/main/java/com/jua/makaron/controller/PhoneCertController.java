@@ -39,6 +39,8 @@ public class PhoneCertController {
 	 */
 	@RequestMapping(value ="register/phone/check",	produces = "text/plain; charset=UTF-8"  ,method =RequestMethod.POST)
 	public ResponseEntity<String> smsSummit(@ModelAttribute @Valid CustomerPhoneHistoryVO phoneCertVO, HttpServletRequest request, BindingResult result) {
+		// 세션 생성 - 세션이 없으면 null
+		HttpSession session = request.getSession(false);
 		// 랜덤 객체
 		Random rand = new Random();
 		// 랜덤 암호 생성
@@ -47,8 +49,6 @@ public class PhoneCertController {
 		String numberChange = String.format("%06d", number);
 		// SMS 생성 객체
 		SignatureCreate signatureCreate = new SignatureCreate();
-		// 세션 생성 - 세션이 없으면 null
-		HttpSession session = request.getSession(false);
 		// 인증 횟수 카운팅
 		int count = service.phoneCertHistoryCount(phoneCertVO.getPhone_no());
 		// 인증 회원 조회

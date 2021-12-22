@@ -16,9 +16,11 @@ public class ProductVO {
 	private int delivery_charge;
 	private String product_content;
 	private Date product_date;
-	//ch 추가 url, name필요
+
+	//product_image url추가 - sj
 	private String file_url;
 	private String file_name;
+
 	//ch 추가 qna보여주기위해
 	private String qna_no;
 	private String customer_id;
@@ -29,7 +31,4 @@ public class ProductVO {
 	private String review_title;
 	private String review_content;
 	private String view_count;
-	
-	
-	
 }
