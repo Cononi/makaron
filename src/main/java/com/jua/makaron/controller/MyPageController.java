@@ -44,6 +44,12 @@ public class MyPageController {
 		model.addAttribute("orderList", orderService.getOrderList(customer.getId()));	
 	}
 	
+	@GetMapping("/myPage")
+	public String func1() {
+		
+		return "myPage";
+	}
+
 	//배송지 관리 페이지
 	@GetMapping("/address")
 	public void func2() {
