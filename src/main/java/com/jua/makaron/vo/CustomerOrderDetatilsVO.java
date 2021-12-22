@@ -13,7 +13,7 @@ public class CustomerOrderDetatilsVO {
 	private String order_id;
 	private String customer_order_state_code;
 	private String subject_name;
-	private String subject_mumber;
+	private String subject_number;
 	private String postal_code;
 	private String address_base;
 	private String address_sub;
@@ -23,6 +23,7 @@ public class CustomerOrderDetatilsVO {
 	
 	// 작성자 : 함세연
 	// MypageOrderMapper에서 사용 (주문 내역 리스트 불러오기)
+	private String name; //주문자
 	private String product_title; //상품명
 	private String file_url; //상품 이미지 url
 	private String file_name; //상품 이미지명
@@ -34,3 +35,4 @@ public class CustomerOrderDetatilsVO {
 	private String order_messege; //배송 메세지 
 	private String state_list_name; //주문 상태 (예:배송준비중 등)
 }
+

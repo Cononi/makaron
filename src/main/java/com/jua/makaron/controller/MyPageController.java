@@ -18,6 +18,7 @@ import com.jua.makaron.service.MypageMainService;
 import com.jua.makaron.service.MypageOrderService;
 import com.jua.makaron.service.MypageQuestionService;
 import com.jua.makaron.service.MypageReviewService;
+import com.jua.makaron.vo.CustomerOrderDetatilsVO;
 import com.jua.makaron.vo.CustomerVO;
 import com.jua.makaron.vo.ProductQnaVO;
 import com.jua.makaron.vo.ProductReviewVO;
@@ -38,7 +39,7 @@ public class MyPageController {
 	
 	//메인 페이지 - 주문 내역 조회
 	@GetMapping("/main")
-	public void func1(CriteriaDTO cri, Model model, HttpServletRequest request) {
+	public void order(CriteriaDTO cri, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		CustomerVO customer = (CustomerVO)session.getAttribute("login");
 		String id = customer.getId();
@@ -50,9 +51,19 @@ public class MyPageController {
 		model.addAttribute("pageMaker", new PageDTO(cri, orderService.getOrderQuantity(id)));
 	}
 	
+	//주문 상세 내역 조회 페이지
+	@GetMapping("/orderDetails")
+	public void orderDetails(CustomerOrderDetatilsVO cod, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		CustomerVO customer = (CustomerVO)session.getAttribute("login");
+		String id = customer.getId();
+		
+		model.addAttribute("orderDetails", orderService.getOrderDetails(id, cod));	
+	}
+	
 	//배송지 관리 페이지
 	@GetMapping("/address")
-	public void func2() {
+	public void func() {
 		
 	}
 	

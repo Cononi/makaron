@@ -90,8 +90,8 @@
 					<table class="orderTable" border="1">
 						<thead>
 							<tr>
-								<th>주문일</th>
 								<th>주문번호</th>
+								<th>주문일</th>
 								<th>상품명</th>
 								<th>상품 이미지</th>
 								<th>상품 가격</th>
@@ -103,8 +103,8 @@
 						
 						<c:forEach items="${orderList}" var="list">
 							<tr>
+								<td><a target="blank" href='/mypage/orderDetails?details_id=<c:out value="${list.details_id}"/>'>${list.order_id} </a></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.order_date}" /> </td>
-								<td>${list.order_id} </td>
 								<td>${list.product_title} </td>
 								<td class="product_img"><img src="${list.file_url}/${list.file_name}" style="width:250px; height:300px;" /></td>
 								<td>${list.product_price} </td>
