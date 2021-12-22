@@ -51,6 +51,7 @@ public class MyPageController {
 		model.addAttribute("pageMaker", new PageDTO(cri, orderService.getOrderQuantity(id)));
 	}
 	
+<<<<<<< HEAD
 	//주문 상세 내역 조회 페이지
 	@GetMapping("/orderDetails")
 	public void orderDetails(CustomerOrderDetatilsVO cod, Model model, HttpServletRequest request) {
@@ -61,6 +62,14 @@ public class MyPageController {
 		model.addAttribute("orderDetails", orderService.getOrderDetails(id, cod));	
 	}
 	
+=======
+	@GetMapping("/myPage")
+	public String func1() {
+		
+		return "myPage";
+	}
+
+>>>>>>> f5cd3a6c98d9e8c44e5a2d9294c16cb20ffa1246
 	//배송지 관리 페이지
 	@GetMapping("/address")
 	public void func() {

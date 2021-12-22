@@ -1,8 +1,6 @@
 package com.jua.makaron.controller;
 
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -13,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jua.makaron.domain.LoginDTO;
-import com.jua.makaron.service.ProductCategoryService;
+
+import com.jua.makaron.service.ProductService;
 import com.jua.makaron.vo.CustomerVO;
-import com.jua.makaron.vo.ProductCategoryVO;
 
 import lombok.AllArgsConstructor;
 
@@ -23,12 +21,13 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MainController {
 	
-	private ProductCategoryService category;
+	private ProductService pro_service;
 
-
-	
 	@GetMapping("/")
-	public String home(Model model) {
+	public String home(RedirectAttributes rttr, Model model) {
+		//model.addAttribute("ctg_all_lists",pcs_service.ctg_all_list());
+		model.addAttribute("product", pro_service.getList());
+		model.addAttribute("reviewList", pro_service.mainReviewMax());
 		return "index";
 	}
 	

@@ -34,7 +34,7 @@
 				<ul>
 				<c:forEach items="${category}" var="list">
 					<c:if test="${list.main_category_id == '1000'}">
-						<li class="menu_mm"><a href="#">${list.category_name}</a></li>
+						<li class="menu_mm"><a href="cate?keyword=${list.category_id}">${list.category_name}</a></li>
 					</c:if>
 				</c:forEach>
 					<li><a href="${pageContext.request.contextPath}/notice">notice</a></li>
@@ -78,8 +78,10 @@
 						</div>
 					</a>
 			<div class="user_logreg">
-				<a href="${pageContext.request.contextPath}/login">로그인</a>&nbsp;&nbsp;
-				<a href="${pageContext.request.contextPath}/register">회원가입</a>
+					<c:if test="${login == null}">
+						<a href="${pageContext.request.contextPath}/login">로그인</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/register">회원가입</a>
+					</c:if>
 			</div>
 				</div>
 			</div>

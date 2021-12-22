@@ -81,7 +81,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				System.out.println("기존 사용자 세션 삭제!!");
 			}
 			// 메인 페이지로 이동
-			response.sendRedirect(dest != null ? (String)dest : "");
+			response.sendRedirect(dest != null ? (String)dest : "/");
 		}
 	}
 	

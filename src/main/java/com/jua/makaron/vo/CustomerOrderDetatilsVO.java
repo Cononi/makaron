@@ -20,7 +20,7 @@ public class CustomerOrderDetatilsVO {
 	private String address_type;
 	private Date order_date;
 	private Date confirmation_date;
-	
+
 	// 작성자 : 함세연
 	// MypageOrderMapper에서 사용 (주문 내역 리스트 불러오기)
 	private String name; //주문자

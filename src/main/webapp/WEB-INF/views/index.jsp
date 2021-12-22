@@ -151,26 +151,21 @@
 				</div>
 			</div>
 			<div class="row products_container">
-			
 				<div class="owl-carousel user_slider text-center">
+				<c:forEach var="pro" items="${product}">
 				<!-- Product -->
 				<div class="owl-item">					
 				<div class="col-lg-4 product_col">
 					<div class="product">
 						<div class="product_image">
-							<a href="/product"><img src="resources/images/cake1.jpg" alt=""></a>
+							<a href="/product?product_id=${pro.product_id}"><img src="${pro.file_url}/${pro.file_name}" alt=""></a>
 						</div>
-						<div class="rating rating_4">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-						</div>
+						
 						<div class="product_content clearfix">
+				
 							<div class="product_info">
-								<div class="product_name"><a href="product.html">Woman's Long Dress</a></div>
-								<div class="product_price">$45.00</div>
+								<div class="product_name"><a href="/product">${pro.product_title}</a></div>
+								<div class="product_price"><a href="/product">${pro.product_price}</a></div>
 							</div>
 							<div class="product_options">
 								<div class="product_buy product_option"><img src="resources/images/shopping-bag-white.svg" alt=""></div>
@@ -180,93 +175,68 @@
 					</div>
 				</div>
 				</div>
-
+				</c:forEach>
+				<!--Product -->
+<!-- 				<div class="owl-item"> -->
+<!-- 				<div class="col-lg-4 product_col"> -->
+<!-- 					<div class="product"> -->
+<!-- 						<div class="product_image"> -->
+<!-- 							<a href="/product"><img src="resources/images/cake2.jpg" alt=""></a> -->
+<!-- 						</div> -->
+<!-- 						<div class="rating rating_4"> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 						</div> -->
+<!-- 						<div class="product_content clearfix"> -->
+<!-- 							<div class="product_info"> -->
+<!-- 								<div class="product_name"><a href="product.html"></a></div> -->
+<%-- 								<div class="product_price">${product.product_price}</div> --%>
+<!-- 							</div> -->
+<!-- 							<div class="product_options"> -->
+<!-- 								<div class="product_buy product_option"><img src="resources/images/shopping-bag-white.svg" alt=""></div> -->
+<!-- 								<div class="product_fav product_option">+</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				</div> -->
+				
 				<!-- Product -->
-				<div class="owl-item">
-				<div class="col-lg-4 product_col">
-					<div class="product">
-						<div class="product_image">
-							<a href="/product"><img src="resources/images/cake2.jpg" alt=""></a>
-						</div>
-						<div class="rating rating_4">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-						</div>
-						<div class="product_content clearfix">
-							<div class="product_info">
-								<div class="product_name"><a href="product.html">2 Piece Swimsuit</a></div>
-								<div class="product_price">$35.00</div>
-							</div>
-							<div class="product_options">
-								<div class="product_buy product_option"><img src="resources/images/shopping-bag-white.svg" alt=""></div>
-								<div class="product_fav product_option">+</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</div>
-
-				<!-- Product -->
-											<div class="owl-item">
-				<div class="col-lg-4 product_col">
-					<div class="product">
-						<div class="product_image">
-							<a href="/product"><img src="resources/images/cake3.jpg" alt=""></a>
-						</div>
-						<div class="rating rating_4">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-						</div>
-						<div class="product_content clearfix">
-							<div class="product_info">
-								<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
-								<div class="product_price">$145.00</div>
-							</div>
-							<div class="product_options">
-								<div class="product_buy product_option"><img src="resources/images/shopping-bag-white.svg" alt=""></div>
-								<div class="product_fav product_option">+</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</div>
+<!-- 				<div class="owl-item"> -->
+<!-- 				<div class="col-lg-4 product_col"> -->
+<!-- 					<div class="product"> -->
+<!-- 						<div class="product_image"> -->
+<!-- 							<a href="/product"><img src="resources/images/cake3.jpg" alt=""></a> -->
+<!-- 						</div> -->
+<!-- 						<div class="rating rating_4"> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 							<i class="fa fa-star"></i> -->
+<!-- 						</div> -->
+<!-- 						<div class="product_content clearfix"> -->
+<!-- 							<div class="product_info"> -->
+<!-- 								<div class="product_name"><a href="product.html">Man Blue Jacket</a></div> -->
+<!-- 								<div class="product_price">$145.00</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="product_options"> -->
+<!-- 								<div class="product_buy product_option"><img src="resources/images/shopping-bag-white.svg" alt=""></div> -->
+<!-- 								<div class="product_fav product_option">+</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				</div> -->
 				</div>
 
 			</div>
 		</div>
 	</div>
 
-	<!-- Extra -->
-
-	<div class="extra clearfix">
-		<div class="extra_promo extra_promo_1">
-			<div class="extra_promo_image" style="background-image:url(resources/images/extra_1.jpg)"></div>
-			<div class="extra_1_content d-flex flex-column align-items-center justify-content-center text-center">
-				<div class="extra_1_price">30%<span>off</span></div>
-				<div class="extra_1_title">On all shoes</div>
-				<div class="extra_1_text">*Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra.</div>
-				<div class="button extra_1_button"><a href="checkout.html">check out</a></div>
-			</div>
-		</div>
-		<div class="extra_promo extra_promo_2">
-			<div class="extra_promo_image" style="background-image:url(resources/images/extra_2.jpg)"></div>
-			<div class="extra_2_content d-flex flex-column align-items-center justify-content-center text-center">
-				<div class="extra_2_title">
-					<div class="extra_2_center">&</div>
-					<div class="extra_2_top">Mix</div>
-					<div class="extra_2_bottom">Match</div>
-				</div>
-				<div class="extra_2_text">*Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra.</div>
-				<div class="button extra_2_button"><a href="checkout.html">check out</a></div>
-			</div>
-		</div>
-	</div>
 
 
 
@@ -288,36 +258,16 @@
 					<!-- Testimonials Slider -->
 					<div class="owl-carousel owl-theme test_slider text-center">
 
-						<!-- Testimonial Item -->
-						<div class="owl-item">
-							<div class="test_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
-							<div class="test_content">
-								<div class="test_image"><img src="resources/images/testimonials.jpg" alt=""></div>
-								<div class="test_name">Christinne Smith</div>
-								<div class="test_title">client</div>
+						<c:forEach items="${reviewList}" var="rList">
+							<div class="owl-item">
+								<div class="test_text">“${rList.review_content}”</div>
+								<div class="test_content">
+									<div class="test_image"><a href="/product?product_id=${rList.product_id}"><img src="${rList.file_url}${rList.file_name}" alt=""></a></div>
+									<div class="test_name">${rList.customer_id}</div>
+									<div class="test_title">client</div>
+								</div>
 							</div>
-						</div>
-
-						<!-- Testimonial Item -->
-						<div class="owl-item">
-							<div class="test_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
-							<div class="test_content">
-								<div class="test_image"><img src="resources/images/testimonials.jpg" alt=""></div>
-								<div class="test_name">Christinne Smith</div>
-								<div class="test_title">client</div>
-							</div>
-						</div>
-
-						<!-- Testimonial Item -->
-						<div class="owl-item">
-							<div class="test_text">“Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestibulum ultrices nulla. Aliquam egestas tempor leo.”</div>
-							<div class="test_content">
-								<div class="test_image"><img src="resources/images/testimonials.jpg" alt=""></div>
-								<div class="test_name">Christinne Smith</div>
-								<div class="test_title">client</div>
-							</div>
-						</div>
-
+						</c:forEach>
 					</div>
 
 				</div>

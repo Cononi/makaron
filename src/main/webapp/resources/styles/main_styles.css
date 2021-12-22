@@ -332,7 +332,7 @@ section
 .user_logreg{
 position: absolute;
     width: 100px;
-    top: -35px;
+    top: -25px;
     right: auto;
     display: flex;
 }
