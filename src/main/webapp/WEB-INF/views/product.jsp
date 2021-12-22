@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,7 +123,7 @@
 	</div>
 
 	<!-- Product -->
-
+	
 	<div class="product">
 		<div class="container">
 			<div class="row">
@@ -135,25 +137,27 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="row product_row">
 
 				<!-- Product Image -->
 				<div class="col-lg-7">
 					<div class="product_image">
-						<div class="product_image_large"><img src="resources/images/cake1.jpg" alt=""></div>
-					<!-- 	<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
-							<div class="product_image_thumbnail" style="background-image:url(images/product_image_1.jpg)" data-image="images/product_image_1.jpg"></div>
-							<div class="product_image_thumbnail" style="background-image:url(images/product_image_2.jpg)" data-image="images/product_image_2.jpg"></div>
-							<div class="product_image_thumbnail" style="background-image:url(images/product_image_4.jpg)" data-image="images/product_image_4.jpg"></div>
-						</div> -->
+						<div class="product_image_large"><img src="${product.file_url}/${product.file_name}" alt=""></div>
+<!-- 					 	<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start"> -->
+<!-- 							<div class="product_image_thumbnail" style="background-image:url(images/product_image_1.jpg)" data-image="images/product_image_1.jpg"></div> -->
+<!-- 							<div class="product_image_thumbnail" style="background-image:url(images/product_image_2.jpg)" data-image="images/product_image_2.jpg"></div> -->
+<!-- 							<div class="product_image_thumbnail" style="background-image:url(images/product_image_4.jpg)" data-image="images/product_image_4.jpg"></div> -->
+<!-- 						</div> -->
 					</div>
 				</div>
-
+		
 				<!-- Product Content -->
 				<div class="col-lg-5">
 					<div class="product_content">
-						<div class="product_name">2 Piece Swimsuit</div>
-						<div class="product_price">$35.00</div>
+						<div class="product_name">${product.product_title}</div>
+						<div class="product_price">${product.product_price}</div>
+						
 						<div class="rating rating_4" data-rating="4">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
@@ -162,12 +166,12 @@
 							<i class="fa fa-star"></i>
 						</div>
 						<!-- In Stock -->
-						<div class="in_stock_container">
-							<div class="in_stock in_stock_true"></div>
-							<span>in stock</span>
-						</div>
+<!-- 						<div class="in_stock_container"> -->
+<!-- 							<div class="in_stock in_stock_true"></div> -->
+<!-- 							<span>in stock</span> -->
+<!-- 						</div> -->
 						<div class="product_text">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula.</p>
+							<p>상품간단한 소개</p>
 						</div>
 						<!-- Product Quantity -->
 						<div class="product_quantity_container">
@@ -182,31 +186,31 @@
 						</div>
 						<!-- Product Size -->
 						<div class="product_size_container">
-							<span>Size</span>
-							<div class="product_size">
-								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li>
-										<input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1">
-										<label for="radio_1">XS</label>
-									</li>
-									<li>
-										<input type="radio" id="radio_2" name="product_radio" class="regular_radio radio_2" checked>
-										<label for="radio_2">S</label>
-									</li>
-									<li>
-										<input type="radio" id="radio_3" name="product_radio" class="regular_radio radio_3">
-										<label for="radio_3">M</label>
-									</li>
-									<li>
-										<input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4">
-										<label for="radio_4">L</label>
-									</li>
-									<li>
-										<input type="radio" id="radio_5" name="product_radio" class="regular_radio radio_5">
-										<label for="radio_5">XL</label>
-									</li>
-								</ul>
-							</div>
+<!-- 							<span>Size</span> -->
+<!-- 							<div class="product_size"> -->
+<!-- 								<ul class="d-flex flex-row align-items-start justify-content-start"> -->
+<!-- 									<li> -->
+<!-- 										<input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1"> -->
+<!-- 										<label for="radio_1">XS</label> -->
+<!-- 									</li> -->
+<!-- 									<li> -->
+<!-- 										<input type="radio" id="radio_2" name="product_radio" class="regular_radio radio_2" checked> -->
+<!-- 										<label for="radio_2">S</label> -->
+<!-- 									</li> -->
+<!-- 									<li> -->
+<!-- 										<input type="radio" id="radio_3" name="product_radio" class="regular_radio radio_3"> -->
+<!-- 										<label for="radio_3">M</label> -->
+<!-- 									</li> -->
+<!-- 									<li> -->
+<!-- 										<input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4"> -->
+<!-- 										<label for="radio_4">L</label> -->
+<!-- 									</li> -->
+<!-- 									<li> -->
+<!-- 										<input type="radio" id="radio_5" name="product_radio" class="regular_radio radio_5"> -->
+<!-- 										<label for="radio_5">XL</label> -->
+<!-- 									</li> -->
+<!-- 								</ul> -->
+<!-- 							</div> -->
 							
 							<div class="button cart_button"><a href="/cart">장바구니에 추가</a></div>
 							<div class="button cart_button btn2"><a href="/checkout">결제창가기</a></div>
@@ -215,7 +219,7 @@
 					</div>
 				</div>
 			</div>
-
+			
 			<!-- Reviews -->
 
 			<div class="row roww">
@@ -237,26 +241,56 @@
 					</ul>
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">상세정보</div>
-						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">상품평</div>
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+							<table class="table">
+								<thead>
+								 <tr>
+								 	<th>작성자</th>
+								 	<th>상품점수</th>
+								 	<th>작성일</th>
+								 	<th>상품명</th>
+								 	<th>상품평</th>
+								 </tr>
+								</thead>
+								<tbody>
+								<c:forEach var="rev" items="${review}">
+								<tr>
+									<td>${rev.customer_id}</td>
+									<td>${rev.view_count}</td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${rev.create_date}"/></td>
+									<td>${rev.product_title}</td>
+									<td>${rev.review_title}</td>
+								</tr>
+								</c:forEach>
+								</tbody>
+							</table>
+						</div>
 						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+							<span style="float:right">
+								 <button id="addQna" onclick="addQna()">문의하기</button>
+							</span>
 							<table class="table">
 								<thead>
 								 <tr>
 								 	<th>번호</th>
+								 	<th>상품명</th>
 								 	<th>문의</th>
 								 	<th>작성자</th>
 								 	<th>작성일</th>
-								 	<th>답변</th>
+									
 								 </tr>
 								</thead>
 								<tbody>
+								<c:forEach var="qna1" items="${qna}">
 								<tr>
-									<td>1</td>
-									<td>배송문의</td>
-									<td>test</td>
-									<td>2021.12.10</td>
-									<td>답변완료</td>
+									<td>${qna1.qna_no}</td>
+									<td>${qna1.product_title}</td>
+									<td>${qna1.qna_title}</td>
+									<td>${qna1.customer_id}</td>
+									
+									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qna1.create_date}"/></td>
 								</tr>
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -392,7 +426,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 </div>
-
+<script type="text/javascript">
+	function addQna() {
+		window.open("addQna?product_id=${product.product_id}","문의페이지", "width=650, height=500");
+	}
+</script>
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <script src="resources/styles/bootstrap4/popper.js"></script>
 <script src="resources/styles/bootstrap4/bootstrap.min.js"></script>
