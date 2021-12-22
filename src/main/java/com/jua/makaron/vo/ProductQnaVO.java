@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductReviewQnaVO {
+public class ProductQnaVO {
 	private String qna_no;
 	private String product_id;
 	private String customer_id;
