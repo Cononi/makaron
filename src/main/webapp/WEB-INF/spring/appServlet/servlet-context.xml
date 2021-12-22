@@ -27,6 +27,8 @@
 	<beans:bean id="loginInterceptor" class="com.jua.makaron.interceptor.LoginInterceptor"/>
 	<beans:bean id="authInterceptor"  class="com.jua.makaron.interceptor.AuthInterceptor"/>
 	<beans:bean id="RegisterInterceptor"  class="com.jua.makaron.interceptor.RegisterInterceptor"/>
+	<beans:bean id="categoryInterceptor"  class="com.jua.makaron.interceptor.CategoryInterceptor"/>
+	
 		<interceptors>
 		<!-- login 화면 -->
 		  <interceptor>
@@ -41,9 +43,13 @@
 		   <interceptor>
 		    <!-- login 인증이 필요한 URI 들 -->
 		    <mapping path="/mypage/*"/>
-		    <mapping path="/notice"/>
 		    <mapping path="/sboard/remove"/>
 		    <beans:ref bean="authInterceptor"/>
+		  </interceptor>
+		  <interceptor>
+		    <!-- login 인증이 필요한 URI 들 -->
+		    <mapping path="/**"/>
+		    <beans:ref bean="categoryInterceptor"/>
 		  </interceptor>
 		  
 	</interceptors>

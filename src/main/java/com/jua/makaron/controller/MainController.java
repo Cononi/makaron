@@ -1,6 +1,8 @@
 package com.jua.makaron.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jua.makaron.domain.LoginDTO;
+import com.jua.makaron.service.ProductCategoryService;
 import com.jua.makaron.vo.CustomerVO;
+import com.jua.makaron.vo.ProductCategoryVO;
 
 import lombok.AllArgsConstructor;
 
@@ -19,11 +23,12 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MainController {
 	
+	private ProductCategoryService category;
+
+
 	
 	@GetMapping("/")
-	public String home(RedirectAttributes rttr) {
-		//model.addAttribute("ctg_all_lists",pcs_service.ctg_all_list());
-		
+	public String home(Model model) {
 		return "index";
 	}
 	
@@ -31,12 +36,13 @@ public class MainController {
 	
 	/*
 	 * 가입 페이지
-	 */
+	*/
 	@GetMapping("/register")
 	public void register(CustomerVO customerVO, Model model) {
 		// hidden Form 세팅
 		model.addAttribute("joinUser", customerVO);
 	}
+	
 	
 	/*
 	 * 로그인 페이지
