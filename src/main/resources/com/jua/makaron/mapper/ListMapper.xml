@@ -5,17 +5,26 @@
 
 <mapper namespace="com.jua.makaron.mapper.ListMapper">
 
-	<select id="getAllList"
-		resultType="com.jua.makaron.vo.ProductVO">
+	<select id="getAllList" resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
 			select product_title, product_price, max_count, delivery_charge 
 			from product order by product_id
 		]]>
 	</select>
 
+	<select id="searchList" resultType="com.jua.makaron.vo.ProductVO">
+		<![CDATA[
+			select title, sub_title, price, sale_price from product where title like '%'||#{keyword}||'%' or sub_title like '%'||#{keyword}||'%' order by id;
+		]]>
+	</select>
+	
+	<select id="PopularList" resultType="com.jua.makaron.vo.ProductVO">
+		<![CDATA[
+			select title, sub_title, price, sale_price from product where title like '%'||#{keyword}||'%' order by max_count DESC;
+		]]>
+	</select>
 
-	<select id="searchList"
-		resultType="com.jua.makaron.vo.ProductVO">
+	<select id="LowPriceList" resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
 			select file_url, file_name, product_title, product_price, max_count, delivery_charge
 			from product, product_image
@@ -100,6 +109,7 @@
 		rn,bno,title,content,writer,regdate,updatedate from tbl_board where ]]> <include 
 		refid="criteria" /> <![CDATA[ rownum <=#{pageNum} * #{amount}) where rn>(#{pageNum}-1) 
 		* #{amount} ]]> </select> -->
+
 
 
 </mapper>

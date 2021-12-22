@@ -5,6 +5,7 @@ import java.util.List;
 import com.jua.makaron.vo.ProductVO;
 import com.jua.makaron.domain.CriteriaDTO;
 
+
 public interface ListMapper {
 	
 	//전체조회(검색전)
@@ -24,9 +25,11 @@ public interface ListMapper {
 	
 	//검색 - 가격높은순
 	public List<ProductVO> HighPriceList(String keyword);
-	
-	
+
 	public List<ProductVO> getListPaging(CriteriaDTO cri);
+
+	public List<ProductVO> getListWithPaging(CriteriaDTO cri);
+
 	
 //	//메인페이지 - top3리스트
 //	public List<ProductVO> top3List(CriteriaDTO cri);

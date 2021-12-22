@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jua.makaron.domain.CriteriaDTO;
 import com.jua.makaron.domain.PageDTO;
@@ -18,6 +20,9 @@ import com.jua.makaron.domain.PageMakerDTO;
 import com.jua.makaron.vo.ProductVO;
 import com.jua.makaron.interceptor.AuthInterceptor;
 import com.jua.makaron.service.ListService;
+import com.jua.makaron.service.ProductService;
+import com.jua.makaron.vo.ProductCategoryVO;
+import com.jua.makaron.vo.ProductImageVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -28,12 +33,15 @@ import lombok.extern.log4j.Log4j;
 public class IndexController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
-	
+	private ProductService pro_service;
 	private ListService service;
 	
 	@GetMapping("/product")
-	public String product() {
-		return "/product";
+	public void product(@RequestParam("product_id") String product_id, Model model) {
+		model.addAttribute("product", pro_service.get(product_id));
+		model.addAttribute("qna", pro_service.qna(product_id));
+		model.addAttribute("review", pro_service.review(product_id));
+
 	}
 
 	@GetMapping("/cart")
@@ -90,12 +98,13 @@ public class IndexController {
 		
 		
 	}
-	
-	
-	
-	
-	
-	
+	@GetMapping("/addQna")
+	public void addQna(@RequestParam("product_id") String product_id, Model model) {
+		model.addAttribute("product", pro_service.product(product_id));
+	}
+	//qna에 작성후 보내는
+//	@PostMapping("/addQna")
+//	public String addQna
 }
 	
 //	@RequestMapping("/list")  //board/list?pageNum=1&amount=10

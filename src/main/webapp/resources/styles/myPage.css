@@ -36,6 +36,18 @@ div.myPage
 	text-align: left;
 }
 
+table.orderTable, table.reviewTable, table.questionTable
+{
+	width: 100%;
+	text-align: center;
+}
+
+td.product_img
+{
+	width : 250px;
+	height: 300px;
+}
+
 .order, .address, .review, .question
 {
 	margin-top: 50px;

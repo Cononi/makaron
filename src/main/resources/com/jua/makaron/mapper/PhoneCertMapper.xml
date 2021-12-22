@@ -7,7 +7,7 @@
 <!-- 인증 횟수 조회 -->
 	<select id="phoneCertHistory" resultType="int">
 	<![CDATA[
-		SELECT COUNT(*)  as cnt
+		SELECT COUNT(*) as cnt
 		FROM customer_phone_history
 		WHERE TO_CHAR(sms_date,'yyyy/mm/dd') = TO_CHAR(SYSDATE,'yyyy/mm/dd')
 		AND phone_no = #{phone_no}

@@ -7,9 +7,9 @@ import lombok.Setter;
 @Setter
 public class ProductCategoryVO {
 	private int sort_order;
-	private String state;
-	private String id;
-	private String categori_id;
-	private String name;
+	private String category_state;
+	private String category_id;
+	private String main_category_id;
+	private String category_name;
 	private String ctg_path;
 }

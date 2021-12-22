@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jua.makaron.domain.CriteriaDTO;
-import com.jua.makaron.vo.ProductVO;
 import com.jua.makaron.mapper.ListMapper;
+import com.jua.makaron.vo.ProductVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -35,8 +35,7 @@ public class ListServiceImpl implements ListService {
 		log.info("get total count");
 		return ListMapper.getTotalCount(cri);
 	}
-	
-	
+
 	//검색 - 인기순
 	public List<ProductVO> PopularList(String keyword) {
 		log.info("popularList()...........");
@@ -47,7 +46,18 @@ public class ListServiceImpl implements ListService {
 	public List<ProductVO> LowPriceList(String keyword) {
 		log.info("LowPriceList().............");
 		return LowPriceList(keyword);
-		
+	}
+
+	@Override
+	public List<ProductVO> getList(CriteriaDTO cri) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductVO> getListWithPaging(CriteriaDTO cri) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	//검색 - 가격높은순
