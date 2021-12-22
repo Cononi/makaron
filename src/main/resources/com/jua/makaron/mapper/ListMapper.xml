@@ -5,86 +5,101 @@
 
 <mapper namespace="com.jua.makaron.mapper.ListMapper">
 
-	<select id="getAllList" resultType="com.jua.makaron.vo.ProductVO">
+	<select id="getAllList"
+		resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
-			select title, sub_title, price, sale_price from product order by id;
+			select product_title, product_price, max_count, delivery_charge 
+			from product order by product_id
 		]]>
 	</select>
 
-	<select id="searchAllList" resultType="com.jua.makaron.vo.ProductVO">
+
+	<select id="searchList"
+		resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
-			select title, sub_title, price, sale_price from product where title like '%'||#{keyword}||'%' or sub_title like '%'||#{keyword}||'%' order by id;
+			select file_url, file_name, product_title, product_price, max_count, delivery_charge
+			from product, product_image
+			where product.product_id = product_image.product_id and product_title like '%'||#{keyword}||'%'
+			order by product.product_id
 		]]>
 	</select>
+
+	<!-- 상품 리스트 -->
+	<!-- <select id="searchList" resultType="com.jua.makaron.domain.ProductVO"> 
+		<![CDATA[ select title, sub_title, price, sale_price from product where ]]> 
+		<if test="keyword != null"> title like '%'||#{keyword}||'%' or sub_title 
+		like '%'||#{keyword}||'%' order by id and </if> <![CDATA[ rownum <= #{pageNum} 
+		* #{amount} ) where rn > (#{pageNum} -10 * #{amount} ]]> </select> -->
+
+	<!-- 상품 총 개수 -->
+	<select id="getTotalCount" resultType="int">
+		<![CDATA[
+		select count(*) from product
+		]]>
+	</select>
+
+	<!-- 게시물 목록(페이징) -->
+<!-- 	<select id="getListPaging" resultType="com.jua.makaron.mapper.ListMapper"> -->
 	
-	<select id="PopularList" resultType="com.jua.makaron.vo.ProductVO">
-		<![CDATA[
-			select title, sub_title, price, sale_price from product where title like '%'||#{keyword}||'%' order by max_count DESC;
-		]]>
-	</select>
+<!-- 	<![CDATA[ -->
+		
+<!-- 		select product_title, product_price, max_count, delivery_charge from( -->
+		
+<!-- 		        select /*+INDEX_DESC(product) */ rownum  as product_title, product_price, max_count, delivery_charge -->
+		          
+<!-- 		        from product where rownum <= #{pageNum} * #{amount}  -->
+<!-- 	]]> -->
 
-	<select id="LowPriceList" resultType="com.jua.makaron.vo.ProductVO">
-		<![CDATA[
-			select title, sub_title, price, sale_price, price - price * (sale_price/100) AS Final_price from product where title like '%'||#{keyword}||'%' order by Final_price desc;
-		]]>
-	</select>
+<!-- 	<![CDATA[ -->
+			        
+<!-- 			    ) -->
+			        
+<!-- 		where rn > (#{pageNum} -1) * #{amount} -->
 	
-	<select id="HighPriiceList" resultType="com.jua.makaron.vo.ProductVO">
+<!-- 	]]> -->
+<!-- 	</select> -->
+
+
+
+
+	<select id="PopularList"
+		resultType="com.jua.makaron.vo.ProductVO">
 		<![CDATA[
-			select title, sub_title, price, sale_price, price - price * (sale_price/100) AS Final_price from product where title like '%마카롱%' order by Final_price;
+			select product_title, product_price, max_count, delivery_charge from product where product_title like '%'||#{keyword}||'%' order by max_count DESC
+		]]>
+	</select>
+
+	<select id="LowPriceList"
+		resultType="com.jua.makaron.vo.ProductVO">
+		<![CDATA[
+			select product_title, product_price, max_count, delivery_charge from product where product_title like '%'||#{keyword}||'%' order by product_price desc
+		]]>
+	</select>
+
+	<select id="HighPriiceList"
+		resultType="com.jua.makaron.vo.ProductVO">
+		<![CDATA[
+			select product_title, product_price, max_count, delivery_charge from product where product_title like '%마카롱%' order by product_price
 		]]>
 	</select>
 
 
+<!-- 	<select id="top3List" resultType="com.jua.makaron.co.ProductVO"> -->
+<!-- 		<![CDATA[ -->
+<!-- 		select file_url, file_name, product_title, product_price, max_count, delivery_charge  -->
+<!-- 		from(select * from product, product_image where product.product_id = product_image.product_id -->
+<!-- 		order by product.max_count DESC) where rownum <= 3 -->
+<!-- 		]]> -->
+<!-- 	</select> -->
 
 
 
 
+	<!-- <select id="getListWithPaging" resultType="org.zerock.domain.BoardVO"> 
+		<![CDATA[ select * from(select /*+INDEX_DESC(tbl_board pk_board)*/ rownum 
+		rn,bno,title,content,writer,regdate,updatedate from tbl_board where ]]> <include 
+		refid="criteria" /> <![CDATA[ rownum <=#{pageNum} * #{amount}) where rn>(#{pageNum}-1) 
+		* #{amount} ]]> </select> -->
 
-
-
-
-
-
-	<sql id="criteria">
-		<trim prefixOverrides="OR" prefix="(" suffix=") and">
-			<foreach collection="typeArr" item='type'>
-				<trim prefix="OR">
-					<choose>
-						<when test="type =='T'.toString()">
-							title like '%' || #{keyword} || '%'
-						</when>
-						<when test="type =='C'.toString()">
-							content like '%' || #{keyword} || '%'
-						</when>
-						<when test="type =='W'.toString()">
-							writer like '%' || #{keyword} || '%'
-						</when>
-					</choose>
-				</trim>
-			</foreach>
-		</trim>
-	</sql>
-
-
-<!-- 	<select id="getListWithPaging" resultType="org.zerock.vo.BoardVO">
- 	<![CDATA[ 
-	 select *
-	 from(select /*+INDEX_DESC(tbl_board pk_board)*/ 
-     rownum rn,bno,title,content,writer,regdate,updatedate
-     from tbl_board where 
-     ]]>
-
-		<include refid="criteria" />
-     
-     <![CDATA[ 
-     rownum <=#{pageNum} * #{amount})
-	 where rn>(#{pageNum}-1) * #{amount}	
-	 ]]>
-	</select> -->
 
 </mapper>
-
-
-
-

@@ -16,4 +16,8 @@ public class ProductVO {
 	private int delivery_charge;
 	private String product_content;
 	private Date product_date;
+	
+	//product_image url추가 - sj
+	private String file_url;
+	private String file_name;
 }

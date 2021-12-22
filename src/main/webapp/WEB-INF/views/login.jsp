@@ -36,6 +36,6 @@
 	</form>
 </div>
 
-<%@ include file="./includes/footer.jsp"%>
+0
 <!-- login -->
 <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
