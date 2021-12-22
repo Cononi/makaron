@@ -25,7 +25,6 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @AllArgsConstructor
-@Log4j
 public class LoginController {
 
 	private LoginService service;
