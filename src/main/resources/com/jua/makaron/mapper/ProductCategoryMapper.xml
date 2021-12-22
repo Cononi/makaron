@@ -8,17 +8,16 @@
 	<select id="ctg_all_list" resultType="com.jua.makaron.vo.ProductCategoryVO">
 			SELECT 
 			    sort_order,
-			    state,
-			    id,
-			    categori_id,
-			    name,
-			    SUBSTR(SYS_CONNECT_BY_PATH(name, '>'), 2) as ctg_path,
-			    icon_name
+			    category_state,
+			    category_id,
+			    main_category_id,
+			    category_name,
+			    SUBSTR(SYS_CONNECT_BY_PATH(category_name, '>'), 2) as ctg_path
 			FROM product_category
-			WHERE state = 'Y'
-			START WITH categori_id = 'M'
-			CONNECT BY PRIOR id = categori_id
-			ORDER SIBLINGS BY sort_order, categori_id
+			WHERE category_state = 'Y'
+			START WITH main_category_id = 'M'
+			CONNECT BY PRIOR category_id = main_category_id
+			ORDER SIBLINGS BY sort_order, main_category_id
 	</select>
 
 </mapper>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jua.makaron.mapper.MypageReviewMapper">
+
+	<!-- 후기 이미지 제거 -->
+	<!-- 1. 후기 내역 불러오기 -->
+	<select id="getReviewList" resultType="com.jua.makaron.vo.ProductReviewVO">
+		<![CDATA[
+			SELECT 
+				pr.review_no,
+				p.product_title,
+				p.product_price,
+				pr.review_title,
+				pr.review_content,
+				pr.update_date
+			FROM 
+			    product p, product_review pr
+			WHERE 
+			    p.product_id = pr.product_id
+			    AND pr.customer_id = #{id}
+			    AND pr.is_del = 'N'
+			ORDER BY 
+			    update_date desc
+		]]>
+	</select>
+	
+	<!-- 
+	<select id="" resultType="com.jua.makaron.vo.ReviewVO">
+	<![CDATA[
+			SELECT 
+			    p.title,
+			    p.price,
+			    pr.title,
+			    pr.content,
+			    pr.update_date,
+			    pri.file_name,
+			    pri.file_url
+			FROM 
+			    product p, product_review pr, product_review_image pri
+			WHERE 
+			    p.id = pr.product_id
+			    AND pr.no = pri.product_review_no
+			    AND pr.customer_id = #{id}
+			    AND pr.is_del = 'N'
+			ORDER BY update_date desc
+		]]>
+	</select> 
+	-->
+	
+	<!-- 2. 후기 작성 -->
+	<!-- 작성할 수 있는 후기의 상품명, 주문번호 불러오기 -->
+	<select id="chooseToWrite" resultType="com.jua.makaron.vo.ProductReviewVO">
+		<![CDATA[
+			SELECT
+			    *
+			FROM
+			    (
+			    SELECT
+			        p.product_title,
+			        po.order_id
+			    FROM
+			        product_order po, product p
+			    WHERE
+			        po.product_id = p.product_id
+			        AND po.customer_id = #{id}
+			    )
+			WHERE
+				order_id NOT IN(SELECT order_id from product_review where customer_id = #{id} AND is_del = 'N')
+			ORDER BY 
+			    order_id
+		]]>
+	</select>
+	
+	
+	<!-- 후기 작성 하기 -->
+	<insert id="insertReview">
+		<![CDATA[
+			INSERT INTO 
+			    product_review 
+			VALUES
+			    (
+			    SEQ_PRODUCT_REVIEW.nextval, 
+			    (
+			     SELECT 
+				    product_id
+				FROM 
+				    product_order
+				WHERE 
+				    order_id = #{review.order_id}
+			    ), 
+			   	#{id}, 
+			    #{review.review_title}, 
+			    #{review.review_content}, 
+			    '0', 
+			    sysdate, 
+			    sysdate,
+			    'N',
+			    #{review.order_id}
+			    )
+		]]>
+	</insert>
+	
+	<!-- 
+	<insert id="insertReViewImage">
+		<![CDATA[
+			INSERT INTO
+			    product_review_image
+			VALUES
+			    (
+			    SEQ_PRODUCT_REVIEW_IMAGE.nextval, 
+			    (
+			    SELECT 
+			        no
+			    FROM
+			        (SELECT 
+			            no 
+			        FROM 
+			            product_review 
+			        WHERE 
+			            customer_id = #{id}
+			        ORDER BY 
+			            update_date desc)
+			    WHERE 
+			        ROWNUM <= 1
+			    ), 
+			    #{file_url}, 
+			    #{file_name}, 
+			    'N', 
+			    sysdate, 
+			    sysdate
+			    )
+		]]>
+	</insert> 
+	-->
+	
+	
+	<!-- 3. 후기 삭제하기 -->
+	<update id="deleteReview">
+		<![CDATA[
+			UPDATE 
+			    product_review
+			SET 
+			   is_del = 'Y'
+			WHERE
+   				review_no = #{review_no}
+		    ]]>
+	</update>
+</mapper>

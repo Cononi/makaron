@@ -2,9 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<%@ include file="./includes/header.jsp" %>
+<%@ include file="../includes/header.jsp" %>
 
 <!-- 헤더 끝 -->
 
@@ -19,17 +20,17 @@
 				
 				<div class="item">
 					<span class="user_infor">
-						<h3><b>ㅇㅇㅇ님</b></h3>
+						<h3><b>${customerName} 님,</b></h3>
 						<br>
-						<a href="grade"><h4>ㅇㅇ등급 혜택 보기 ></h4></a>
+						<h4>환영합니다!</h4>
 					</span>
 				</div>
 				
 				<div class="item">
 					<span class="user_infor">
-						<h3><b>적립금</b></h3>
+						<h3><b>회원 등급</b></h3>
 						<br>
-						<a href="point"><h4>0원 ></h4></a>
+						<h4>${customerRating}</h4>
 					</span>
 				</div>
 				
@@ -37,7 +38,7 @@
 					<span class="user_infor">
 						<h3><b>쿠폰</b></h3>
 						<br>
-						<a href="coupon"><h4>0개 ></h4></a>
+						<h4>${customerCoupon} 개</h4>
 					</span>
 				</div>
 			
@@ -60,10 +61,10 @@
 						MyPage Menu
 					</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="myPage">주문 내역</a>
-						<a class="dropdown-item" href="myPage_address">배송지 관리</a>
-						<a class="dropdown-item" href="myPage_review">상품 후기</a>
-						<a class="dropdown-item" href="myPage_question">상품 문의</a>
+						<a class="dropdown-item" href="/mypage/main">주문 내역</a>
+						<a class="dropdown-item" href="/mypage/address">배송지 관리</a>
+						<a class="dropdown-item" href="/mypage/review">상품 후기</a>
+						<a class="dropdown-item" href="/mypage/question">상품 문의</a>
 					</div> 
 				</div> 
 			
@@ -85,8 +86,33 @@
 					<hr style="border: solid 1px black;">
 				</div>
 				
+				<div class="orderList">
+					<table class="orderTable" border="1">
+						<tr>
+							<td>주문일</td>
+							<td>주문번호</td>
+							<td>상품명</td>
+							<td>상품 이미지</td>
+							<td>상품 가격</td>
+							<td>수량</td>
+							<td>최종 가격</td>
+							<td>주문 상태</td>
+						</tr>
+					<c:forEach items="${orderList}" var="list">
+						<tr>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.order_date}" /> </td>
+							<td>${list.order_id} </td>
+							<td>${list.product_title} </td>
+							<td class="product_img"><img src="${list.file_url}/${list.file_name}" style="width:250px; height:300px;" /></td>
+							<td>${list.product_price} </td>
+							<td>${list.total_count} </td>
+							<td>${list.final_price} </td>
+							<td>${list.state_list_name} </td>
+						</tr>
+					</c:forEach>
+					</table>
+				</div>
 				
-			
 			<!-- container  -->
 			</div>
 
@@ -97,9 +123,10 @@
 	</div> 
 		
 <!-- 푸터 시작 -->
-<%@ include file="./includes/footer.jsp" %>
+<%@ include file="../includes/footer.jsp" %>
 					
 					
+
 
 
 
