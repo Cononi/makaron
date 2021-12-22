@@ -38,4 +38,12 @@
 		from product
 		where product_id =#{product_id}
  	</select>
+ 	
+ 	<select id="mainReviewMax" resultType="com.jua.makaron.vo.ProductVO">
+ 	      <![CDATA[
+	 	SELECT customer_id,A.review_content, product_image.file_name, product_image.file_url
+	    FROM (SELECT * FROM product_review ORDER BY view_count DESC) A, product_image
+	    WHERE ROWNUM <= 8 and a.product_id = product_image.product_id
+	    ]]>
+ 	</select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.jua.makaron.mapper;
 
 import java.util.List;
+
 import com.jua.makaron.vo.ProductVO;
 
 
@@ -15,4 +16,7 @@ public interface ProductMapper {
 	public List<ProductVO> review(String product_id);
 	//상품문의에 보여줄 프로덕트
 	public List<ProductVO> product(String product_id);
+	
+	//메인 페이지 덧글 리스트
+	public List<ProductVO> mainReviewMax(); 
 }

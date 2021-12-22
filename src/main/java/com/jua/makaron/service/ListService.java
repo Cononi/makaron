@@ -29,4 +29,7 @@ public interface ListService {
 	
 	//목록보기(페이지 단위로)
 	public List<ProductVO> getListWithPaging(CriteriaDTO cri);
+	
+	//카테고리  페이지
+	public List<ProductVO> categoryList(CriteriaDTO cri);
 }

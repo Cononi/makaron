@@ -29,6 +29,9 @@ public interface ListMapper {
 	public List<ProductVO> getListPaging(CriteriaDTO cri);
 
 	public List<ProductVO> getListWithPaging(CriteriaDTO cri);
+	
+	//카테고리  페이지
+	public List<ProductVO> categoryList(CriteriaDTO cri);
 
 	
 //	//메인페이지 - top3리스트

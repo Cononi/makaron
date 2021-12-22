@@ -18,7 +18,6 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class ListServiceImpl implements ListService {
 	
-	@Autowired
 	private ListMapper ListMapper;
 	
 	//상품 리스트
@@ -64,6 +63,15 @@ public class ListServiceImpl implements ListService {
 	public List<ProductVO> HighPriceList(String keyword) {
 		log.info("HighPriceList().............");
 		return HighPriceList(keyword);
+	}
+	
+	@Override
+	public List<ProductVO> categoryList(CriteriaDTO cri) {
+		System.out.println("#######################################################");
+		System.out.println(cri.getItemName());
+		System.out.println("#######################################################");
+		// TODO Auto-generated method stub
+		return ListMapper.categoryList(cri);
 	}
 	
 	

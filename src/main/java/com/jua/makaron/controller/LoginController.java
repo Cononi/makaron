@@ -63,11 +63,10 @@ public class LoginController {
 
 		
 		// 로그인 카운트와 로그인 차단여부를 검사함. (미완)
-		logger.info(loginDTO.getId());
 		// 로그인 검증 로직후 데이터를 받아옴
 		CustomerVO userLoginPWIDCheck = service.userLoginCheck(loginDTO);
 		// 로그인 성공시
-		if(userLoginPWIDCheck != null) {
+		if(userLoginPWIDCheck != null && userLoginPWIDCheck.getState().equals("Y")) {
 //			HashMap<String, Object> s = objectMapper.convertValue(loginDTO, HashMap.class);
 //			for(String key : s.keySet()) {
 //				message.put(key, (String) s.get(key));

@@ -27,6 +27,7 @@ public class MainController {
 	public String home(RedirectAttributes rttr, Model model) {
 		//model.addAttribute("ctg_all_lists",pcs_service.ctg_all_list());
 		model.addAttribute("product", pro_service.getList());
+		model.addAttribute("reviewList", pro_service.mainReviewMax());
 		return "index";
 	}
 	

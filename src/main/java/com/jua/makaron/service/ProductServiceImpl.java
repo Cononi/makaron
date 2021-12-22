@@ -43,5 +43,10 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.product(product_id);
 	}
 	
+	@Override
+	public List<ProductVO> mainReviewMax() {
+		// TODO Auto-generated method stub
+		return mapper.mainReviewMax();
+	}
 
 }

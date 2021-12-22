@@ -9,9 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -63,6 +64,37 @@ public class IndexController {
 	
 	
 	
+	
+	/* 상품목록 페이지 이동*/
+	@RequestMapping(value = "cate", method = RequestMethod.GET)
+	public void cateGET(@ModelAttribute CriteriaDTO cri, Model model) throws Exception{
+		
+		logger.info(cri.getKeyword());
+		logger.info(cri.getItemName());
+
+		log.info("list: " + cri);
+		model.addAttribute("cate", service.categoryList(cri));
+		//model.addAttribute("pageMaker", new PageDTO(cri, 123));
+		
+		int total = service.getTotal(cri);
+		
+		log.info("total: " + total);
+		
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		
+		/* 상품 리스트 데이터 */
+		List<ProductVO> list = service.categoryList(cri);
+		
+		for(ProductVO lis : list) {
+			logger.info(lis.getProduct_title());
+		}
+		if(!list.isEmpty()) {
+			model.addAttribute("cate", list);
+		}else {
+			model.addAttribute("listCheck", "empty");
+			return;
+		}
+	}
 	
 	/* 상품목록 페이지 이동*/
 	@RequestMapping(value = "list", method = RequestMethod.GET)

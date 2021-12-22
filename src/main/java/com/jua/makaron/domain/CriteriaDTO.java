@@ -13,6 +13,7 @@ public class CriteriaDTO {
 	
 	private String type; //검색종류 ex>TCW or TC  or C
 	private String keyword; //검색어
+	private String itemName; //아이템이름
 	
 	//기본 생성자를 통한 초기값
 	public CriteriaDTO(){

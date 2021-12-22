@@ -55,10 +55,12 @@
 					<div class="search_wrap">
 						<div class="blockquote text-center">
 							<form id="searchFrom"
-								action="${pageContext.request.contextPath}/list" method="get">
+								action="${pageContext.request.contextPath}/cate" method="get">
 								<div class="search_input">
 									<input type="text" name="keyword"
-										value='<c:out value="${pageMaker.cri.keyword}"></c:out>'>
+									value='${pageMaker.cri.keyword}' hidden>
+									<input type="text" name="itemName"
+										value='${pageMaker.cri.itemName}'>
 									<button class='btn search_btn'>검 색</button>
 								</div>
 							</form>
@@ -80,9 +82,9 @@
 										<li class="product_sorting_btn"
 											data-isotope-option='{ "sortBy": "price" }'><span>가격낮은순</span></li>
 										<li class="product_sorting_btn"
-											data-isotope-option='{ "sortBy": "stars" }'><span>가격높은순</span></li>
+											data-isotope-option='{ "sortBy": "price" }'><span>가격높은순</span></li>
 										<li class="product_sorting_btn"
-											data-isotope-option='{ "sortBy": "price" }'><span>인기순</span></li>
+											data-isotope-option='{ "sortBy": "stars" }'><span>인기순</span></li>
 									</ul></li>
 								<li><span class="sorting_text">Show</span> <span
 									class="num_sorting_text">12</span> <i class="fa fa-caret-down"
@@ -106,10 +108,10 @@
 
 					<div class="product_grid">
 
-						<c:forEach items="${list}" var="lists">
+						<c:forEach items="${cate}" var="lists">
 							<div class="product">
 								<div class="product_image">
-									<img src="${lists.file_url}/${lists.file_name}" alt="">
+									<a href="product?product_id=${lists.product_id}"><img src="${lists.file_url}/${lists.file_name}" alt=""></a>
 								</div>
 								<div class="product_content clearfix">
 									<div class="product_info">
@@ -172,6 +174,8 @@
 
 	</div>
 </div>
+
+
 
 
 

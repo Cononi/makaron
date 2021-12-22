@@ -20,4 +20,6 @@ public interface ProductService {
 	
 	//상품문의에 보여줄 프로덕트
 	public List<ProductVO> product(String product_id);
+	
+	public List<ProductVO> mainReviewMax(); 
 }

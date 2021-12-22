@@ -14,7 +14,7 @@
 	<form:hidden path="autoLoginCheck"/>
 </form:form >
 	<span class="login-logo"><h1>Makaron</h1></span>
-	<form action='<c:out value="${pageContext.request.contextPath}"/>/login' id ="login-form" method="post">
+	<form action='<c:out value="${pageContext.request.contextPath}"/>/login' id="login-form" method="post">
 	  <div class="form-group">
 	    <label for="userid">아이디</label>
 	   	<i class="fa fa-user fa-2x login-icon" aria-hidden="true"></i>
@@ -36,6 +36,6 @@
 	</form>
 </div>
 
-0
+<%@ include file="./includes/footer.jsp"%>
 <!-- login -->
 <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
