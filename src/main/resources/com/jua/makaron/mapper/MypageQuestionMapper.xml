@@ -3,32 +3,88 @@
 <mapper namespace="com.jua.makaron.mapper.MypageQuestionMapper">
 
 	<!-- 1. 상품 문의 내역 불러오기 -->
+	<!-- 문의 내역 불러오기 -->
 	<select id="getQuestionList" resultType="com.jua.makaron.vo.ProductQnaVO">
 		<![CDATA[
-			SELECT
-			    pq.qna_no,
-			    customer_id,
-			    c.name,
-			    p.product_title,
-			    pq.qna_title,
-			    pq.qna_content,
-			    pq.update_date 
-			FROM
-			    product_qna pq,
-			    product p,
-			    customer c
+			SELECT 
+			    *
+			FROM  
+			    (
+			    SELECT 
+			        ROWNUM rn,
+			        A.*                 
+			    FROM
+			        (                   
+			        SELECT
+			            pq.qna_no,
+			            customer_id,
+			            c.name,
+			            p.product_title,
+			            pq.qna_title,
+			            pq.qna_content,
+			            pq.update_date 
+			        FROM
+			            product_qna pq,
+			            product p,
+			            customer c
+			        WHERE
+			            pq.product_id = p.product_id
+			            AND pq.customer_id = c.id
+			            AND customer_id = #{id}
+			            AND pq.is_del = 'N'
+			        ORDER BY 
+			            update_date desc
+			        ) A
+			    WHERE 
+			        ROWNUM <= #{cri.pageNum} * #{cri.amount}
+			    )
 			WHERE
-			    pq.product_id = p.product_id
-			    AND pq.customer_id = c.id
-			    AND customer_id = #{id}
-			    AND pq.is_del = 'N'
-			ORDER BY 
-			    update_date desc
+			    rn > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
+	</select>
+	
+	<!--  상품 문의 글 개수 구하기 -->
+	<select id="getQuestionQuantity" resultType="int">
+		<![CDATA[
+			SELECT
+			    count(qna_no)
+			FROM
+			    product_qna
+			WHERE 
+			    customer_id = #{id}
+			    AND is_del = 'N'
 		]]>
 	</select>
 	
 	
 	<!-- 2. 상품 문의 등록 -->
+	<!-- ajax 후 카테고리명, 상품명 따로 받아오기! (allCategroyName() 함수도 만들어야함) -->
+	<!-- 
+	<select id="allCategroyName" resultType="com.jua.makaron.vo.ProductQnaVO">
+		<![CDATA[
+			SELECT
+		       	category_name
+		   	FROM
+		      	product_category
+			ORDER BY 
+		       	category_name
+    	]]>
+	</select> 
+	-->
+	<!-- ajax후 allProductName(ProdutQnaVO qna)로 매개변수? 변경하기
+	<select id="allProductName" resultType="com.jua.makaron.vo.ProductQnaVO">
+		<![CDATA[
+			SELECT
+            	product_title
+           	FROM
+             	product 
+         	WHERE
+               	category_id = (SELECT category_id FROM product_category WHERE category_name = #{category_name})
+          	ORDER BY 
+               	product_title
+		]]>
+	</select>  
+	-->
 	<!-- 카테고리명>상품명 불러오기 -->
 	<select id="allProductName" resultType="com.jua.makaron.vo.ProductQnaVO">
 		<![CDATA[

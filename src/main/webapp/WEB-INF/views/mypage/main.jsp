@@ -88,30 +88,67 @@
 				
 				<div class="orderList">
 					<table class="orderTable" border="1">
-						<tr>
-							<td>주문일</td>
-							<td>주문번호</td>
-							<td>상품명</td>
-							<td>상품 이미지</td>
-							<td>상품 가격</td>
-							<td>수량</td>
-							<td>최종 가격</td>
-							<td>주문 상태</td>
-						</tr>
-					<c:forEach items="${orderList}" var="list">
-						<tr>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.order_date}" /> </td>
-							<td>${list.order_id} </td>
-							<td>${list.product_title} </td>
-							<td class="product_img"><img src="${list.file_url}/${list.file_name}" style="width:250px; height:300px;" /></td>
-							<td>${list.product_price} </td>
-							<td>${list.total_count} </td>
-							<td>${list.final_price} </td>
-							<td>${list.state_list_name} </td>
-						</tr>
-					</c:forEach>
+						<thead>
+							<tr>
+								<th>주문일</th>
+								<th>주문번호</th>
+								<th>상품명</th>
+								<th>상품 이미지</th>
+								<th>상품 가격</th>
+								<th>수량</th>
+								<th>최종 가격</th>
+								<th>주문 상태</th>
+							</tr>
+						</thead>
+						
+						<c:forEach items="${orderList}" var="list">
+							<tr>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.order_date}" /> </td>
+								<td>${list.order_id} </td>
+								<td>${list.product_title} </td>
+								<td class="product_img"><img src="${list.file_url}/${list.file_name}" style="width:250px; height:300px;" /></td>
+								<td>${list.product_price} </td>
+								<td>${list.total_count} </td>
+								<td>${list.final_price} </td>
+								<td>${list.state_list_name} </td>
+							</tr>
+						</c:forEach>
 					</table>
 				</div>
+				<br>
+				
+				<!-- paging -->
+				<div class = "paging">
+					<nav aria-label="Page navigation example">
+						<ul class ="pagination justify-content-center">
+								
+							<c:if test = "${pageMaker.prev}">
+								<li class="page-item"> 
+									<a class="page-link" href="${pageMaker.startPage - 1}">&laquo;</a>
+								</li>
+							</c:if>
+								
+							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+								<li class="page-item ${pageMaker.cri.pageNum == num ? 'active':''} "> 
+									<a class="page-link" href="${num}">${num}</a>
+								</li>
+							</c:forEach>
+								
+							<c:if test = "${pageMaker.next}">
+								<li class="page-item"> 
+									<a class="page-link" href="${pageMaker.endPage + 1}">&raquo;</a>
+								</li>
+							</c:if>
+								
+						</ul>
+					</nav>
+				</div>
+				
+				<!-- paging 처리를 위한 pageNum, amount 전달 -->
+				<form id="actionForm" action="/mypage/main" method="get">
+					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+				</form>
 				
 			<!-- container  -->
 			</div>
@@ -121,6 +158,26 @@
 		
 	<!-- my Page  -->	
 	</div> 
+	
+	<!-- paging 처리를 위한 jQuery -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+	    
+			var actionForm = $("#actionForm"); //id가 actionForm인 것을 불러옴 => 여기서는 form태그의 id=actionForm
+			
+			$(".page-item a").on("click", function(e){
+				
+				e.preventDefault();
+				
+				console.log('click');
+				
+				actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+				actionForm.submit();
+			});
+			
+		});
+	</script>
 		
 <!-- 푸터 시작 -->
 <%@ include file="../includes/footer.jsp" %>

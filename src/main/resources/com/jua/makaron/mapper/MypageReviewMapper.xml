@@ -7,20 +7,48 @@
 	<select id="getReviewList" resultType="com.jua.makaron.vo.ProductReviewVO">
 		<![CDATA[
 			SELECT 
-				pr.review_no,
-				p.product_title,
-				p.product_price,
-				pr.review_title,
-				pr.review_content,
-				pr.update_date
-			FROM 
-			    product p, product_review pr
+			    *
+			FROM  
+			    (
+			    SELECT 
+			        ROWNUM rn,
+			        A.*                 
+			    FROM
+			        ( 
+			        SELECT 
+			            pr.review_no,
+			            p.product_title,
+			            p.product_price,
+			            pr.review_title,
+			            pr.review_content,
+			            pr.update_date
+			        FROM 
+			            product p, product_review pr
+			        WHERE 
+			            p.product_id = pr.product_id
+			            AND pr.customer_id = #{id}
+			            AND pr.is_del = 'N'
+			        ORDER BY 
+			            update_date desc
+			        ) A
+			    WHERE 
+			        ROWNUM <= #{cri.pageNum} * #{cri.amount}
+			    )
+			WHERE
+			    rn > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
+	</select>
+	
+	<!--  후기 글 개수 구하기 -->
+	<select id="getReviewQuantity" resultType="int">
+		<![CDATA[
+			SELECT
+			    count(review_no)
+			FROM
+			    product_review
 			WHERE 
-			    p.product_id = pr.product_id
-			    AND pr.customer_id = #{id}
-			    AND pr.is_del = 'N'
-			ORDER BY 
-			    update_date desc
+			    customer_id = #{id}
+			    AND is_del = 'N'
 		]]>
 	</select>
 	
@@ -67,7 +95,7 @@
 			WHERE
 				order_id NOT IN(SELECT order_id from product_review where customer_id = #{id} AND is_del = 'N')
 			ORDER BY 
-			    order_id
+			    LENGTH(order_id), order_id
 		]]>
 	</select>
 	
