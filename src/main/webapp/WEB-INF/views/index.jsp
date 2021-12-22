@@ -262,7 +262,7 @@
 							<div class="owl-item">
 								<div class="test_text">“${rList.review_content}”</div>
 								<div class="test_content">
-									<div class="test_image"><img src="${rList.file_url}/${rList.file_name}" alt=""></div>
+									<div class="test_image"><a href="/product?product_id=${rList.product_id}"><img src="${rList.file_url}${rList.file_name}" alt=""></a></div>
 									<div class="test_name">${rList.customer_id}</div>
 									<div class="test_title">client</div>
 								</div>
