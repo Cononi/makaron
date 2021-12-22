@@ -30,20 +30,22 @@
 					<li><a href="categories.html">accessories</a></li>
 					<li><a href="categories.html">lingerie</a></li>
 					<li><a href="contact.html">contact</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice">notice</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
+					<form action="${pageContext.request.contextPath}/list">
+							<input class="search_input" type="search" id="keyword" name="keyword" placeholder="검색어를 입력하세요" />
+							<button id="search_button" type="submit" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
 					</form>
+					
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
 					<a href="/cart">
 						<div class="cart">
-							<img src="resources/images/shopping-bag.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
 									<div class="cart_num">1</div>
@@ -54,7 +56,7 @@
 					<!-- Star -->
 					<a href="#">
 						<div class="star">
-							<img src="resources/images/star.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/star.svg" alt="">
 							<div class="star_num_container">
 								<div class="star_num_inner">
 									<div class="star_num">0</div>
@@ -65,7 +67,7 @@
 					<!-- Avatar -->
 					<a href="#">
 						<div class="avatar">
-							<img src="resources/images/avatar.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/avatar.svg" alt="">
 						</div>
 					</a>
 				</div>
@@ -79,11 +81,13 @@
 
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="logo menu_mm"><a href="/makaron">Wish</a></div>
-		<div class="search">
-			<form action="#">
+		<div class="logo menu_mm"><a href="index.html">Makaron</a></div>
+		<div class="list">
+			<form action="${pageContext.request.contextPath}/list">
+			
 				<input type="search" class="search_input menu_mm" required="required">
-				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources/images/magnifying-glass.svg" alt=""></button>
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="${pageContext.request.contextPath}/resources/images/magnifying-glass.svg" alt=""></button>
+
 			</form>
 		</div>
 		<nav class="menu_nav">
@@ -93,6 +97,7 @@
 				<li class="menu_mm"><a href="#">accessories</a></li>
 				<li class="menu_mm"><a href="#">lingerie</a></li>
 				<li class="menu_mm"><a href="#">contact</a></li>
+				<li class="menu_mm"><a href="#">notice</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -130,11 +135,11 @@
 				<!-- Billing Details -->
 				<div class="col-lg-6">
 					<div class="billing">
-						<div class="checkout_title">billing details</div>
+						<div class="checkout_title">주문/결제</div>
 						<div class="checkout_form_container">
 							<form action="#" id="checkout_form">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-between">
-									<input type="text" class="checkout_input" placeholder="이름" required="required">
+									<div class="checkout_input"></div>
 								</div>
 								<input type="text" class="checkout_input" placeholder="이메일" required="required">
 								<select name="country" id="country" class="country_select checkout_input">

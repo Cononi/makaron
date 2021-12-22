@@ -10,8 +10,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="resources/styles/bootstrap4/bootstrap.min.css">
-<link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/bootstrap4/bootstrap.min.css">
+<link href="${pageContext.request.contextPath}/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/myPage.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/product.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/product_responsive.css">
 </head>
@@ -31,20 +36,23 @@
 					<li><a href="categories.html">accessories</a></li>
 					<li><a href="categories.html">lingerie</a></li>
 					<li><a href="contact.html">contact</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice">notice</a></li>
+					
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
+					<form action="${pageContext.request.contextPath}/list">
+							<input class="search_input" type="search" id="keyword" name="keyword" placeholder="검색어를 입력하세요" />
+							<button id="search_button" type="submit" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
 					</form>
+					
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
-					<a href="/cart">
+					<a href="/cart?product_id=${product.product_id}">
 						<div class="cart">
-							<img src="resources/images/shopping-bag.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
 									<div class="cart_num">1</div>
@@ -55,7 +63,7 @@
 					<!-- Star -->
 					<a href="#">
 						<div class="star">
-							<img src="resources/images/star.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/star.svg" alt="">
 							<div class="star_num_container">
 								<div class="star_num_inner">
 									<div class="star_num">0</div>
@@ -66,7 +74,7 @@
 					<!-- Avatar -->
 					<a href="#">
 						<div class="avatar">
-							<img src="resources/images/avatar.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/avatar.svg" alt="">
 						</div>
 					</a>
 				</div>
@@ -80,11 +88,13 @@
 
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="logo menu_mm"><a href="#">Makaron</a></div>
-		<div class="search">
-			<form action="#">
+		<div class="logo menu_mm"><a href="index.html">Makaron</a></div>
+		<div class="list">
+			<form action="${pageContext.request.contextPath}/list">
+			
 				<input type="search" class="search_input menu_mm" required="required">
-				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources/images/magnifying-glass.svg" alt=""></button>
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="${pageContext.request.contextPath}/resources/images/magnifying-glass.svg" alt=""></button>
+
 			</form>
 		</div>
 		<nav class="menu_nav">
@@ -94,6 +104,7 @@
 				<li class="menu_mm"><a href="#">accessories</a></li>
 				<li class="menu_mm"><a href="#">lingerie</a></li>
 				<li class="menu_mm"><a href="#">contact</a></li>
+				<li class="menu_mm"><a href="#">notice</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -212,7 +223,7 @@
 <!-- 								</ul> -->
 <!-- 							</div> -->
 							
-							<div class="button cart_button"><a href="/cart">장바구니에 추가</a></div>
+							<div class="button cart_button"><a href="/cart?product_id=${product.product_id}">장바구니에 추가</a></div>
 							<div class="button cart_button btn2"><a href="/checkout">결제창가기</a></div>
 							
 						</div>
@@ -240,13 +251,15 @@
 								</li>
 					</ul>
 					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">상세정보</div>
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							${product.product_content}
+						</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 							<table class="table">
 								<thead>
 								 <tr>
 								 	<th>작성자</th>
-								 	<th>상품점수</th>
+								 	<th>조회수</th>
 								 	<th>작성일</th>
 								 	<th>상품명</th>
 								 	<th>상품평</th>
@@ -298,44 +311,44 @@
 					</div>
 						<div class="reviews_title">상품후기</div>
 						<div class="reviews_container">
-							<ul>
-								<!-- Review -->
-								<li class=" review clearfix">
-									<div class="review_image"><img src="resources/images/review_1.jpg" alt=""></div>
-									<div class="review_content">
-										<div class="review_name"><a href="#">Maria Smith</a></div>
-										<div class="review_date">Nov 29, 2017</div>
-										<div class="rating rating_4 review_rating" data-rating="4">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="review_text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula. </p>
-										</div>
-									</div>
-								</li>
-								<!-- Review -->
-								<li class=" review clearfix">
-									<div class="review_image"><img src="resources/images/review_2.jpg" alt=""></div>
-									<div class="review_content">
-										<div class="review_name"><a href="#">Maria Smith</a></div>
-										<div class="review_date">Nov 29, 2017</div>
-										<div class="rating rating_4 review_rating" data-rating="4">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="review_text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula. </p>
-										</div>
-									</div>
-								</li>
-							</ul>
+<!-- 							<ul> -->
+<!-- 								Review -->
+<!-- 								<li class=" review clearfix"> -->
+<!-- 									<div class="review_image"><img src="resources/images/review_1.jpg" alt=""></div> -->
+<!-- 									<div class="review_content"> -->
+<!-- 										<div class="review_name"><a href="#">Maria Smith</a></div> -->
+<!-- 										<div class="review_date">Nov 29, 2017</div> -->
+<!-- 										<div class="rating rating_4 review_rating" data-rating="4"> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 										</div> -->
+<!-- 										<div class="review_text"> -->
+<!-- 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula. </p> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</li> -->
+<!-- 								Review -->
+<!-- 								<li class=" review clearfix"> -->
+<!-- 									<div class="review_image"><img src="resources/images/review_2.jpg" alt=""></div> -->
+<!-- 									<div class="review_content"> -->
+<!-- 										<div class="review_name"><a href="#">Maria Smith</a></div> -->
+<!-- 										<div class="review_date">Nov 29, 2017</div> -->
+<!-- 										<div class="rating rating_4 review_rating" data-rating="4"> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 											<i class="fa fa-star"></i> -->
+<!-- 										</div> -->
+<!-- 										<div class="review_text"> -->
+<!-- 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula. </p> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</li> -->
+<!-- 							</ul> -->
 						</div>
 					</div>
 				</div>

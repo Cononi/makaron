@@ -50,7 +50,7 @@
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
-					<a href="/cart">
+					<a href="/cart?product_id=${pro.product_id}">
 						<div class="cart">
 							<img src="${pageContext.request.contextPath}/resources/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">

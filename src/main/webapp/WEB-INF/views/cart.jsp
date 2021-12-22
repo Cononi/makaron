@@ -30,20 +30,22 @@
 					<li><a href="categories.html">accessories</a></li>
 					<li><a href="categories.html">lingerie</a></li>
 					<li><a href="contact.html">contact</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice">notice</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
+					<form action="${pageContext.request.contextPath}/list">
+							<input class="search_input" type="search" id="keyword" name="keyword" placeholder="검색어를 입력하세요" />
+							<button id="search_button" type="submit" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
 					</form>
+					
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
-					<a href="/cart">
+					<a href="/cart?product_id=${product.product_id}">
 						<div class="cart">
-							<img src="resources/images/shopping-bag.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
 									<div class="cart_num">1</div>
@@ -54,7 +56,7 @@
 					<!-- Star -->
 					<a href="#">
 						<div class="star">
-							<img src="resources/images/star.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/star.svg" alt="">
 							<div class="star_num_container">
 								<div class="star_num_inner">
 									<div class="star_num">0</div>
@@ -65,7 +67,7 @@
 					<!-- Avatar -->
 					<a href="#">
 						<div class="avatar">
-							<img src="resources/images/avatar.svg" alt="">
+							<img src="${pageContext.request.contextPath}/resources/images/avatar.svg" alt="">
 						</div>
 					</a>
 				</div>
@@ -79,11 +81,13 @@
 
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="logo menu_mm"><a href="#">Wish</a></div>
-		<div class="search">
-			<form action="#">
+		<div class="logo menu_mm"><a href="index.html">Makaron</a></div>
+		<div class="list">
+			<form action="${pageContext.request.contextPath}/list">
+			
 				<input type="search" class="search_input menu_mm" required="required">
-				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources/images/magnifying-glass.svg" alt=""></button>
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="${pageContext.request.contextPath}/resources/images/magnifying-glass.svg" alt=""></button>
+
 			</form>
 		</div>
 		<nav class="menu_nav">
@@ -93,6 +97,7 @@
 				<li class="menu_mm"><a href="#">accessories</a></li>
 				<li class="menu_mm"><a href="#">lingerie</a></li>
 				<li class="menu_mm"><a href="#">contact</a></li>
+				<li class="menu_mm"><a href="#">notice</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -171,13 +176,13 @@
 									 </script>
 								</div>
 								<!-- Product Image -->
-								<div class="cart_product_image"><img src="resources/images/cart_product_1.jpg" alt=""></div>
+								<div class="cart_product_image"><img src="${product.file_url}/${product.file_name}" alt="" width="110" height="110"></div>
 								<!-- Product Name -->
-								<div class="cart_product_name"><a href="product.html">2 Piece Swimsuit</a></div>
+								<div class="cart_product_name"><a href="/product?product_id=${product.product_id}">${product.product_title}</a></div>
 								<div class="cart_product_info ml-auto">
 									<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
 										<!-- Product Price -->
-										<div class="cart_product_price">$35.00</div>
+										<div class="cart_product_price">${product.product_price}</div>
 										<!-- Product Quantity -->
 										<div class="product_quantity_container">
 											<div class="product_quantity clearfix">
@@ -189,7 +194,7 @@
 											</div>
 										</div>
 										<!-- Products Total Price -->
-										<div class="cart_product_total">$35.00</div>
+										<div class="cart_product_total">${product.product_price}</div>
 										<!-- Product Cart Trash Button -->
 										
 									</div>
@@ -203,7 +208,7 @@
 				<div class="col">
 					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
 						<button class="button_clear cart_button">장바구니 비우기</button>
-						<button class="button_update cart_button">update cart</button>
+						
 						<button class="button_update cart_button_2 ml-md-auto" onclick="location.href='/product'">continue shopping</button>
 					</div>
 				</div>
@@ -226,7 +231,7 @@
 						<ul>
 							<li class="d-flex flex-row align-items-center justify-content-start">
 								<div class="cart_total_title">상품금액</div>
-								<div class="cart_total_price ml-auto">$35.00</div>
+								<div class="cart_total_price ml-auto">${product.product_price}</div>
 							</li>
 							<li class="d-flex flex-row align-items-center justify-content-start">
 								<div class="cart_total_title">배송비</div>
@@ -234,7 +239,7 @@
 							</li>
 							<li class="d-flex flex-row align-items-center justify-content-start">
 								<div class="cart_total_title">총금액</div>
-								<div class="cart_total_price ml-auto">$40.00</div>
+								<div class="cart_total_price ml-auto">${product.product_price}</div>
 							</li>
 						</ul>
 						<button onclick="location.href='/checkout'"class="cart_total_button">결제창으로 가기</button>
