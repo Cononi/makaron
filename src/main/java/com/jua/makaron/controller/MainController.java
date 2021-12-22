@@ -22,13 +22,11 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class MainController {
-	
-	private ProductCategoryService category;
 
 
 	
 	@GetMapping("/")
-	public String home(Model model) {
+	public String home() {
 		return "index";
 	}
 	
