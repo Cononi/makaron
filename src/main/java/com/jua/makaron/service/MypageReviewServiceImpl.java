@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.jua.makaron.domain.CriteriaDTO;
 import com.jua.makaron.mapper.MypageReviewMapper;
 import com.jua.makaron.vo.ProductReviewVO;
 
@@ -19,11 +20,14 @@ public class MypageReviewServiceImpl implements MypageReviewService {
 	
 	@Override
 	//후기 내역 불러오기
-	public List<ProductReviewVO> getReviewList(String id) {
-		log.info("아이디 확인 : " + id);
-		log.info("리뷰 내역 확인 : " + mapper.getReviewList(id));
-		
-		return mapper.getReviewList(id);
+	public List<ProductReviewVO> getReviewList(String id, CriteriaDTO cri) {
+		return mapper.getReviewList(id, cri);
+	}
+	
+	@Override
+	//후기 글 개수 구하기
+	public int getReviewQuantity(String id) {
+		return mapper.getReviewQuantity(id);
 	}
 	
 	@Override
