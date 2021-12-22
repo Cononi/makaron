@@ -9,7 +9,7 @@
 		
 	 <!-- config파일 자동 로드 location="classpath:database.properties"  /!-->
     <context:property-placeholder location="classpath:/properties/config.properties" /> 
-    
+    <context:property-placeholder location="classpath:/properties/smskeys.properties" /> 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 			<!-- Root Context: defines shared resources visible to all other web components -->
 			<!--  		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
