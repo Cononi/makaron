@@ -329,6 +329,14 @@ section
 	height: 100%;
 }
 
+.user_logreg{
+position: absolute;
+    width: 100px;
+    top: -35px;
+    right: auto;
+    display: flex;
+}
+
 /*********************************
 3.1 Header - Logo
 *********************************/
@@ -532,13 +540,16 @@ section
 	background: #937c6f;
 }
 
-@media (max-width : 991px) {
+@media (max-width : 1360px) {
 	.burger_container div {
 		display: block;
 	}
 	.burger_container {
 		right: 0;
 		display: block;
+	}
+	.user_logreg {
+		display: none;
 	}
 }
 /*********************************
@@ -1588,11 +1599,14 @@ div .check_text_box {
 /**
 * reg msg
 */
-div .user_register_msg {
-display: block;
-    margin: 150px 0 0 0;
-    background-color: white;
+.user_register_msg b {
+	color: green;
+}
+.user_register_msg {
+	display: block;
+    margin: 200px 0px;
     text-align: center;
+    background-color: white;
 }
 
 div .user_register_msg h1 {
