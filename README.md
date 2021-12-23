@@ -64,6 +64,8 @@
 * 결제 페이지 - 전체적으로 미비로 차후에 개발
 
 ### Database
+* Python 데이터 수집 - https://gist.github.com/Cononi/8bf6be5a7350e152855d2816cbfec897
+* 수집 항목 : 리뷰, 상품 정보 전체, 카테고리 리스트 전체
 
 
 # Project 
@@ -76,6 +78,7 @@
 
 > Homepage : http://www.makaron.shop:7180/  
 > 사항 : 현재 가입시 인증번호 금액적 부분으로 막아둠
+
 
 # Issue
 
