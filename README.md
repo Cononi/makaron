@@ -5,15 +5,36 @@
 * [Developer](#Developer)
 * [ServiceList](#ServiceImplement)
 * [Project](#Project)
+* [Special Part](#SpecialPart)
 * [Issue](#Issue)
 
 #Developer
 
 ### Hardwear
+* Main Server (Tomcat9)  
 `OS : Ubuntu 18.0.4 LTS SERVER`  
 `CPU : 1 Single Core 1.2Ghz`  
 `RAM : 1G`  
 `HDD/SSD : 40G`
+
+* File Server  
+`(NFS서버 -> Main Server에 NFS 서버 연결 및 마운트 처리) `  
+`(Apache2 Server)`  
+`OS : Ubuntu 18.0.4 LTS SERVER`  
+`CPU : 1 Single Core 1.2Ghz`  
+`RAM : 1G`  
+`HDD/SSD : 40G`
+
+* DB Server (Oracle Sql Server)  
+`OS : Ubuntu 18.0.4 LTS SERVER`  
+`CPU : 1 Single Core 1.2Ghz`  
+`RAM : 1G`  
+`HDD/SSD : 40G`
+
+### ETC.
+* Gabia 호스팅에 도메인 연결 처리
+*  Apache2
+
   
 ###Lang
 **Server** : <img src="https://img.shields.io/badge/Tomaat-F8DC75?style=flat-square&logo=Apache Tomcat&logoColor=black"/></a>
@@ -31,14 +52,13 @@
 **Database** : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=Oracle&logoColor=white"/></a>
 
 ### Terms
-|리스트|1W|2W|3W|4W|5W|
-|------|:---:|:---:|:---:|:---:|:---:|
-|분석|O|||||
-|개발환경 구성|O|O||||
-|화면 구현||O|O|O||
-|화면 테스트||||O|O|
-|최종 배포|||||O|
-
+|리스트|1W|2W|3W|
+|------|:---:|:---:|:---:|
+|분석|O|||
+|개발환경 구성|O|O|||
+|화면 구현||O|O|O|
+|화면 테스트|||O|
+|최종 배포|||O|
 
 
 
@@ -60,7 +80,7 @@
 * 마이 페이지 - 주문내역 연도별 조회, 회원 탈퇴미비
 * 결제 페이지 - 전체적으로 미비로 차후에 개발
 
-### Database 수집항목
+### Python Database 수집항목
 * Python 데이터 수집 - https://gist.github.com/Cononi/8bf6be5a7350e152855d2816cbfec897
 * 수집 항목 : 리뷰, 상품 정보 전체, 카테고리 리스트 전체
 * 카테고리 리스트 수집 항목 - 약 23개
@@ -70,10 +90,21 @@
 * 상품 전체 조회 - 약 170개
 * 소요 소간 : 6분
 
-### Database 항목
-* Link - https://drive.google.com/file/d/1blaR_jmVaZnzmk1hjCBfza1ikfYr--wO/view?usp=sharing
-* 테이블 설계 명세서
-* ERD
+## 테이블 설계 명세서
+[보드 테이블.pdf](https://github.com/Cononi/makaron/files/7767240/default.pdf)  
+[상품 테이블.pdf](https://github.com/Cononi/makaron/files/7767241/default.pdf)  
+[회원테이블.pdf](https://github.com/Cononi/makaron/files/7767242/default.pdf)  
+
+## ERD
+### - Board -
+![board](https://user-images.githubusercontent.com/47350461/147200535-508fc6cf-3f30-45d9-8ea5-efffca0572fd.png)
+
+### - Customer -
+![customer](https://user-images.githubusercontent.com/47350461/147200543-23e69354-9f7a-4a70-bbe6-69f05077f77a.png)
+
+### - Product -
+![product](https://user-images.githubusercontent.com/47350461/147200546-c4a9e3bf-56ca-4c88-a550-c9c57e705380.png)
+	
 
 # Project 
 
@@ -85,6 +116,17 @@
 > Homepage : http://www.makaron.shop:7180/  
 > 사항 : 현재 가입시 인증번호 금액적 부분으로 막아둠
 
+# SpecialPart
+
+### Apache HTTP Virtualhost
+* 도메인 연결을 위해 FileSever에 Apache 서버 구현
+* 연결된 가상 호스트는 2개 입니다.  
+  img.makaron.shop은 FileServer 활용  
+  www.makaron.shop은 MainServer 와 연결되는 가상 호스트 역활 입니다.
+ ![서버흐름도](https://user-images.githubusercontent.com/47350461/147200468-2cad78b3-d056-46b3-a663-9b80fe5386b3.png)
+
+
+
 
 # Issue
 
@@ -92,4 +134,3 @@
 * JWT 방식을 적극 활용하는 방향성 진행이 필요함
 * 전체적으로 하나로 처리할 수 있는 부분이 많은데 간결하게 다이어트가 필요함
 * Service보다 Controller에 치중된 부분과 코드중복 제거가 필요
-
