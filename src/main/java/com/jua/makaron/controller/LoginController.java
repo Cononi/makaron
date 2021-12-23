@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -37,7 +38,8 @@ public class LoginController {
 //		HttpSession session = request.getSession(false);
 		// 에러 내용을 키값으로 파싱
 		HashMap<String, String> message = new HashMap<>();
-
+		
+		System.out.println(loginDTO.getAutoLoginCheck());
 		// 객체를 키값 형식으로 바꾸거나 JSON형식으로 파싱
 //		ObjectMapper objectMapper = new ObjectMapper();
 				
