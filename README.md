@@ -4,9 +4,9 @@
 ## 목차
 * [Developer](#Developer)
 * [ServiceList](#ServiceImplement)
-* [Project](#Project)
 * [Special Part](#SpecialPart)
 * [Issue](#Issue)
+* [Project](#Project)
 
 
 # Developer
@@ -107,17 +107,6 @@
 ### - Product -
 ![product](https://user-images.githubusercontent.com/47350461/147200546-c4a9e3bf-56ca-4c88-a550-c9c57e705380.png)
 	
-
-# Project 
-
-* Jhw(Main) - Login, Register, MainPage, product, Server Setting, Domain Setting, All Service  
-* Ch(sub) - Mainpage, product
-* Hsy(sub) - Mypage, Mypage order, Mypage List
-* Psj(sub) - Notice, product, serches
-
-> Homepage : http://www.makaron.shop:7180/  
-> 사항 : 현재 가입시 인증번호 금액적 부분으로 막아둠
-
 # SpecialPart
 
 ### Apache HTTP Virtualhost
@@ -169,3 +158,14 @@ JSP에서 Servlet을 통해 최종 VIEW가 되었을때 활용만 잘 쓴다면 
 * 전체적으로 하나로 처리할 수 있는 부분이 많은데 간결하게 다이어트가 필요함
 * Service보다 Controller에 치중된 부분과 코드중복 제거가 필요
 * 아직 개발중인 프로젝트로 미비한 점이 많음.
+
+
+# Project 
+
+* Jhw(Main) - Login, Register, MainPage, product, Server Setting, Domain Setting, All Service  
+* Ch(sub) - Mainpage, product
+* Hsy(sub) - Mypage, Mypage order, Mypage List
+* Psj(sub) - Notice, product, serches
+
+> Homepage : http://www.makaron.shop:7180/  
+> 사항 : 현재 가입시 인증번호 금액적 부분으로 막아둠
