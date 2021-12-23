@@ -116,7 +116,7 @@
 								<div class="product_content clearfix">
 									<div class="product_info">
 										<div class="product_name">
-											<a href="product.html">${lists.product_title}</a>
+											<a href="product?product_id=${lists.product_id}">${lists.product_title}</a>
 										</div>
 										<div class="product_price">${lists.product_price}원</div>
 										<div class="product_count">${lists.max_count}개구매중</div>

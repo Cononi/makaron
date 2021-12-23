@@ -65,16 +65,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			LoginSessionManager loginSessionManager = LoginSessionManager.getInstance();
 			// 로그을 성공한 사용자 id가 있는지 확인
 			HttpSession loginSession = loginSessionManager.getSession(loginDTO.getId());
-			if (loginDTO.getSecession_code() == null) {
-				log.info("야야야야");
-				log.info("야야야야");
-				log.info("야야야야");
-				log.info("야야야야");
-				log.info("야야야야");
-				log.info("야야야야");
-				log.info("야야야야");
-				log.info("야야야야");
-			}
+//			if (loginDTO.getSecession_code() == null) {
+//			}
 			if (loginSession == null) {
 				// 로그인 세션 생성
 				session.setAttribute("login", loginDTO);

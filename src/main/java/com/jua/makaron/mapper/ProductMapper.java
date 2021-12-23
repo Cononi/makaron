@@ -19,4 +19,6 @@ public interface ProductMapper {
 	
 	//메인 페이지 덧글 리스트
 	public List<ProductVO> mainReviewMax(); 
+	
+	public int getTotalCount(String product_id); 
 }

@@ -29,7 +29,6 @@
 1. Fonts
 ***********/
 
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 @font-face
 {
@@ -331,7 +330,7 @@ section
 
 .user_logreg{
 position: absolute;
-    width: 100px;
+    width: 300px;
     top: -25px;
     right: auto;
     display: flex;

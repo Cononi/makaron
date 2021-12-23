@@ -334,7 +334,13 @@ section
 	width: 100%;
 	height: 100%;
 }
-
+.user_logreg{
+position: absolute;
+    width: 300px;
+    top: -25px;
+    right: auto;
+    display: flex;
+}
 /*********************************
 3.1 Header - Logo
 *********************************/
@@ -1092,6 +1098,9 @@ section
 .review_image img
 {
 	max-width: 100%;
+}
+.review_title{
+	font-size : 15px;
 }
 .review_content
 {

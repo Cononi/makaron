@@ -22,4 +22,8 @@ public interface ProductService {
 	public List<ProductVO> product(String product_id);
 	
 	public List<ProductVO> mainReviewMax(); 
+	
+	public int getTotalCount(String product_id); 
 }
+
+
