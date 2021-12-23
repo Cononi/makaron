@@ -16,4 +16,13 @@
 		WHERE id=#{id}
 		]]>
 	</update>
+	
+	<!-- 자동 로그인 -->
+		<update id="userSessionSet">
+		<![CDATA[
+		UPDATE customer 
+		SET SECESSION_CODE = #{SECESSION_CODE}
+		WHERE id=#{id}
+		]]>
+	</update>
 </mapper>
