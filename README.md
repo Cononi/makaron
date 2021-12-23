@@ -91,7 +91,7 @@
 * 소요 소간 : 6분
 
 ## 테이블 설계 명세서
-[보드 테이블.pdf](https://github.com/Cononi/makaron/files/7767240/default.pdf)  
+[보드 테이블.pdf](https://drive.google.com/file/d/1Ttwujz9T2YsPH_A9qTgNq21-FN9joIpw/view?usp=sharing, https://drive.google.com/file/d/1Z6QBQN2hneiQPk_STYld14C7oswV-jz1/view?usp=sharing, https://drive.google.com/file/d/1eoq_utU3E1MTfr6SbuhHTVCHRyG8sNhj/view?usp=sharing)  
 [상품 테이블.pdf](https://github.com/Cononi/makaron/files/7767241/default.pdf)  
 [회원테이블.pdf](https://github.com/Cononi/makaron/files/7767242/default.pdf)  
 
