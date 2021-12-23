@@ -17,7 +17,7 @@
    <select id="searchList"
       resultType="com.jua.makaron.vo.ProductVO">
       <![CDATA[
-         select file_url, file_name, product_title, product_price, max_count, delivery_charge
+         select product.product_id,file_url, file_name, product_title, product_price, max_count, delivery_charge
          from product, product_image
          where product.product_id = product_image.product_id and product_title like '%'||#{keyword}||'%'
          order by product.product_id

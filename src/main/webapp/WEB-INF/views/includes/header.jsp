@@ -72,7 +72,7 @@
 						</div>
 					</a>
 					<!-- Avatar -->
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/mypage/main">
 						<div class="avatar">
 							<img src="${pageContext.request.contextPath}/resources/images/avatar.svg" alt="">
 						</div>

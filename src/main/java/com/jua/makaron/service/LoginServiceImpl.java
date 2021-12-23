@@ -34,16 +34,16 @@ public class LoginServiceImpl implements LoginService {
 			// 토큰 비교시 맞으면 회원정보를 반환 아니면 null
 			if(customerDTO.getPassword().equals(loginDTO.getPassword())) {
 				// 자동 로그인 체크시.
-				if (loginDTO.getAutoLoginCheck() != null) {
-					// salt키 생성
-					String salt = SHA256Util.generateSalt();
-					// token 키값 저장
-					String token = loginDTO.getId();
-					// token 키값 변환
-					token = SHA256Util.getEncrypt(token, salt);
-					customerDTO.setSecession_code(token);
-					loginMapper.userSessionSet(customerDTO.getSecession_code(), loginDTO.getId());
-				}
+//				if (loginDTO.getAutoLoginCheck() != null) {
+//					// salt키 생성
+//					String salt = SHA256Util.generateSalt();
+//					// token 키값 저장
+//					String token = loginDTO.getId();
+//					// token 키값 변환
+//					token = SHA256Util.getEncrypt(token, salt);
+//					customerDTO.setSecession_code(token);
+//					loginMapper.userSessionSet(customerDTO.getSecession_code(), loginDTO.getId());
+//				}
 				return customerDTO;
 			}
 		} 

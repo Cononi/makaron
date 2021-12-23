@@ -23,3 +23,5 @@ public interface ProductService {
 	
 	public List<ProductVO> mainReviewMax(); 
 }
+
+

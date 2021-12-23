@@ -109,12 +109,12 @@
 						<c:forEach items="${list}" var="lists">
 							<div class="product">
 								<div class="product_image">
-									<img src="${lists.file_url}/${lists.file_name}" alt="">
+								<a href="/product?product_id=${lists.product_id}"><img src="${lists.file_url}/${lists.file_name}" alt=""></a>
 								</div>
 								<div class="product_content clearfix">
 									<div class="product_info">
 										<div class="product_name">
-											<a href="product.html">${lists.product_title}</a>
+											<a href="/product?product_id=${lists.product_id}">${lists.product_title}</a>
 										</div>
 										<div class="product_price">${lists.product_price}원</div>
 										<div class="product_count">${lists.max_count}개구매중</div>
