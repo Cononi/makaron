@@ -8,7 +8,9 @@
 * [Special Part](#SpecialPart)
 * [Issue](#Issue)
 
-#Developer
+
+# Developer
+
 
 ### Hardwear
 * Main Server (Tomcat9)  
