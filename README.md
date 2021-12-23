@@ -73,6 +73,10 @@
 * 상품 전체 조회 - 약 170개
 * 소요 소간 : 6분
 
+### Database 항목
+* Link - https://drive.google.com/file/d/1blaR_jmVaZnzmk1hjCBfza1ikfYr--wO/view?usp=sharing
+* 테이블 설계 명세서
+* ERD
 
 # Project 
 --
