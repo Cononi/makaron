@@ -91,9 +91,9 @@
 * 소요 소간 : 6분
 
 ## 테이블 설계 명세서
-[보드 테이블.pdf](https://drive.google.com/file/d/1Ttwujz9T2YsPH_A9qTgNq21-FN9joIpw/view?usp=sharing, https://drive.google.com/file/d/1Z6QBQN2hneiQPk_STYld14C7oswV-jz1/view?usp=sharing, https://drive.google.com/file/d/1eoq_utU3E1MTfr6SbuhHTVCHRyG8sNhj/view?usp=sharing)  
-[상품 테이블.pdf](https://github.com/Cononi/makaron/files/7767241/default.pdf)  
-[회원테이블.pdf](https://github.com/Cononi/makaron/files/7767242/default.pdf)  
+[보드 테이블](https://drive.google.com/file/d/1Ttwujz9T2YsPH_A9qTgNq21-FN9joIpw/view?usp=sharing)  
+[상품 테이블](https://drive.google.com/file/d/1eoq_utU3E1MTfr6SbuhHTVCHRyG8sNhj/view?usp=sharing)  
+[회원테이블](https://drive.google.com/file/d/1Z6QBQN2hneiQPk_STYld14C7oswV-jz1/view?usp=sharing)  
 
 ## ERD
 ### - Board -
@@ -134,3 +134,5 @@
 * JWT 방식을 적극 활용하는 방향성 진행이 필요함
 * 전체적으로 하나로 처리할 수 있는 부분이 많은데 간결하게 다이어트가 필요함
 * Service보다 Controller에 치중된 부분과 코드중복 제거가 필요
+
+
