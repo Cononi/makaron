@@ -1,5 +1,4 @@
 # Makaron Project
---
 `디저트 사이트가 중점인 마카롱 프로젝트 입니다.`
 
 ## 목차
@@ -9,7 +8,6 @@
 * [Issue]()
 
 #Developer
---
 
 ### Hardwear
 `OS : Ubuntu 18.0.4 LTS SERVER`  
@@ -45,7 +43,6 @@
 
 
 # Service Implement
---
 ### Implement
 
 |구현 페이지|20%|40%|60%|80%|100%| 구현 내용|
@@ -79,7 +76,6 @@
 * ERD
 
 # Project 
---
 
 * Jhw(Main) - Login, Register, MainPage, product, Server Setting, Domain Setting, All Service  
 * Ch(sub) - Mainpage, product
