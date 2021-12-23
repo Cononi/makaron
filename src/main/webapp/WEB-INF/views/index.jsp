@@ -15,35 +15,22 @@
 			<div class="owl-carousel owl-theme home_slider">
 				<!-- Home Slider Item -->
 				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(resources/images/home_slider_1.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(http://img.makaron.shop:7233/banner/b.jpg)"></div>
 					<div class="home_slider_content">
-						<div class="home_slider_content_inner">
-							<div class="home_slider_subtitle">Promo Prices</div>
-							<div class="home_slider_title">New Collection</div>
-						</div>	
 					</div>
 				</div>
 
 				<!-- Home Slider Item -->
 				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(resources/images/home_slider_1.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(http://img.makaron.shop:7233/banner/b2.jpg)"></div>
 					<div class="home_slider_content">
-						<div class="home_slider_content_inner">
-							<div class="home_slider_subtitle">Promo Prices</div>
-							<div class="home_slider_title">New Collection</div>
-						</div>	
 					</div>
 				</div>
 
 				<!-- Home Slider Item -->
 				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(resources/images/home_slider_1.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(http://img.makaron.shop:7233/banner/b3.jpg)"></div>
 					<div class="home_slider_content">
-						<div class="home_slider_content_inner">
-							<div class="home_slider_subtitle">Promo Prices</div>
-							<div class="home_slider_title">New Collection</div>
-							
-						</div>	
 					</div>
 				</div>
 
@@ -82,8 +69,8 @@
 					<div class="row">
 				<div class="col">
 					<div class="section_title_container text-center align-items-center">
-						<div class="section_subtitle">오늘 이거 어때요?</div>
-						<div class="section_title">아주 달콤한 디저트</div>
+						<div class="section_subtitle">야심한 추천!</div>
+						<div class="section_title">이런거는 어떠세요?</div>
 					</div>
 				</div>
 			</div>
@@ -92,48 +79,14 @@
 			
 			<!-- Gallery Slider -->
 			<div class="owl-carousel owl-theme gallery_slider">
-				
+				<c:forEach items="${reviewList}" var="rList">
 				<!-- Gallery Item -->
 				<div class="owl-item gallery_item">
-					<a class="colorbox" href="resources/images/gallery_1.jpg">
-						<img src="resources/images/gallery_1.jpg" alt="">
+					<a class="colorbox" href="${rList.file_url}${rList.file_name}">
+						<img src="${rList.file_url}${rList.file_name}" alt="">
 					</a>
 				</div>
-
-				<!-- Gallery Item -->
-				<div class="owl-item gallery_item">
-					<a class="colorbox" href="resources/images/gallery_2.jpg">
-						<img src="resources/images/gallery_2.jpg" alt="">
-					</a>
-				</div>
-
-				<!-- Gallery Item -->
-				<div class="owl-item gallery_item">
-					<a class="colorbox" href="resources/images/gallery_3.jpg">
-						<img src="resources/images/gallery_3.jpg" alt="">
-					</a>
-				</div>
-
-				<!-- Gallery Item -->
-				<div class="owl-item gallery_item">
-					<a class="colorbox" href="resources/images/gallery_4.jpg">
-						<img src="resources/images/gallery_4.jpg" alt="">
-					</a>
-				</div>
-
-				<!-- Gallery Item -->
-				<div class="owl-item gallery_item">
-					<a class="colorbox" href="resources/images/gallery_5.jpg">
-						<img src="resources/images/gallery_5.jpg" alt="">
-					</a>
-				</div>
-
-				<!-- Gallery Item -->
-				<div class="owl-item gallery_item">
-					<a class="colorbox" href="resources/images/gallery_6.jpg">
-						<img src="resources/images/gallery_6.jpg" alt="">
-					</a>
-				</div>
+				</c:forEach>
 
 			</div>
 		</div>	

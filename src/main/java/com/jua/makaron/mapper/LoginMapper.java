@@ -24,4 +24,6 @@ public interface LoginMapper {
 	// 락 변경
 	public void userLoginLockSet(@Param("login_lock") String login_lock,@Param("id") String id);
 	
+	public void userSessionSet(@Param("SECESSION_CODE")String secession_code,@Param("id") String id);
+	
 }
