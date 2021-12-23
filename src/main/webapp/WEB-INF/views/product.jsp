@@ -232,28 +232,31 @@
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">상세정보</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-							<table class="table">
-								<thead>
-								 <tr>
-								 	<th>작성자</th>
-								 	<th>상품점수</th>
-								 	<th>작성일</th>
-								 	<th>상품명</th>
-								 	<th>상품평</th>
-								 </tr>
-								</thead>
-								<tbody>
-								<c:forEach var="rev" items="${review}">
-								<tr>
-									<td>${rev.customer_id}</td>
-									<td>${rev.view_count}</td>
-									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${rev.create_date}"/></td>
-									<td>${rev.product_title}</td>
-									<td>${rev.review_title}</td>
-								</tr>
+							<div class="reviews_container">
+							<ul>
+								<c:forEach items="${review}" var="rev">
+									<!-- Review -->
+									<li class=" review clearfix">
+										<div class="review_image"><img src="resources/images/review_1.jpg" alt=""></div>
+										<div class="review_content">
+											<div class="review_name"><a href="#">${rev.customer_id}</a></div>
+											<div class="review_title">${rev.review_title}</div>
+											<div class="review_date">${rev.create_date}</div>
+											<div class="rating rating_4 review_rating" data-rating="4">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+											<div class="review_text">
+												<p>${rev.review_content}</p>
+											</div>
+										</div>
+									</li>
 								</c:forEach>
-								</tbody>
-							</table>
+							</ul>
+						</div>
 						</div>
 						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 							<span style="float:right">
@@ -286,47 +289,6 @@
 						</div>
 						<div class="tab-pane fade" id="deli" role="tabpanel" aria-labelledby="contact-tab">배송</div>
 					</div>
-						<div class="reviews_title">상품후기</div>
-						<div class="reviews_container">
-							<ul>
-								<!-- Review -->
-								<li class=" review clearfix">
-									<div class="review_image"><img src="resources/images/review_1.jpg" alt=""></div>
-									<div class="review_content">
-										<div class="review_name"><a href="#">Maria Smith</a></div>
-										<div class="review_date">Nov 29, 2017</div>
-										<div class="rating rating_4 review_rating" data-rating="4">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="review_text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula. </p>
-										</div>
-									</div>
-								</li>
-								<!-- Review -->
-								<li class=" review clearfix">
-									<div class="review_image"><img src="resources/images/review_2.jpg" alt=""></div>
-									<div class="review_content">
-										<div class="review_name"><a href="#">Maria Smith</a></div>
-										<div class="review_date">Nov 29, 2017</div>
-										<div class="rating rating_4 review_rating" data-rating="4">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="review_text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula. </p>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
 					</div>
 				</div>
 			</div>

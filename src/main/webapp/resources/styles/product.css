@@ -1099,6 +1099,9 @@ position: absolute;
 {
 	max-width: 100%;
 }
+.review_title{
+	font-size : 15px;
+}
 .review_content
 {
 	padding-left: 139px;

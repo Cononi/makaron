@@ -48,5 +48,11 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return mapper.mainReviewMax();
 	}
+	
+	@Override
+	public int getTotalCount(String product_id) {
+		// TODO Auto-generated method stub
+		return mapper.getTotalCount(product_id);
+	}
 
 }

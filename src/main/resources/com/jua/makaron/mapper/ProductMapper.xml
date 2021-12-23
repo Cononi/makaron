@@ -30,7 +30,7 @@
 		where product_qna.product_id=product.product_id and product.product_id=#{product_id} and is_del= 'N'
  	</select>
  	
- 	<select id="review" resultType="com.jua.makaron.vo.ProductVO">
+ 	<select id="review" parameterType="com.jua.makaron.domain.CriteriaDTO" resultType="com.jua.makaron.vo.ProductVO">
  		select review_no, view_count,product_title, review_title,review_content, customer_id, create_date
 		from product_review, product
 		where product_review.product_id=product.product_id and product.product_id=#{product_id}
@@ -49,4 +49,13 @@
 	    WHERE ROWNUM <= 8 and a.product_id = product_image.product_id
 	    ]]>
  	</select>
+ 	
+ 	
+ 	<select id="getTotalCount" resultType="int">
+      <![CDATA[
+      select count(*) from product_review
+		WHERE product_id = ${product_id}
+      ]]>
+   </select>
+ 	
 </mapper>

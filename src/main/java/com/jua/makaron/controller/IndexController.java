@@ -42,6 +42,7 @@ public class IndexController {
 		model.addAttribute("product", pro_service.get(product_id));
 		model.addAttribute("qna", pro_service.qna(product_id));
 		model.addAttribute("review", pro_service.review(product_id));
+		model.addAttribute("maxCount", pro_service.getTotalCount(product_id));
 
 	}
 

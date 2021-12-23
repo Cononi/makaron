@@ -10,6 +10,7 @@ import lombok.ToString;
 public class CriteriaDTO {
 	private int pageNum; //페이지 번호
 	private int amount; //페이지당 개수
+	private int maxCount;
 	
 	private String type; //검색종류 ex>TCW or TC  or C
 	private String keyword; //검색어
