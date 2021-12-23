@@ -28,4 +28,9 @@ public class MypageOrderServiceImpl implements MypageOrderService {
 		return mapper.getOrderQuantity(id);
 	}
 
+	@Override
+	//주문 상세 내역 불러오기
+	public CustomerOrderDetatilsVO getOrderDetails(String id, CustomerOrderDetatilsVO cod) {
+		return mapper.getOrderDetails(id, cod);
+	}
 }

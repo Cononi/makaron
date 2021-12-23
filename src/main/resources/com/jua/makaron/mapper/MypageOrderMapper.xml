@@ -23,6 +23,7 @@
 			            po.total_count,
 			            total_count * total_price AS final_price,
 			            cod.order_date,
+			            cod.details_id,
 			            cosl.state_list_name
 			        FROM 
 			            product_image pi,
@@ -57,6 +58,46 @@
 			WHERE 
 			    order_id IN
 			    	(SELECT order_id FROM product_order WHERE customer_id = #{id})
+		]]>
+	</select>
+	
+	<!-- 2.주문 상세내역 불러오기 -->
+	<select id="getOrderDetails" resultType="com.jua.makaron.vo.CustomerOrderDetatilsVO">
+		<![CDATA[
+			SELECT
+				c.name,
+				pi.file_url,
+			    pi.file_name,
+			    p.product_title,
+			    p.product_price,
+			    po.order_id,
+			    po.total_count,
+			    po.total_price,
+			    total_count * total_price AS final_price,
+			    po.invoice_number,
+			    po.order_messege,
+			    cod.subject_name,
+			    cod.subject_number,
+			    cod.address_base,
+			    cod.address_sub,
+			    cod.order_date,
+			    cod.confirmation_date,
+			    cosl.state_list_name
+			FROM
+				product_image pi,
+			    product p,
+			    customer c, 
+			    product_order po, 
+			    customer_order_details cod,
+			    customer_order_state_list cosl
+			WHERE 
+			    p.product_id = pi.product_id
+			   	AND p.product_id = po.product_id
+			   	AND po.customer_id = c.id
+			    AND po.order_id = cod.order_id
+			    AND cod.customer_order_state_code = cosl.state_list_code
+			   	AND customer_id = #{id}
+                AND cod.details_id = #{cod.details_id}
 		]]>
 	</select>
 	
