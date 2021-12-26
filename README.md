@@ -38,8 +38,8 @@
 *  Apache2
 
   
-###Lang
-**Server** : <img src="https://img.shields.io/badge/Tomaat-F8DC75?style=flat-square&logo=Apache Tomcat&logoColor=black"/></a>
+### Lang
+**Server** : <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat-square&logo=Apache Tomcat&logoColor=black"/></a>
 <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=Ubuntu&logoColor=white"/></a>
 <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=Oracle&logoColor=white"/></a>
 
