@@ -4,7 +4,7 @@ properties/
 config.properties
 
 
-## Eclipse ##
+### Eclipse ###
 .metadata
 bin/
 tmp/
